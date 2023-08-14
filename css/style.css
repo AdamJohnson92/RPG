@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    background-color: var(--black);
+   
 }
 
 :root {
@@ -17,11 +17,12 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 header {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-content: center;
     border: 10px solid var(--gold);
@@ -36,18 +37,45 @@ header {
 h1 {
     font-size: 80px;
     background-color: var(--grey);
-
 }
 
+h2 {
+    font-size: 50px;
+    margin: 10px;
+}
+h3 {
+    font-size: 30px;
+    margin: 10px;
+}
+
+main {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
 .container {
+    width: 50vw;
+    height: 500px;
     margin: 10px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-content: center;
     border: 10px solid var(--gold);
-    padding: 30px;
+    padding: 10px;
     background-color: var(--grey);
     border-radius: 100px;
-    width: 50vw;
+    
     background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
+}
+
+p {
+    font-size: 20px;
+    margin: 10px;
+
+}
+
+#char-container {
+    display: flex;
+    flex-direction: row;
 }

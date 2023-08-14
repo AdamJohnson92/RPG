@@ -1,15 +1,17 @@
 //WEAPON CLASS CONSTRUCTORS
-export default class Weapon {
-    constructor(name, type, weight) {
+class Weapon {
+    constructor(name, type, weight, attack1, attack2) {
         this.name = name;
         this.type = type;
         this.weight = weight;
+        this.attack1 = attack1;
+        this.attack2 = attack2;
     }
 }
 
-export class Greatsword extends Weapon {
-    constructor(name, type, weight) {
-        super(name, type, weight)
+class Greatsword extends Weapon {
+    constructor(name, type, weight, attack1, attack2) {
+        super(name, type, weight, attack1, attack2)
 
     }
     sweepAttack() {
@@ -22,9 +24,9 @@ export class Greatsword extends Weapon {
     }
 }
 
-export class DoubleDaggers extends Weapon{
-    constructor(name, type, weight) {
-        super(name, type, weight)
+class DoubleDaggers extends Weapon{
+    constructor(name, type, weight, attack1, attack2) {
+        super(name, type, weight, attack1, attack2)
     }
     doubleSlash(){
         const damage1 = Math.floor(Math.random() * (6 - 1) + 1);
@@ -38,3 +40,8 @@ export class DoubleDaggers extends Weapon{
         console.log(`You stab your first dagger for ${damage1} damage, and follow up with a stab from your second dagger for ${damage2} damage.`)
     }
 }
+
+const valeGreatsword = new Greatsword("Vale's Greatsword", 'sword', 6, 'Sweep Attack', 'Lunge Attack')
+const slickDoubleDaggers = new DoubleDaggers("Slick's Double Daggers", "daggers", 3, 'Double Slash', 'Double Stab')
+
+export {valeGreatsword, slickDoubleDaggers}
