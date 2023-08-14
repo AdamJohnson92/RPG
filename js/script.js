@@ -1,3 +1,5 @@
+// import Weapon from './weapons'
+
 //CHARACTER CLASS CONSTRUCTORS
 class Character {
     constructor(name, charClass, hp, strength, dexterity, intelligence,hitChanceRate, weapon, armor) {
@@ -19,6 +21,7 @@ class Knight extends Character {
     }
 
     tank() {
+        this.armor.armorRating = this.armor.armorRating + 2
         console.log("Your armor rating is increased by 2 for one turn")
     }
 }
@@ -28,7 +31,8 @@ class Rogue extends Character {
         super(name, charClass, hp, strength, dexterity, intelligence, hitChanceRate, weapon, armor)
     }
 
-    Agile() {
+    agile() {
+        this.hitChanceRate = this.hitChanceRate + 2
         console.log("Your hit chance rating is increased by 2 for one turn")
     }
 }
@@ -104,5 +108,3 @@ const slickChar = new Rogue("Slick", "Rouge", 15, 1, 3, 0, 14, slickDoubleDagger
 console.log(valeChar)
 console.log(slickChar)
 
-valeChar.weapon.sweepAttack()
-slickChar.weapon.doubleStab()
