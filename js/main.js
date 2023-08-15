@@ -2,15 +2,19 @@ import { valeChar, slickChar } from './character.js';
 
 //--------------------------------------------------------------
 
-
 const charContainer = document.getElementById('char-container')
 charContainer.setAttribute("class", "container")
+
 const charCard = document.createElement('div')
 charCard.setAttribute("class", "container")
 charCard.setAttribute('id', 'character-card')
 charContainer.appendChild(charCard)
 const charNameDiv = document.createElement('h2')
 charNameDiv.textContent = `Name: ${valeChar.name}`
+const charAvatar =document.createElement('div')
+charAvatar.setAttribute('id', 'character-avatar-div')
+charAvatar.appendChild(charNameDiv)
+
 const charClassDiv = document.createElement('h3')
 charClassDiv.textContent = `Class: ${valeChar.charClass}`
 const charHpDiv = document.createElement('p')
@@ -26,7 +30,7 @@ charHitDiv.textContent= `Hit Chance: ${valeChar.hitChanceRate}`
 const charSpecial = document.createElement('p')
 charSpecial.textContent = `Special Ability: ${valeChar.special}`
 
-charCard.append(charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial)
+charCard.append(charAvatar, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial)
 
 const equipCard = document.createElement('div')
 equipCard.setAttribute("class", "container")
@@ -55,8 +59,12 @@ charArmorRating.textContent = `Damage Reduction: ${valeChar.armor.armorRating}`
 
 equipCard.append(charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating)
 
-const charImgDiv = document.getElementById("character-img-div")
-charImgDiv.append(valeChar.img)
+
+const charImgDiv = document.createElement("img")
+charImgDiv.setAttribute("id", "character-img-div")
+charImgDiv.setAttribute("src", valeChar.img)
+
+charAvatar.appendChild(charImgDiv)
 
 console.log(valeChar)
 console.log(slickChar)

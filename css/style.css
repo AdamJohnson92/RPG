@@ -44,6 +44,7 @@ h1 {
 h2 {
     font-size: 50px;
     margin: 10px;
+    background-color: none;
 }
 h3 {
     font-size: 30px;
@@ -58,16 +59,14 @@ main {
 .container {
     width: 50vw;
     height: auto;
+    margin: 10px;
     display: flex;
-    /* justify-content: center; */
     flex-direction: column;
-    align-content: center;
     border: 10px solid var(--gold);
     padding: 10px;
     background-color: var(--grey);
     border-radius: 50px;
-    background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%);
-    /* background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%); */
+    /* background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%); */
 }
 
 p {
@@ -80,4 +79,22 @@ p {
 #char-container {
     display: flex;
     flex-direction: row;
+    position: relative;
+}
+
+#character-img-div {
+    height: 100px;
+    width: 100px;
+    top: 20px;
+    position: relative;
+}
+
+#character-avatar-div{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+#character-card{
+    background-color: white;
+    position: relative;
 }
