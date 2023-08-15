@@ -4,7 +4,7 @@ import { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating } from 
 
 //CHARACTER CLASS CONSTRUCTORS
 class Character {
-    constructor(name, charClass, hp, strength, dexterity, wisdom,hitChanceRate, weapon, armor, special) {
+    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img) {
         this.name = name;
         this.charClass = charClass
         this.hp = hp;
@@ -15,12 +15,13 @@ class Character {
         this.weapon = weapon;
         this.armor = armor;
         this.special = special;
+        this.img = img
     }
 }
 //-----
 class Knight extends Character {
-    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special) {
-        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special)
+    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img) {
+        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img)
     }
 
     tank() {
@@ -37,8 +38,8 @@ const valeChar = new Knight("Vale", "Knight", 20, 3, 1, 0, 12, valeGreatsword, p
 //--------
 
 class Rogue extends Character {
-    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special) {
-        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special)
+    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img) {
+        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img)
     }
 
     agile() {
@@ -47,8 +48,8 @@ class Rogue extends Character {
     }
 }
 
+const slickChar = new Rogue("Slick", "Rouge", 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile", 
+//must figure out image sourcing to object
+)
 
-
-const slickChar = new Rogue("Slick", "Rouge", 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile")
-
-export {valeChar, slickChar}
+export { valeChar, slickChar }

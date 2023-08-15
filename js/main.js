@@ -55,8 +55,12 @@ charArmorRating.textContent = `Damage Reduction: ${valeChar.armor.armorRating}`
 
 equipCard.append(charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating)
 
+const charImgDiv = document.getElementById("character-img-div")
+charImgDiv.append(valeChar.img)
+
 console.log(valeChar)
 console.log(slickChar)
+valeChar.tank()
 
 
 export {charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating}
