@@ -7,7 +7,7 @@
 :root {
     --grey: grey;
     --black: black;
-    --brown: rgb(66, 31, 11);
+    --brown: rgb(66, 36, 18);
     --gold: gold;
     --silver: silver;
 }
@@ -30,7 +30,6 @@ header {
     align-content: center;
     border: 10px solid var(--gold);
     padding: 30px;
-    background-color: var(--grey);
     border-radius: 100px;
     width: 50vw;
     background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
@@ -58,18 +57,17 @@ main {
 }
 .container {
     width: 50vw;
-    height: 500px;
-    margin: 10px;
+    height: auto;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     flex-direction: column;
     align-content: center;
     border: 10px solid var(--gold);
     padding: 10px;
     background-color: var(--grey);
     border-radius: 50px;
-    
-    background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
+    background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%);
+    /* background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%); */
 }
 
 p {

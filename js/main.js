@@ -23,8 +23,10 @@ const charWisDiv = document.createElement('p')
 charWisDiv.textContent = `Wisdom: ${valeChar.wisdom}`
 const charHitDiv = document.createElement('p')
 charHitDiv.textContent= `Hit Chance: ${valeChar.hitChanceRate}`
+const charSpecial = document.createElement('p')
+charSpecial.textContent = `Special Ability: ${valeChar.special}`
 
-charCard.append(charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv)
+charCard.append(charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial)
 
 const equipCard = document.createElement('div')
 equipCard.setAttribute("class", "container")
@@ -56,3 +58,5 @@ equipCard.append(charWeaponName, charWeaponType, charWeaponWeight, charWeaponAtt
 console.log(valeChar)
 console.log(slickChar)
 
+
+export {charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating}
