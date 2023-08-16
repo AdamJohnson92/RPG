@@ -48,8 +48,10 @@ class Rogue extends Character {
     }
 }
 
-const slickChar = new Rogue("Slick", "Rouge", 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile", 
-//must figure out image sourcing to object
+const slickChar = new Rogue("Slick", "Rouge", 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile (Increases your Hit Chance Rating by 2 for one turn)", 
+"/assets/slick-static.png"
 )
 
-export { valeChar, slickChar }
+const characterRoster = [valeChar, slickChar]
+
+export { characterRoster }

@@ -1,4 +1,4 @@
-import { valeChar, slickChar } from './character.js';
+import { characterRoster } from './character.js';
 
 //--------------------------------------------------------------
 
@@ -9,70 +9,36 @@ const charCard = document.createElement('div')
 charCard.setAttribute("class", "container")
 charCard.setAttribute('id', 'character-card')
 
-const charNameDiv = document.createElement('h2')
-charNameDiv.textContent = `Name: ${valeChar.name}`
-
 const charAvatar = document.createElement('div')
 charAvatar.setAttribute('id', 'character-avatar-div')
+const charNameDiv = document.createElement('h1')
 
 const charClassDiv = document.createElement('h3')
-charClassDiv.textContent = `Class: ${valeChar.charClass}`
-
 const charHpDiv = document.createElement('p')
-charHpDiv.textContent = `Hitpoints: ${valeChar.hp}`
-
 const charStrDiv = document.createElement('p')
-charStrDiv.textContent = `Strength: ${valeChar.strength}`
-
 const charDexDiv = document.createElement('p')
-charDexDiv.textContent = `Dexterity: ${valeChar.dexterity}`
-
 const charWisDiv = document.createElement('p')
-charWisDiv.textContent = `Wisdom: ${valeChar.wisdom}`
-
 const charHitDiv = document.createElement('p')
-charHitDiv.textContent= `Hit Chance: ${valeChar.hitChanceRate}`
-
 const charSpecial = document.createElement('p')
-charSpecial.textContent = `Special Ability: ${valeChar.special}`
-
-
 
 const equipCard = document.createElement('div')
 equipCard.setAttribute("class", "container")
 equipCard.setAttribute('id', 'equipment-card')
 
 const charWeaponName = document.createElement('h3')
-charWeaponName.textContent = `Weapon: ${valeChar.weapon.name}`
-
 const charWeaponType = document.createElement('p')
-charWeaponType.textContent = `Weapon Type: ${valeChar.weapon.type}`
-
 const charWeaponWeight = document.createElement('p')
-charWeaponWeight.textContent = `Weight: ${valeChar.weapon.weight}`
-
 const charWeaponAttack1 = document.createElement('p')
-charWeaponAttack1.textContent = `Attack 1: ${valeChar.weapon.attack1}`
-
 const charWeaponAttack2 = document.createElement('p')
-charWeaponAttack2.textContent = `Attack 2: ${valeChar.weapon.attack2}`
 
 const charArmorName = document.createElement('h3')
-charArmorName.textContent = `Armor: ${valeChar.armor.name}`
-
 const charArmorClass = document.createElement('p')
-charArmorClass.textContent = `Armor Class: ${valeChar.armor.armorClass}`
-
 const charArmorWeight = document.createElement('p')
-charArmorWeight.textContent = `Weight: ${valeChar.armor.weight}`
-
 const charArmorRating = document.createElement('p')
-charArmorRating.textContent = `Damage Reduction: ${valeChar.armor.armorRating}`
 
 
 const charImgDiv = document.createElement("img")
 charImgDiv.setAttribute("id", "character-img-div")
-charImgDiv.setAttribute("src", valeChar.img)
 
 charCard.append(charAvatar, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial)
 equipCard.append(charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating)
@@ -81,9 +47,67 @@ charContainer.append(charCard, equipCard)
 
 charAvatar.append(charNameDiv, charImgDiv)
 
-console.log(valeChar)
-console.log(slickChar)
+function selectCharacter(event) {
 
 
+    let chosenCharacter;
 
-export {charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating}
+    for(let i = 0; i < characterRoster.length; i ++) {
+    if (event.target.matches('#Slick-play')) {
+        chosenCharacter = characterRoster[1]
+        console.log(chosenCharacter)
+    } else if (event.target.matches('#Vale-play')) {
+        chosenCharacter = characterRoster[0]
+        console.log(chosenCharacter)
+    }
+}
+    charNameDiv.textContent = `${chosenCharacter.name}`
+
+    charAvatar.setAttribute('id', 'character-avatar-div')
+    charImgDiv.setAttribute("src", chosenCharacter.img)
+
+    charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
+    charHpDiv.textContent = `Hitpoints: ${chosenCharacter.hp}`
+    charStrDiv.textContent = `Strength: ${chosenCharacter.strength}`
+    charDexDiv.textContent = `Dexterity: ${chosenCharacter.dexterity}`
+    charWisDiv.textContent = `Wisdom: ${chosenCharacter.wisdom}`
+    charHitDiv.textContent = `Hit Chance: ${chosenCharacter.hitChanceRate}`
+    charSpecial.textContent = `Special Ability: ${chosenCharacter.special}`
+
+    charWeaponName.textContent = `Weapon: ${chosenCharacter.weapon.name}`
+    charWeaponType.textContent = `Weapon Type: ${chosenCharacter.weapon.type}`
+    charWeaponWeight.textContent = `Weight: ${chosenCharacter.weapon.weight}`
+    charWeaponAttack1.textContent = `Attack 1: ${chosenCharacter.weapon.attack1}`
+    charWeaponAttack2.textContent = `Attack 2: ${chosenCharacter.weapon.attack2}`
+    charArmorName.textContent = `Armor: ${chosenCharacter.armor.name}`
+    charArmorClass.textContent = `Armor Class: ${chosenCharacter.armor.armorClass}`
+    charArmorWeight.textContent = `Weight: ${chosenCharacter.armor.weight}`
+    charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
+
+    charImgDiv.setAttribute("src", chosenCharacter.img)
+
+    charCard.append(charAvatar, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial)
+    equipCard.append(charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating)
+
+    charContainer.append(charCard, equipCard)
+    charAvatar.append(charNameDiv, charImgDiv)
+
+    charContainer.style.display = "flex"
+   
+}
+
+function generateCharBtns() {
+    const charSelectionDiv = document.getElementById('character-selection-div')
+    for (let i = 0; i < characterRoster.length; i++) {
+        const charBtn = document.createElement('button')
+        charBtn.textContent = `${characterRoster[i].name} the ${characterRoster[i].charClass}`
+        charBtn.setAttribute('class', 'btn character-btn')
+        charBtn.setAttribute('id', `${characterRoster[i].name}-play` )
+        charSelectionDiv.append(charBtn)
+        charBtn.addEventListener('click', selectCharacter)
+    }
+}
+
+generateCharBtns()
+
+export { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating }
