@@ -4,6 +4,8 @@ import { charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpD
 const playBtn = document.getElementById('play-btn')
 const charSelectionDiv = document.getElementById('character-selection-div')
 const combatDiv = document.getElementById('combat-div')
+const combatLog = document.getElementById('combat-log')
+combatDiv.append(combatLog)
 //--------------------------------------------------------------
 let chosenCharacter;
 function selectCharacter(event) {
@@ -69,13 +71,14 @@ let targetHit ;
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
-    targetHit = 15
+    targetHit = 7
     
 }
 
 playBtn.addEventListener('click', playGame)
 
 //------------------------------
+
 
 //must add stat modifiers and targets
 function attackRoll1(){
@@ -96,4 +99,4 @@ attackBtn2.addEventListener('click', attackRoll2)
 generateCharBtns()
 
 
-export { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, chosenCharacter }
+export { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog }
