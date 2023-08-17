@@ -1,13 +1,15 @@
 import { characterRoster } from './character.js';
+import { valeGreatsword, slickDoubleDaggers } from './weapons.js';
 import { charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv } from './charCardElements.js';
 const playBtn = document.getElementById('play-btn')
 const charSelectionDiv = document.getElementById('character-selection-div')
 const combatDiv = document.getElementById('combat-div')
 //--------------------------------------------------------------
+let chosenCharacter;
 
 function selectCharacter(event) {
 
-    let chosenCharacter;
+    
 
     for (let i = 0; i < characterRoster.length; i++) {
         if (event.target.matches('#Slick-play')) {
@@ -44,6 +46,9 @@ function selectCharacter(event) {
 
     playBtn.style.display = 'block'
 };
+
+// ------------------------------------
+
 function generateCharBtns() {
 
     for (let i = 0; i < characterRoster.length; i++) {
@@ -56,6 +61,8 @@ function generateCharBtns() {
     }
 };
 
+//-------------------------------------------
+
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
@@ -63,11 +70,26 @@ function playGame() {
 
 playBtn.addEventListener('click', playGame)
 
-function attackRoll(stat){
-    const naturalRoll = Math.floor(Math.random() * (2 - 19) + 2)
-    totalRoll = naturalRoll + stat
+//------------------------------
+
+//must add stat modifiers and targets
+function attackRoll1(){
+    chosenCharacter.weapon.attackDam1(chosenCharacter.weapon.modifyingStat)
 }
+
+//must add stat modifiers and targets
+function attackRoll2(){
+    chosenCharacter.weapon.attackDam2(chosenCharacter.weapon.modifyingStat)
+}
+
+const attackBtn1 = document.getElementById('attack-1')
+const attackBtn2 = document.getElementById('attack-2')
+
+attackBtn1.addEventListener('click', attackRoll1)
+attackBtn2.addEventListener('click', attackRoll2)
 
 generateCharBtns()
 
-export { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating }
+chosenCharacter
+
+export { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, chosenCharacter }
