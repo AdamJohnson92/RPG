@@ -1,6 +1,6 @@
 import { characterRoster } from './character.js';
-import { valeGreatsword, slickDoubleDaggers } from './weapons.js';
 import { charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
+import { undead } from './monster.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 
@@ -8,7 +8,7 @@ const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 let chosenCharacter;
 function selectCharacter(event) {
 
-    
+
 
     for (let i = 0; i < characterRoster.length; i++) {
         if (event.target.matches('#Slick-play')) {
@@ -65,13 +65,13 @@ function generateCharBtns() {
 };
 
 //-------------------------------------------
-
-let targetHit ;
+let target;
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
-    targetHit = 7
-    
+    target = undead
+    console.log(target)
+
 }
 
 playBtn.addEventListener('click', playGame)
@@ -80,13 +80,17 @@ playBtn.addEventListener('click', playGame)
 
 
 //must add stat modifiers and targets
-function attackRoll1(){
-    chosenCharacter.weapon.attackDam1(targetHit, chosenCharacter.weapon.modifyingStat)
+function attackRoll1() {
+    chosenCharacter.weapon.attackDam1(target.hitChanceRate, chosenCharacter.weapon.modifyingStat)
+
+    target.hp - chosenCharacter.weapon.attackDam1
+    console.log(target.hp)
+
 }
 
 //must add stat modifiers and targets
-function attackRoll2(){
-    chosenCharacter.weapon.attackDam2(targetHit, chosenCharacter.weapon.modifyingStat)
+function attackRoll2() {
+    chosenCharacter.weapon.attackDam2(target.hitChanceRate, chosenCharacter.weapon.modifyingStat)
 }
 
 const attackBtn1 = document.getElementById('attack-1')

@@ -147,12 +147,13 @@ button:hover{
 }
 
 .arena-img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     position: absolute;
 }
 
 .dmg-img{
-    z-index: -1;
+    display: none;
     position: absolute;
+    transition: all 1s ease-in-out;
 }
