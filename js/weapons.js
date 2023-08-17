@@ -31,7 +31,7 @@ class Greatsword extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
 
     }
-    attackDam1(target) {
+    attackDam1(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
 
@@ -39,13 +39,12 @@ class Greatsword extends Weapon {
             const damage = Math.floor(Math.random() * (12 - 3) + 3);
             dmgAnimation()
             combatLog.textContent = `You swing your greatsword in a wide arc for ${damage} damage`
-            console.log(damage)
-            console.log(target.hp)
-            return target.hp - damage;
+            console.log(`You deal ${damage} damage`)
+            return targetHp - damage;
         } else {
             console.log('You missed!')
-            combatLog.textContent = 'You missed!'
-            return 0;
+            combatLog.textContent = 'You missed!';
+            return targetHp
         }
     }
     attackDam2(target) {

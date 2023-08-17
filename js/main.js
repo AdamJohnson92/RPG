@@ -79,18 +79,23 @@ playBtn.addEventListener('click', playGame)
 //------------------------------
 
 
-//must add stat modifiers and targets
+//must add stat modifiers
 function attackRoll1() {
-    chosenCharacter.weapon.attackDam1(target.hitChanceRate, chosenCharacter.weapon.modifyingStat)
+    console.log(`The target has ${target.hp} hp`)
+    const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
 
-    target.hp - chosenCharacter.weapon.attackDam1
-    console.log(target.hp)
+    target.hp = monsterCombatHp
+
+    console.log(`The target now has ${monsterCombatHp} hp`)
+    if (monsterCombatHp <= 0) {
+        combatLog.textContent = `You slayed the ${target.name}`
+    }
 
 }
 
-//must add stat modifiers and targets
+//must add stat modifiers
 function attackRoll2() {
-    chosenCharacter.weapon.attackDam2(target.hitChanceRate, chosenCharacter.weapon.modifyingStat)
+    chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat)
 }
 
 const attackBtn1 = document.getElementById('attack-1')
