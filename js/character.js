@@ -31,8 +31,6 @@ class Knight extends Character {
     }
 }
 
-
-
 const valeChar = new Knight("Vale", "Knight", 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank (Increases Damage Reduction by 2 for one turn)`, "/assets/vale-static.jpg"
 )
 //--------

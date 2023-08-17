@@ -6,7 +6,6 @@ const charSelectionDiv = document.getElementById('character-selection-div')
 const combatDiv = document.getElementById('combat-div')
 //--------------------------------------------------------------
 let chosenCharacter;
-
 function selectCharacter(event) {
 
     
@@ -45,6 +44,9 @@ function selectCharacter(event) {
     charContainer.style.display = 'flex'
 
     playBtn.style.display = 'block'
+
+    attackBtn1.textContent = chosenCharacter.weapon.attack1
+    attackBtn2.textContent = chosenCharacter.weapon.attack2
 };
 
 // ------------------------------------
@@ -63,9 +65,12 @@ function generateCharBtns() {
 
 //-------------------------------------------
 
+let targetHit ;
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
+    targetHit = 15
+    
 }
 
 playBtn.addEventListener('click', playGame)
@@ -74,12 +79,12 @@ playBtn.addEventListener('click', playGame)
 
 //must add stat modifiers and targets
 function attackRoll1(){
-    chosenCharacter.weapon.attackDam1(chosenCharacter.weapon.modifyingStat)
+    chosenCharacter.weapon.attackDam1(targetHit, chosenCharacter.weapon.modifyingStat)
 }
 
 //must add stat modifiers and targets
 function attackRoll2(){
-    chosenCharacter.weapon.attackDam2(chosenCharacter.weapon.modifyingStat)
+    chosenCharacter.weapon.attackDam2(targetHit, chosenCharacter.weapon.modifyingStat)
 }
 
 const attackBtn1 = document.getElementById('attack-1')
@@ -90,6 +95,5 @@ attackBtn2.addEventListener('click', attackRoll2)
 
 generateCharBtns()
 
-chosenCharacter
 
 export { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, chosenCharacter }
