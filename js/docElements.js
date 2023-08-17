@@ -43,4 +43,10 @@ charContainer.append(charCard, equipCard)
 
 charAvatar.append(charNameDiv, charImgDiv)
 
-export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv}
+const playBtn = document.getElementById('play-btn')
+const charSelectionDiv = document.getElementById('character-selection-div')
+const combatDiv = document.getElementById('combat-div')
+const combatLog = document.getElementById('combat-log')
+combatDiv.append(combatLog)
+
+export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog}

@@ -1,11 +1,9 @@
 import { characterRoster } from './character.js';
 import { valeGreatsword, slickDoubleDaggers } from './weapons.js';
-import { charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv } from './charCardElements.js';
-const playBtn = document.getElementById('play-btn')
-const charSelectionDiv = document.getElementById('character-selection-div')
-const combatDiv = document.getElementById('combat-div')
-const combatLog = document.getElementById('combat-log')
-combatDiv.append(combatLog)
+import { charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
+
+const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
+
 //--------------------------------------------------------------
 let chosenCharacter;
 function selectCharacter(event) {
@@ -24,6 +22,7 @@ function selectCharacter(event) {
     charNameDiv.textContent = `${chosenCharacter.name}`
 
     charImgDiv.setAttribute("src", chosenCharacter.img)
+    arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
 
     charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.hp}`

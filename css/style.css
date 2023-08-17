@@ -131,22 +131,28 @@ button:hover{
     display: block;
     width: 100px;
     height: 100px;
-    border: 2px solid black;
 }
 
 #arena{
     background-color: white;
-    margin:0;
+    margin:10px;
     padding:0;
+    height:200px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     border: 10px solid var(--gold);
-    border: 2px solid black; 
+    border-radius: 20px;
 }
 
 .arena-img {
     width: 100px;
     height: 100px;
-    border: 2px solid black;
+    position: absolute;
+}
+
+.dmg-img{
+    z-index: -1;
+    position: absolute;
 }

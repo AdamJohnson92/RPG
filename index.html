@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,30 +10,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-<header>
-    <h1>Monster Slayer</h1>
-</header>
-<main>
-    <div class="container" id="char-container"></div>
-    <div class="container" id="character-selection-div">
-        <h2>Select Your Character</h2>
-        <button class="btn" id="play-btn">Play</button>
-    </div>
-    <div class = 'container' id="combat-div">
-        <button class ='btn' id="attack-1">  </button>
-        <button class ='btn' id="attack-2">  </button>
-        <div id='arena'>
-            <div class='arena-placement' id='arena-hero'>
-                <img class='arena-img' id="arena-hero-avatar" src="./assets/vale-static.jpg">
-                <img src='./assets/damage.jpg' class="dmg-img arena-img" id="monster-dmg">
-            </div>
-            <div class='arena-placement' id='arena-monster'><img src='./assets/damage.jpg' class="dmg-img arena-img" id="monster-dmg"> </div>
+    <header>
+        <h1>Monster Slayer</h1>
+    </header>
+    <main>
+        <div class="container" id="char-container"></div>
+        <div class="container" id="character-selection-div">
+            <h2>Select Your Character</h2>
+            <button class="btn" id="play-btn">Play</button>
         </div>
-        <p id='combat-log'> </p>
-    </div>
-</main>
-<script type="module" src="./js/main.js"></script>
-<script type="module" src="./js/charCardElements.js"></script>
+        <div class='container' id="combat-div">
+
+            <div id='arena'>
+                <div class='arena-placement' id='arena-hero'>
+                    <img class='arena-img' id="arena-hero-avatar">
+                    <img src='./assets/damage.jpg' class="dmg-img arena-img" id="monster-dmg">
+                </div>
+                <div class='arena-placement' id='arena-monster'>
+                    <img src='./assets/damage.jpg' class="dmg-img arena-img" id="monster-dmg">
+                </div>
+            </div>
+            <button class='btn' id="attack-1"> </button>
+            <button class='btn' id="attack-2"> </button>
+            <p id='combat-log'> </p>
+        </div>
+    </main>
+    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/docElements.js"></script>
 </body>
+
 </html>
