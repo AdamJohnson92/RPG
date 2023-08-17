@@ -30,6 +30,6 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead ('Undead', 20, 7, './assets/undead-static.jpg')
+const undead = new Undead ('Undead', 20, 7, '../assets/undead-static.jpg')
 
 export { undead }
