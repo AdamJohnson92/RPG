@@ -3,6 +3,7 @@ import { charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpD
 import { undead } from './monster.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
+const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
 
 //--------------------------------------------------------------
 let chosenCharacter;
@@ -23,6 +24,7 @@ function selectCharacter(event) {
 
     charImgDiv.setAttribute("src", chosenCharacter.img)
     arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
+    arenaMonsterAvatar.setAttribute("src", undead.img)
 
     charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.hp}`
@@ -88,14 +90,28 @@ function attackRoll1() {
 
     console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp <= 0) {
-        combatLog.textContent = `You slayed the ${target.name}`
+        combatLog.textContent = `You slayed the ${target.name}!`
+        attackBtn1.style.display = 'none'
+        attackBtn2.style.display = 'none'
+        arenaMonsterAvatar.style.display = 'none'
     }
 
 }
 
 //must add stat modifiers
 function attackRoll2() {
-    chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat)
+    console.log(`The target has ${target.hp} hp`)
+    const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
+
+    target.hp = monsterCombatHp
+
+    console.log(`The target now has ${monsterCombatHp} hp`)
+    if (monsterCombatHp <= 0) {
+        combatLog.textContent = `You slayed the ${target.name}!`
+        attackBtn1.style.display = 'none'
+        attackBtn2.style.display = 'none'
+        arenaMonsterAvatar.style.display = 'none'
+    }
 }
 
 const attackBtn1 = document.getElementById('attack-1')
