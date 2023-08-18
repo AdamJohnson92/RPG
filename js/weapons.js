@@ -13,11 +13,12 @@ class Weapon {
     }
 }
 
-function dmgAnimation(){
-    dmgSlashAppear();
+function dmgAnimation(src){
+    dmgSlashAppear(src);
     setTimeout(dmgSlashDisappear, 500)
 }
-function dmgSlashAppear() {
+function dmgSlashAppear(src) {
+    monsterDmgImg.setAttribute('src', src)
     monsterDmgImg.style.display = 'block'
 }
 
@@ -36,12 +37,13 @@ class Greatsword extends Weapon {
 
         if (naturalRoll >= target) {
             const damage = Math.floor(Math.random() * (12 - 3) + 3);
-            dmgAnimation()
+            dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You swing your greatsword in a wide arc for ${damage} damage`
             console.log(`You deal ${damage} damage`)
             return targetHp - damage;
         } else {
             console.log('You missed!')
+            dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
             return targetHp
         }
@@ -53,12 +55,13 @@ class Greatsword extends Weapon {
 
         if (naturalRoll >= target) {
             const damage = Math.floor(Math.random() * (12 - 3) + 3);
-            dmgAnimation()
+            dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You thrust your greatsword forward for ${damage} damage`
             console.log(`You deal ${damage} damage`)
             return targetHp - damage;
         } else {
             console.log('You missed!')
+            dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
             return targetHp
         }
@@ -78,12 +81,13 @@ class DoubleDaggers extends Weapon {
         if (naturalRoll >= target) {
             const damage1 = Math.floor(Math.random() * (6 - 2) + 1);
             const damage2 = Math.floor(Math.random() * (6 - 2) + 1);
-            dmgAnimation()
+            dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You slash with your first dagger for ${damage1} damage, and follow up with a slash from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)
             return targetHp - (damage1 + damage2);
         } else {
             console.log('You missed!')
+            dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
             return targetHp
         }
@@ -96,12 +100,13 @@ class DoubleDaggers extends Weapon {
         if (naturalRoll >= target) {
             const damage1 = Math.floor(Math.random() * (7 - 2) + 1);
             const damage2 = Math.floor(Math.random() * (7 - 2) + 1);
-            dmgAnimation()
+            dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You stab your first dagger for ${damage1} damage, and follow up with a stab from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)
             return targetHp - (damage1 + damage2);
         } else {
             console.log('You missed!')
+            dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
             return targetHp
         }
