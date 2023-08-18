@@ -1,5 +1,5 @@
 import { characterRoster } from './character.js';
-import { charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
+import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
 import { undead } from './monster.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
@@ -134,4 +134,3 @@ attackBtn2.addEventListener('click', attackRoll2)
 generateCharBtns()
 
 
-export { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog }

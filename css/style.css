@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-   
+
 }
 
 :root {
@@ -46,6 +46,7 @@ h2 {
     margin: 10px;
     background-color: none;
 }
+
 h3 {
     font-size: 30px;
     margin: 10px;
@@ -57,6 +58,7 @@ main {
     flex-direction: row;
     justify-content: space-around;
 }
+
 .container {
     width: 40vw;
     height: auto;
@@ -90,22 +92,23 @@ p {
     position: relative;
 }
 
-#character-avatar-div{
+#character-avatar-div {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     position: relative;
     top: 20px;
 }
-#character-card{
+
+#character-card {
     background-color: white;
     position: relative;
 }
 
 .btn {
-    margin:20px;
-    width:200px;
-    height:75px;
+    margin: 20px;
+    width: 200px;
+    height: 75px;
     font-family: 'Yatra One', cursive;
     font-size: 20px;
     border: 5px solid gold;
@@ -113,21 +116,29 @@ p {
     background-color: var(--silver);
 }
 
-#play-btn{
+
+#character-selection-div {
+    align-items: center;
+
+
+}
+
+#play-btn {
     background-color: rgb(156, 19, 19);
     display: none;
 }
 
 #combat-div {
     display: none;
+    align-items: center;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
-    background-color:var(--grey)
+    background-color: var(--grey)
 }
 
-.arena-placement{
+.arena-placement {
 
     display: flex;
     flex-direction: row;
@@ -135,12 +146,13 @@ button:hover{
     height: 100px;
 }
 
-#arena{
+#arena {
     position: relative;
     background-color: white;
-    margin:10px;
-    padding:0;
-    height:200px;
+    margin: 10px;
+    padding: 0;
+    height: 200px;
+    width:400px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -155,7 +167,7 @@ button:hover{
     position: absolute;
 }
 
-.dmg-img{
+.dmg-img {
     display: none;
     position: absolute;
     transition: all 1s ease-in-out;
@@ -167,5 +179,84 @@ button:hover{
     position: absolute;
     top: 10px;
     align-content: center;
-    margin-left: 55px;
+    margin-left: 5px;
+}
+
+.arena-placement {
+    
+    justify-content: center;
+}
+
+@media screen and (max-width: 1500px) {
+    header{
+        align-content: center;
+    }
+    h1 {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .container {
+        width: 60%;
+    }
+
+    h3 {
+        font-size: 15px;
+        margin-top: 15px;
+    }
+
+    p {
+        font-size: 12px;
+        margin: 2px;
+        margin-left: 10px;
+        line-height: 150%;
+    }
+
+    main {
+        flex-wrap: wrap;
+    }
+
+    #char-container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+     
+    }
+#equipment-card{
+    width: auto;
+}
+    #character-img-div {
+        height: 60px;
+        width: 60px;
+    }
+
+
+    #combat-div {
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+
+
+    #arena {
+        height: 125px;
+        width: 225px;
+    }
+
+    img {
+        height: 60px;
+        width: 60px;
+    }
+
+    .arena-img {
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        top: 40px;
+    }
 }

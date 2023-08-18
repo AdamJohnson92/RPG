@@ -1,5 +1,4 @@
-import { combatLog } from "./main.js";
-import { monsterDmgImg } from "./docElements.js";
+import { monsterDmgImg, combatLog } from "./docElements.js";
 
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
@@ -77,8 +76,8 @@ class DoubleDaggers extends Weapon {
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
-            const damage1 = Math.floor(Math.random() * (6 - 1) + 1);
-            const damage2 = Math.floor(Math.random() * (6 - 1) + 1);
+            const damage1 = Math.floor(Math.random() * (6 - 2) + 1);
+            const damage2 = Math.floor(Math.random() * (6 - 2) + 1);
             dmgAnimation()
             combatLog.textContent = `You slash with your first dagger for ${damage1} damage, and follow up with a slash from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)
@@ -95,8 +94,8 @@ class DoubleDaggers extends Weapon {
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
-            const damage1 = Math.floor(Math.random() * (5 - 1) + 1);
-            const damage2 = Math.floor(Math.random() * (5 - 1) + 1);
+            const damage1 = Math.floor(Math.random() * (7 - 2) + 1);
+            const damage2 = Math.floor(Math.random() * (7 - 2) + 1);
             dmgAnimation()
             combatLog.textContent = `You stab your first dagger for ${damage1} damage, and follow up with a stab from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)

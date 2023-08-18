@@ -1,6 +1,6 @@
 import { valeGreatsword, slickDoubleDaggers } from "./weapons.js";
 import { plateArmor, leatherArmor } from "./armor.js";
-import { charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating } from "./main.js";
+
 
 //CHARACTER CLASS CONSTRUCTORS
 class Character {
