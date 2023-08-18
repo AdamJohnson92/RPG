@@ -106,6 +106,7 @@ p {
 }
 
 .btn {
+    color: black;
     margin: 20px;
     width: 200px;
     height: 75px;
