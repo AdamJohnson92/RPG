@@ -1,5 +1,5 @@
 import { monsterDmgImg, combatLog } from "../docElements.js";
-import { heroMoveCounter, changeTurn1 } from "../combatUtil.js";
+import { heroMoveCounter, changeTurn1, dmgAnimation, dmgSlashAppear, dmgSlashDisappear } from "../combatUtil.js";
 
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
@@ -12,19 +12,6 @@ class Weapon {
         this.modifyingStat = modifyingStat;
 
     }
-}
-
-function dmgAnimation(src){
-    dmgSlashAppear(src);
-    setTimeout(dmgSlashDisappear, 500)
-}
-function dmgSlashAppear(src) {
-    monsterDmgImg.setAttribute('src', src)
-    monsterDmgImg.style.display = 'block'
-}
-
-function dmgSlashDisappear() {
-    monsterDmgImg.style.display = 'none'
 }
 
 class Greatsword extends Weapon {

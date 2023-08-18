@@ -1,6 +1,7 @@
 import { characterRoster } from './constructors/character.js';
 import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
 import { undead } from './constructors/monster.js';
+import { monsterMoveCounter } from './combatUtil.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
@@ -103,6 +104,7 @@ function attackRoll1() {
         attackBtn2.style.display = 'none'
         arenaMonsterAvatar.style.display = 'none'
         monsterHpBar.style.display = 'none'
+        monsterMoveCounter.textContent = ' '
     }
 
 }
@@ -122,6 +124,7 @@ function attackRoll2() {
         attackBtn2.style.display = 'none'
         arenaMonsterAvatar.style.display = 'none'
         monsterHpBar.style.display = 'none'
+        monsterMoveCounter.textContent = ' '
     }
 }
 

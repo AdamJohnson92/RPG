@@ -1,3 +1,5 @@
+import { monsterMoveCounter, changeTurn2 } from "../combatUtil.js";
+import { combatLog } from "../docElements.js";
 //CHARACTER CLASS CONSTRUCTORS
 class Monster {
     constructor(name, hp, hitChanceRate, img) {
@@ -13,23 +15,27 @@ class Undead extends Monster {
         super(name, hp, hitChanceRate, img)
     }
 
-    attack1(target) {
-        const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
+    attack1(target, targetHp) {
+        const naturalRoll = Math.floor(Math.random() * (20 - 12) + 12)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
+        monsterMoveCounter.textContent -- 
+        changeTurn2()
 
-        if (naturalRoll >= target) {
+        if (naturalRoll >= 12) {
             const damage = Math.floor(Math.random() * (7 - 1) + 1);
-            dmgAnimation()
-            combatLog.textContent = `The ${this.name} hits you for ${damage} damage`
-            return damage;
+            // dmgAnimation()
+            combatLog.textContent = `The ${Undead.name} hits you for ${damage} damage`
+            console.log(Undead.name)
+            return targetHp - damage;
         } else {
             console.log(`The ${this.name} missed!`)
-            combatLog.textContent = `The ${this.name} missed!`
-            return;
+            conosole.log(Undead.name)
+            combatLog.textContent = `The ${Undead.name} missed!`
+            return targetHp;
         }
     }
 }
 
-const undead = new Undead ('Undead', 20, 7, './assets/undead-static.jpg')
+const undead = new Undead ('Unead', 20, 7, './assets/undead-static.jpg')
 
 export { undead }
