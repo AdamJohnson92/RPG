@@ -128,12 +128,15 @@ button:hover{
 }
 
 .arena-placement{
-    display: block;
+
+    display: flex;
+    flex-direction: row;
     width: 100px;
     height: 100px;
 }
 
 #arena{
+    position: relative;
     background-color: white;
     margin:10px;
     padding:0;
@@ -156,4 +159,13 @@ button:hover{
     display: none;
     position: absolute;
     transition: all 1s ease-in-out;
+}
+
+.hp-bar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    align-content: center;
+    margin-left: 55px;
 }

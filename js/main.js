@@ -5,6 +5,7 @@ import { undead } from './monster.js';
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
 
+
 //--------------------------------------------------------------
 let chosenCharacter;
 function selectCharacter(event) {
@@ -68,11 +69,17 @@ function generateCharBtns() {
 
 //-------------------------------------------
 let target;
+
+const heroHpBar = document.getElementById('hero-hp-bar')
+const monsterHpBar = document.getElementById('monster-hp-bar')
+
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
     target = undead
     console.log(target)
+    heroHpBar.textContent = chosenCharacter.hp;
+    monsterHpBar.textContent=target.hp;
 
 }
 
@@ -87,6 +94,7 @@ function attackRoll1() {
     const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
 
     target.hp = monsterCombatHp
+    monsterHpBar.textContent = monsterCombatHp
 
     console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp <= 0) {
@@ -94,6 +102,7 @@ function attackRoll1() {
         attackBtn1.style.display = 'none'
         attackBtn2.style.display = 'none'
         arenaMonsterAvatar.style.display = 'none'
+        monsterHpBar.style.display = 'none'
     }
 
 }
@@ -104,6 +113,7 @@ function attackRoll2() {
     const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
 
     target.hp = monsterCombatHp
+    monsterHpBar.textContent = monsterCombatHp
 
     console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp <= 0) {
@@ -111,6 +121,7 @@ function attackRoll2() {
         attackBtn1.style.display = 'none'
         attackBtn2.style.display = 'none'
         arenaMonsterAvatar.style.display = 'none'
+        monsterHpBar.style.display = 'none'
     }
 }
 
