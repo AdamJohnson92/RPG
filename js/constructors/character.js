@@ -4,7 +4,7 @@ import { plateArmor, leatherArmor } from "./armor.js";
 
 //CHARACTER CLASS CONSTRUCTORS
 class Character {
-    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img) {
+    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, movePoints) {
         this.name = name;
         this.charClass = charClass
         this.hp = hp;
@@ -15,13 +15,14 @@ class Character {
         this.weapon = weapon;
         this.armor = armor;
         this.special = special;
-        this.img = img
+        this.img = img;
+        this.movePoints = movePoints;
     }
 }
 //-----
 class Knight extends Character {
-    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img) {
-        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img)
+    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, movePoints) {
+        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, movePoints)
     }
 
     tank() {
@@ -31,13 +32,13 @@ class Knight extends Character {
     }
 }
 
-const valeChar = new Knight("Vale", "Knight", 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank (Increases Damage Reduction by 2 for one turn)`, "./assets/vale-static.jpg"
-)
+const valeChar = new Knight("Vale", "Knight", 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank (Increases Damage Reduction by 2 for one turn)`, "./assets/vale-static.jpg", 2)
+
 //--------
 
 class Rogue extends Character {
-    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img) {
-        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img)
+    constructor(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, movePoints) {
+        super(name, charClass, hp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, movePoints)
     }
 
     agile() {
@@ -47,8 +48,7 @@ class Rogue extends Character {
 }
 
 const slickChar = new Rogue("Slick", "Rogue", 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile (Increases your Hit Chance Rating by 2 for one turn)", 
-"./assets/slick-static.png"
-)
+"./assets/slick-static.png", 3)
 
 const characterRoster = [valeChar, slickChar]
 

@@ -1,6 +1,6 @@
-import { characterRoster } from './character.js';
+import { characterRoster } from './constructors/character.js';
 import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
-import { undead } from './monster.js';
+import { undead } from './constructors/monster.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
@@ -133,4 +133,5 @@ attackBtn2.addEventListener('click', attackRoll2)
 
 generateCharBtns()
 
+export {attackBtn1, attackBtn2}
 

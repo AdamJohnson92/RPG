@@ -1,4 +1,5 @@
-import { monsterDmgImg, combatLog } from "./docElements.js";
+import { monsterDmgImg, combatLog } from "../docElements.js";
+import { heroMoveCounter, changeTurn1 } from "../combatUtil.js";
 
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
@@ -34,9 +35,11 @@ class Greatsword extends Weapon {
     attackDam1(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
+        heroMoveCounter.textContent -- 
+        changeTurn1()
 
         if (naturalRoll >= target) {
-            const damage = Math.floor(Math.random() * (12 - 3) + 3);
+            const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You swing your greatsword in a wide arc for ${damage} damage`
             console.log(`You deal ${damage} damage`)
@@ -51,10 +54,12 @@ class Greatsword extends Weapon {
     attackDam2(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
+        heroMoveCounter.textContent -- 
+        changeTurn1()
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
-            const damage = Math.floor(Math.random() * (12 - 3) + 3);
+            const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You thrust your greatsword forward for ${damage} damage`
             console.log(`You deal ${damage} damage`)
@@ -76,6 +81,8 @@ class DoubleDaggers extends Weapon {
     attackDam1(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
+        heroMoveCounter.textContent -- 
+        changeTurn1()
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
@@ -95,6 +102,8 @@ class DoubleDaggers extends Weapon {
     attackDam2(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
+        heroMoveCounter.textContent -- 
+        changeTurn1()
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {

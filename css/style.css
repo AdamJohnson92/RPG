@@ -152,7 +152,7 @@ button:hover {
     background-color: white;
     margin: 10px;
     padding: 0;
-    height: 200px;
+    height: 250px;
     width:400px;
     display: flex;
     flex-direction: row;
@@ -182,6 +182,12 @@ button:hover {
     align-content: center;
     margin-left: 5px;
 }
+
+.move-counter {
+    position: absolute;
+    top: 35px;
+}
+
 
 .arena-placement {
     
