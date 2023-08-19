@@ -1,5 +1,5 @@
 import { monsterDmgImg, combatLog } from "../docElements.js";
-import { heroMoveCounter, changeTurn1, dmgAnimation, dmgSlashAppear, dmgSlashDisappear } from "../combatUtil.js";
+import { heroMoveCounter, dmgAnimation, dmgSlashAppear, dmgSlashDisappear, changeTurn1 } from "../combatUtil.js";
 
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
@@ -22,27 +22,31 @@ class Greatsword extends Weapon {
     attackDam1(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
-        heroMoveCounter.textContent -- 
-        changeTurn1()
+        
 
         if (naturalRoll >= target) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You swing your greatsword in a wide arc for ${damage} damage`
             console.log(`You deal ${damage} damage`)
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp - damage;
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp
         }
+
     }
     attackDam2(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
-        heroMoveCounter.textContent -- 
-        changeTurn1()
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
@@ -50,11 +54,17 @@ class Greatsword extends Weapon {
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You thrust your greatsword forward for ${damage} damage`
             console.log(`You deal ${damage} damage`)
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp - damage;
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp
         }
 
@@ -68,8 +78,6 @@ class DoubleDaggers extends Weapon {
     attackDam1(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
-        heroMoveCounter.textContent -- 
-        changeTurn1()
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
@@ -78,19 +86,23 @@ class DoubleDaggers extends Weapon {
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You slash with your first dagger for ${damage1} damage, and follow up with a slash from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp - (damage1 + damage2);
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp
         }
     }
     attackDam2(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
-        heroMoveCounter.textContent -- 
-        changeTurn1()
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
@@ -99,11 +111,17 @@ class DoubleDaggers extends Weapon {
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You stab your first dagger for ${damage1} damage, and follow up with a stab from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp - (damage1 + damage2);
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')
             combatLog.textContent = 'You missed!';
+            if (heroMoveCounter.textContent < 1) {
+                changeTurn1()
+            }
             return targetHp
         }
     }

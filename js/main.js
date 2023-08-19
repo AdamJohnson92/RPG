@@ -7,6 +7,12 @@ const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
 
 
+let heroMoveCounter = document.getElementById('hero-move-counter')
+heroMoveCounter.setAttribute('class', 'move-counter')
+heroMoveCounter.setAttribute('id', 'hero-move-counter')
+
+heroMoveCounter.textContent = 2
+
 //--------------------------------------------------------------
 let chosenCharacter;
 function selectCharacter(event) {
@@ -73,6 +79,7 @@ let target;
 const heroHpBar = document.getElementById('hero-hp-bar')
 const monsterHpBar = document.getElementById('monster-hp-bar')
 
+let startFlag;
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
@@ -80,6 +87,8 @@ function playGame() {
     console.log(target)
     heroHpBar.textContent = chosenCharacter.hp;
     monsterHpBar.textContent=target.hp;
+    console.log(typeof monsterHpBar.textContent)
+    startFlag = true
 
 }
 
@@ -90,11 +99,15 @@ playBtn.addEventListener('click', playGame)
 
 //must add stat modifiers
 function attackRoll1() {
+    heroMoveCounter.textContent === heroMoveCounter.textContent--
+    
+    // decremeant hero counter here!
     console.log(`The target has ${target.hp} hp`)
     const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
 
     target.hp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
+
 
     console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp < 1) {
@@ -104,30 +117,48 @@ function attackRoll1() {
         arenaMonsterAvatar.style.display = 'none'
         monsterHpBar.style.display = 'none'
         monsterMoveCounter.textContent = ' '
+        //THIS IS WHERE YOU NEED TO BREAK THE ATTACK LOOp
     }
 
 }
 
 //must add stat modifiers
 function attackRoll2() {
+    heroMoveCounter.textContent === heroMoveCounter.textContent--
+    
+    // decremeant hero counter here!
     console.log(`The target has ${target.hp} hp`)
     const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
 
     target.hp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
-    console.log(target.hp)
+
 
     console.log(`The target now has ${monsterCombatHp} hp`)
-    if (monsterCombatHp <= 0) {
+    if (monsterCombatHp < 1) {
         combatLog.textContent = `You slayed the ${target.name}!`
         attackBtn1.style.display = 'none'
         attackBtn2.style.display = 'none'
         arenaMonsterAvatar.style.display = 'none'
         monsterHpBar.style.display = 'none'
         monsterMoveCounter.textContent = ' '
-        
+        //THIS IS WHERE YOU NEED TO BREAK THE ATTACK LOOp
     }
 }
+
+function changeTurn1() {
+    if ((heroMoveCounter.textContent < 1) && (monsterHpBar.textContent > 0)) {
+        monsterMoveCounter.textContent = 1
+        attackBtn1.style.display = 'none'
+        attackBtn2.style.display = 'none'
+        console.log(monsterHpBar)
+    if(monsterHpBar.textContent > 0){
+    setTimeout(undead.attack1, 2000)}
+    } 
+
+    
+}
+changeTurn1()
 
 const attackBtn1 = document.getElementById('attack-1')
 const attackBtn2 = document.getElementById('attack-2')
@@ -137,5 +168,5 @@ attackBtn2.addEventListener('click', attackRoll2)
 
 generateCharBtns()
 
-export {attackBtn1, attackBtn2, monsterHpBar}
+export {attackBtn1, attackBtn2, monsterHpBar, heroMoveCounter}
 
