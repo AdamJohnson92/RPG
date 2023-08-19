@@ -1,13 +1,18 @@
-import { attackBtn1, attackBtn2, monsterHpBar, heroMoveCounter } from "./main.js"
-import { heroMoveNum } from "./constructors/weapons.js"
+import { attackBtn1, attackBtn2, monsterHpBar } from "./main.js"
+import { heroStaminaNum } from "./constructors/weapons.js"
 import { undead } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg } from "./docElements.js"
 
+let heroStaminaCounter = document.getElementById('hero-stamina-counter')
+heroStaminaCounter.setAttribute('class', 'stamina-counter')
+heroStaminaCounter.setAttribute('id', 'hero-stamina-counter')
 
-const monsterMoveCounter = document.getElementById('monster-move-counter')
-monsterMoveCounter.setAttribute('class', 'move-counter')
-monsterMoveCounter.setAttribute('id', 'monster-move-counter')
-monsterMoveCounter.textContent = 1
+heroStaminaCounter.textContent = 2
+
+const monsterStaminaCounter = document.getElementById('monster-stamina-counter')
+monsterStaminaCounter.setAttribute('class', 'stamina-counter')
+monsterStaminaCounter.setAttribute('id', 'monster-stamina-counter')
+monsterStaminaCounter.textContent = 1
 
 function hideBtnsCPUTurn() {
     attackBtn1.style.display = 'none'
@@ -15,7 +20,7 @@ function hideBtnsCPUTurn() {
 }
 
 function cpuPause() {
-    if (heroMoveNum < 1) {
+    if (heroStaminaNum < 1) {
         setTimeout(hideBtnsCPUTurn, 0)
         setTimeout(changeTurn1, 1500)
     }
@@ -23,8 +28,8 @@ function cpuPause() {
 
 function changeTurn1() {
     const monHpNum = parseInt(monsterHpBar.textContent)
-    if ((heroMoveNum < 1) && (monHpNum > 0)) {
-        monsterMoveCounter.textContent = 1
+    if ((heroStaminaNum < 1) && (monHpNum > 0)) {
+        monsterStaminaCounter.textContent = 1
         if (monHpNum < 1) {
             return
         } else {
@@ -36,8 +41,8 @@ function changeTurn1() {
 }
 
 function changeTurn2() {
-    if (monsterMoveCounter.textContent < 1) {
-        heroMoveCounter.textContent = 2
+    if (monsterStaminaCounter.textContent < 1) {
+        heroStaminaCounter.textContent = 2
         attackBtn1.style.display = 'block'
         attackBtn2.style.display = 'block'
     }
@@ -73,4 +78,4 @@ function monDmgSlashDisappear() {
 }
 
 
-export { heroMoveCounter, monsterMoveCounter, changeTurn1, changeTurn2, cpuPause, dmgAnimation, monDmgAnimation }
+export { heroStaminaCounter, monsterStaminaCounter, changeTurn1, changeTurn2, cpuPause, dmgAnimation, monDmgAnimation }

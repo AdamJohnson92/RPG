@@ -1,7 +1,7 @@
 import { monsterDmgImg, combatLog } from "../docElements.js";
-import { heroMoveCounter, dmgAnimation, cpuPause } from "../combatUtil.js";
+import { heroStaminaCounter, dmgAnimation, cpuPause } from "../combatUtil.js";
 
-let heroMoveNum;
+let heroStaminaNum;
 
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
@@ -21,7 +21,9 @@ class Greatsword extends Weapon {
 
     }
     attackDam1(target, targetHp) {
-        heroMoveNum = parseInt(heroMoveCounter.textContent)
+        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
+        heroStaminaNum --
+        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
@@ -43,7 +45,7 @@ class Greatsword extends Weapon {
 
     }
     attackDam2(target, targetHp) {
-        heroMoveNum = parseInt(heroMoveCounter.textContent)
+        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
@@ -71,7 +73,7 @@ class DoubleDaggers extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(target, targetHp) {
-        heroMoveNum = parseInt(heroMoveCounter.textContent)
+        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
@@ -92,7 +94,7 @@ class DoubleDaggers extends Weapon {
         }
     }
     attackDam2(target, targetHp) {
-        heroMoveNum = parseInt(heroMoveCounter.textContent)
+        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
@@ -117,5 +119,5 @@ class DoubleDaggers extends Weapon {
 const valeGreatsword = new Greatsword("Vale's Greatsword", 'Sword', 6, 'Sweep Attack', 'Lunge Attack', 'strength')
 const slickDoubleDaggers = new DoubleDaggers("Slick's Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
 
-export { valeGreatsword, slickDoubleDaggers, heroMoveNum }
+export { valeGreatsword, slickDoubleDaggers, heroStaminaNum }
 

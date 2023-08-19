@@ -1,17 +1,11 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
+import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
 import { undead } from './constructors/monster.js';
-import { monsterMoveCounter } from './combatUtil.js';
+import { heroStaminaCounter, monsterStaminaCounter } from './combatUtil.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
 
-
-let heroMoveCounter = document.getElementById('hero-move-counter')
-heroMoveCounter.setAttribute('class', 'move-counter')
-heroMoveCounter.setAttribute('id', 'hero-move-counter')
-
-heroMoveCounter.textContent = 2
 
 //--------------------------------------------------------------
 let chosenCharacter;
@@ -76,68 +70,77 @@ let target;
 const heroHpBar = document.getElementById('hero-hp-bar')
 const monsterHpBar = document.getElementById('monster-hp-bar')
 
-let startFlag;
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
+    
     target = undead
+    target.currentHp = target.maxHp
     console.log(target)
-    heroHpBar.textContent = chosenCharacter.hp;
-    monsterHpBar.textContent=target.hp;
+    heroHpBar.textContent = chosenCharacter.currentHp;
+    heroStaminaCounter.textContent = chosenCharacter.staminaPoints
+    monsterHpBar.textContent=target.currentHp;
     console.log(typeof monsterHpBar.textContent)
-    startFlag = true
+}
+
+function renderCharSelection (){
+    arenaMonsterAvatar.style.display = 'flex'
+    monsterHpBar.style.display = 'flex'
+    playAgainBtn.style.display = 'none'
+    attackBtn1.style.display = 'block'
+    attackBtn2.style.display = 'block'
+    charSelectionDiv.style.display = 'flex'
+    combatDiv.style.display = 'none' 
+    // target.currentHp = target.maxHp
 }
 
 playBtn.addEventListener('click', playGame)
+playAgainBtn.addEventListener('click', renderCharSelection)
 
 //------------------------------
 
+function winner(){
+    combatLog.textContent = `You slayed the ${target.name}!`
+    attackBtn1.style.display = 'none'
+    attackBtn2.style.display = 'none'
+    arenaMonsterAvatar.style.display = 'none'
+    monsterHpBar.style.display = 'none'
+    monsterStaminaCounter.textContent = ' '
+    playAgainBtn.style.display = 'block'
+}
 
 //must add stat modifiers
 function attackRoll1() {
-    heroMoveCounter.textContent === heroMoveCounter.textContent--
+    // heroStaminaCounter.textContent === heroStaminaCounter.textContent--
     
     // decremeant hero counter here!
-    console.log(`The target has ${target.hp} hp`)
-    const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
+    console.log(`The target has ${target.currentHp} hp`)
+    const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat) 
 
-    target.hp = monsterCombatHp
+    target.currentHp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
-
 
     console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp < 1) {
-        combatLog.textContent = `You slayed the ${target.name}!`
-        attackBtn1.style.display = 'none'
-        attackBtn2.style.display = 'none'
-        arenaMonsterAvatar.style.display = 'none'
-        monsterHpBar.style.display = 'none'
-        monsterMoveCounter.textContent = ' '
-        //THIS IS WHERE YOU NEED TO BREAK THE ATTACK LOOp
+        winner()
     }
 }
 
 //must add stat modifiers
 function attackRoll2() {
-    heroMoveCounter.textContent === heroMoveCounter.textContent--
+    heroStaminaCounter.textContent === heroStaminaCounter.textContent--
     
     // decremeant hero counter here!
-    console.log(`The target has ${target.hp} hp`)
-    const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.hp, chosenCharacter.weapon.modifyingStat) 
+    console.log(`The target has ${target.currentHp} hp`)
+    const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat) 
 
-    target.hp = monsterCombatHp
+    target.currentHp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
 
 
     console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp < 1) {
-        combatLog.textContent = `You slayed the ${target.name}!`
-        attackBtn1.style.display = 'none'
-        attackBtn2.style.display = 'none'
-        arenaMonsterAvatar.style.display = 'none'
-        monsterHpBar.style.display = 'none'
-        monsterMoveCounter.textContent = ' '
-        //THIS IS WHERE YOU NEED TO BREAK THE ATTACK LOOp
+       winner()
     }
 }
 
@@ -150,5 +153,5 @@ attackBtn2.addEventListener('click', attackRoll2)
 
 generateCharBtns()
 
-export {attackBtn1, attackBtn2, monsterHpBar, heroMoveCounter}
+export {attackBtn1, attackBtn2, monsterHpBar, heroStaminaCounter}
 

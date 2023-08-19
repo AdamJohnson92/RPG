@@ -129,6 +129,10 @@ p {
     display: none;
 }
 
+#play-again {
+    display: none;
+}
+
 #combat-div {
     display: none;
     align-items: center;
@@ -183,7 +187,7 @@ button:hover {
     margin-left: 5px;
 }
 
-.move-counter {
+.stamina-counter {
     position: absolute;
     top: 35px;
 }
