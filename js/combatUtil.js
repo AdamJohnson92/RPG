@@ -1,4 +1,4 @@
-import { attackBtn1, attackBtn2, monsterHpBar } from "./main.js"
+import { attackBtn1, attackBtn2, chosenCharacter, monsterHpBar, heroHpBar, loser } from "./main.js"
 import { heroStaminaNum } from "./constructors/weapons.js"
 import { undead } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg } from "./docElements.js"
@@ -14,6 +14,8 @@ monsterStaminaCounter.setAttribute('class', 'stamina-counter')
 monsterStaminaCounter.setAttribute('id', 'monster-stamina-counter')
 monsterStaminaCounter.textContent = 1
 
+
+let heroCombatHp;
 function hideBtnsCPUTurn() {
     attackBtn1.style.display = 'none'
     attackBtn2.style.display = 'none'
@@ -34,18 +36,25 @@ function changeTurn1() {
             return
         } else {
             console.log(monHpNum)
-            undead.attack1()
+            const heroCombatHp = undead.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp)
+            console.log('hero combat hp' + ' ' + heroCombatHp)
+            chosenCharacter.currentHp = heroCombatHp
+            heroHpBar.textContent = heroCombatHp
+            
+            return heroCombatHp;
         }
 
     } else { return }
 }
 
 function changeTurn2() {
-    if (monsterStaminaCounter.textContent < 1) {
-        heroStaminaCounter.textContent = 2
+    console.log(heroHpBar.textContent)
+    if ((monsterStaminaCounter.textContent < 1) && (heroHpBar.textContent > 0)) {
+        heroStaminaCounter.textContent = chosenCharacter.staminaPoints
         attackBtn1.style.display = 'block'
         attackBtn2.style.display = 'block'
-    }
+    } 
+    
 }
 
 //NOTE TO SELF: MUST MAKE EACH CHARACTER HAVE DIFFERENT MOVE POINT VALUES

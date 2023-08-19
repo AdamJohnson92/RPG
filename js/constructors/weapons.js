@@ -46,6 +46,8 @@ class Greatsword extends Weapon {
     }
     attackDam2(target, targetHp) {
         heroStaminaNum = parseInt(heroStaminaCounter.textContent)
+        heroStaminaNum --
+        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
@@ -74,6 +76,8 @@ class DoubleDaggers extends Weapon {
     }
     attackDam1(target, targetHp) {
         heroStaminaNum = parseInt(heroStaminaCounter.textContent)
+        heroStaminaNum --
+        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
@@ -95,6 +99,8 @@ class DoubleDaggers extends Weapon {
     }
     attackDam2(target, targetHp) {
         heroStaminaNum = parseInt(heroStaminaCounter.textContent)
+        heroStaminaNum --
+        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
