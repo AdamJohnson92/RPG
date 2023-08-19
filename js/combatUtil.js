@@ -1,4 +1,5 @@
 import { attackBtn1, attackBtn2, monsterHpBar, heroMoveCounter } from "./main.js"
+import { heroMoveNum } from "./constructors/weapons.js"
 import { undead } from "./constructors/monster.js"
 import { monsterDmgImg } from "./docElements.js"
 
@@ -8,17 +9,30 @@ monsterMoveCounter.setAttribute('class', 'move-counter')
 monsterMoveCounter.setAttribute('id', 'monster-move-counter')
 monsterMoveCounter.textContent = 1
 
+function hideBtnsCPUTurn() {
+    attackBtn1.style.display = 'none'
+    attackBtn2.style.display = 'none'
+}
+
+function cpuPause() {
+    if (heroMoveNum < 1) {
+        setTimeout(hideBtnsCPUTurn, 0)
+        setTimeout(changeTurn1, 1500)
+    }
+}
 
 function changeTurn1() {
-    if ((heroMoveCounter.textContent < 1) && (monsterHpBar.textContent > 0)) {
+    const monHpNum = parseInt(monsterHpBar.textContent)
+    if ((heroMoveNum < 1) && (monHpNum > 0)) {
         monsterMoveCounter.textContent = 1
-        attackBtn1.style.display = 'none'
-        attackBtn2.style.display = 'none'
-        console.log(monsterHpBar)
-        console.log(typeof monsterHpBar)
-    if(monsterHpBar.textContent > 0){
-    undead.attack1()}
-    } else {return}
+        if (monHpNum < 1) {
+            return
+        } else {
+            console.log(monHpNum)
+            undead.attack1()
+        }
+
+    } else { return }
 }
 
 function changeTurn2() {
@@ -26,7 +40,7 @@ function changeTurn2() {
         heroMoveCounter.textContent = 2
         attackBtn1.style.display = 'block'
         attackBtn2.style.display = 'block'
-    } 
+    }
 }
 
 //Set move counter to designate when turn ends. Decriment each time button is clicked by player
@@ -38,7 +52,7 @@ function changeTurn2() {
 
 //NOTE TO SELF: MUST MAKE EACH CHARACTER HAVE DIFFERENT MOVE POINT VALUES
 
-function dmgAnimation(src){
+function dmgAnimation(src) {
     dmgSlashAppear(src);
     setTimeout(dmgSlashDisappear, 500)
 }
@@ -52,4 +66,4 @@ function dmgSlashDisappear() {
 }
 
 
-export { heroMoveCounter, monsterMoveCounter, changeTurn1, changeTurn2, dmgAnimation, dmgSlashAppear, dmgSlashDisappear }
+export { heroMoveCounter, monsterMoveCounter, changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgSlashAppear, dmgSlashDisappear }
