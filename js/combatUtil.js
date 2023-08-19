@@ -1,4 +1,4 @@
-import { attackBtn1, attackBtn2 } from "./main.js"
+import { attackBtn1, attackBtn2, monsterHpBar } from "./main.js"
 import { undead } from "./constructors/monster.js"
 import { monsterDmgImg } from "./docElements.js"
 
@@ -13,14 +13,14 @@ monsterMoveCounter.setAttribute('class', 'move-counter')
 monsterMoveCounter.setAttribute('id', 'monster-move-counter')
 monsterMoveCounter.textContent = 1
 
-console.log(heroMoveCounter)
-
 function monsterAttack(){
-    setTimeout(undead.attack1, 2000)
+    console.log(monsterHpBar)
+    if(monsterHpBar.textContent > 0){
+    setTimeout(undead.attack1, 2000)}
 }
 
 function changeTurn1() {
-    if (heroMoveCounter.textContent < 1) {
+    if ((heroMoveCounter.textContent < 1) && (monsterHpBar.textContent > 0)) {
         monsterMoveCounter.textContent = 1
         attackBtn1.style.display = 'none'
         attackBtn2.style.display = 'none'

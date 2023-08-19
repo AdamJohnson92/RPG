@@ -25,17 +25,15 @@ class Undead extends Monster {
             const damage = Math.floor(Math.random() * (7 - 1) + 1);
             // dmgAnimation()
             combatLog.textContent = `The ${Undead.name} hits you for ${damage} damage`
-            console.log(Undead.name)
             return targetHp - damage;
         } else {
             console.log(`The ${this.name} missed!`)
-            conosole.log(Undead.name)
             combatLog.textContent = `The ${Undead.name} missed!`
             return targetHp;
         }
     }
 }
 
-const undead = new Undead ('Unead', 20, 7, './assets/undead-static.jpg')
+const undead = new Undead ('Unead', 20, 1, './assets/undead-static.jpg')
 
 export { undead }

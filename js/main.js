@@ -12,7 +12,6 @@ let chosenCharacter;
 function selectCharacter(event) {
 
 
-
     for (let i = 0; i < characterRoster.length; i++) {
         if (event.target.matches('#Slick-play')) {
             chosenCharacter = characterRoster[1]
@@ -98,7 +97,7 @@ function attackRoll1() {
     monsterHpBar.textContent = monsterCombatHp
 
     console.log(`The target now has ${monsterCombatHp} hp`)
-    if (monsterCombatHp <= 0) {
+    if (monsterCombatHp < 1) {
         combatLog.textContent = `You slayed the ${target.name}!`
         attackBtn1.style.display = 'none'
         attackBtn2.style.display = 'none'
@@ -116,6 +115,7 @@ function attackRoll2() {
 
     target.hp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
+    console.log(target.hp)
 
     console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp <= 0) {
@@ -125,6 +125,7 @@ function attackRoll2() {
         arenaMonsterAvatar.style.display = 'none'
         monsterHpBar.style.display = 'none'
         monsterMoveCounter.textContent = ' '
+        
     }
 }
 
@@ -136,5 +137,5 @@ attackBtn2.addEventListener('click', attackRoll2)
 
 generateCharBtns()
 
-export {attackBtn1, attackBtn2}
+export {attackBtn1, attackBtn2, monsterHpBar}
 
