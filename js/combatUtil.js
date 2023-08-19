@@ -1,7 +1,7 @@
 import { attackBtn1, attackBtn2, monsterHpBar, heroMoveCounter } from "./main.js"
 import { heroMoveNum } from "./constructors/weapons.js"
 import { undead } from "./constructors/monster.js"
-import { monsterDmgImg } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg } from "./docElements.js"
 
 
 const monsterMoveCounter = document.getElementById('monster-move-counter')
@@ -43,13 +43,6 @@ function changeTurn2() {
     }
 }
 
-//Set move counter to designate when turn ends. Decriment each time button is clicked by player
-//Turn ends when move counter hits zero
-//set button display to none 
-//setTimeout on CPU move//use while loop on monster attacks to loop until movepoints=0
-//After CPU move, set player move counter back to character default value.
-//Set button display to flex... or block... not sure yet.
-
 //NOTE TO SELF: MUST MAKE EACH CHARACTER HAVE DIFFERENT MOVE POINT VALUES
 
 function dmgAnimation(src) {
@@ -65,5 +58,19 @@ function dmgSlashDisappear() {
     monsterDmgImg.style.display = 'none'
 }
 
+//--------
+function monDmgAnimation(src) {
+    monDmgSlashAppear(src);
+    setTimeout(monDmgSlashDisappear, 500)
+}
+function monDmgSlashAppear(src) {
+    heroDmgImg.setAttribute('src', src)
+    heroDmgImg.style.display = 'block'
+}
 
-export { heroMoveCounter, monsterMoveCounter, changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgSlashAppear, dmgSlashDisappear }
+function monDmgSlashDisappear() {
+    heroDmgImg.style.display = 'none'
+}
+
+
+export { heroMoveCounter, monsterMoveCounter, changeTurn1, changeTurn2, cpuPause, dmgAnimation, monDmgAnimation }

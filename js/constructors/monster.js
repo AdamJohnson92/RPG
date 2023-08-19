@@ -1,4 +1,4 @@
-import { monsterMoveCounter, changeTurn2 } from "../combatUtil.js";
+import { monsterMoveCounter, changeTurn2, monDmgAnimation } from "../combatUtil.js";
 import { combatLog } from "../docElements.js";
 //CHARACTER CLASS CONSTRUCTORS
 class Monster {
@@ -23,7 +23,7 @@ class Undead extends Monster {
 
         if (naturalRoll >= 12) {
             const damage = Math.floor(Math.random() * (7 - 1) + 1);
-            // dmgAnimation()
+            monDmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `The ${Undead.name} hits you for ${damage} damage`
             return targetHp - damage;
         } else {
