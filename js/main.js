@@ -16,16 +16,13 @@ heroMoveCounter.textContent = 2
 //--------------------------------------------------------------
 let chosenCharacter;
 function selectCharacter(event) {
-
-
+    
     for (let i = 0; i < characterRoster.length; i++) {
-        if (event.target.matches('#Slick-play')) {
-            chosenCharacter = characterRoster[1]
+        if (event.target.matches(`#${characterRoster[i].name}`)) {
+            chosenCharacter = characterRoster[i]
             console.log(chosenCharacter)
-        } else if (event.target.matches('#Vale-play')) {
-            chosenCharacter = characterRoster[0]
-            console.log(chosenCharacter)
-        }
+        } 
+        
     }
     charNameDiv.textContent = `${chosenCharacter.name}`
 
@@ -67,7 +64,7 @@ function generateCharBtns() {
         const charBtn = document.createElement('button')
         charBtn.textContent = `${characterRoster[i].name} the ${characterRoster[i].charClass}`
         charBtn.setAttribute('class', 'btn character-btn')
-        charBtn.setAttribute('id', `${characterRoster[i].name}-play`)
+        charBtn.setAttribute('id', `${characterRoster[i].name}`)
         charSelectionDiv.append(charBtn)
         charBtn.addEventListener('click', selectCharacter)
     }
@@ -89,7 +86,6 @@ function playGame() {
     monsterHpBar.textContent=target.hp;
     console.log(typeof monsterHpBar.textContent)
     startFlag = true
-
 }
 
 playBtn.addEventListener('click', playGame)
@@ -119,7 +115,6 @@ function attackRoll1() {
         monsterMoveCounter.textContent = ' '
         //THIS IS WHERE YOU NEED TO BREAK THE ATTACK LOOp
     }
-
 }
 
 //must add stat modifiers
@@ -146,19 +141,6 @@ function attackRoll2() {
     }
 }
 
-function changeTurn1() {
-    if ((heroMoveCounter.textContent < 1) && (monsterHpBar.textContent > 0)) {
-        monsterMoveCounter.textContent = 1
-        attackBtn1.style.display = 'none'
-        attackBtn2.style.display = 'none'
-        console.log(monsterHpBar)
-    if(monsterHpBar.textContent > 0){
-    setTimeout(undead.attack1, 2000)}
-    } 
-
-    
-}
-changeTurn1()
 
 const attackBtn1 = document.getElementById('attack-1')
 const attackBtn2 = document.getElementById('attack-2')
