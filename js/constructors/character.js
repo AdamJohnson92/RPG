@@ -1,6 +1,6 @@
 import { valeGreatsword, slickDoubleDaggers } from "./weapons.js";
 import { plateArmor, leatherArmor } from "./armor.js";
-import {charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating} from '../docElements.js'
+import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial } from '../docElements.js'
 import { chosenCharacter } from "../main.js";
 
 
@@ -31,7 +31,19 @@ class Knight extends Character {
     special1() {
         this.armor.armorRating = this.armor.armorRating + 2
         charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
+        charArmorRating.style.color = 'var(--gold)'
+        charSpecial.style.color = 'var(--gold)'
         console.log("Your damage reduction is increased by 2 for one turn")
+        combatLog.textContent = "Your damage reduction is increased by 2 for one turn"
+    }
+
+    undo1() {
+        if (this.armor.armorRating > 2) {
+            this.armor.armorRating = 2
+        }
+        charArmorRating.style.color = 'black'
+        charSpecial.style.color = 'black'
+        charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
     }
 }
 
@@ -48,11 +60,23 @@ class Rogue extends Character {
         this.hitChanceRate = this.hitChanceRate + 2
         charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
         console.log("Your hit chance rating is increased by 2 for one turn")
+        combatLog.textContent = "Your hit chance rating is increased by 2 for one turn"
+        charHitDiv.style.color = 'var(--gold)'
+        charSpecial.style.color = 'var(--gold)'
     }
+
+    undo1() {
+        if (this.hitChanceRate > 14) {
+            this.hitChanceRate = 14
+        } charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
+        charHitDiv.style.color = 'black'
+        charSpecial.style.color = 'black'
+    }
+    
 }
 
-const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile", 
-"./assets/slick-static.png", 3)
+const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
+    "./assets/slick-static.png", 3)
 
 const characterRoster = [valeChar, slickChar]
 

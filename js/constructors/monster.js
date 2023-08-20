@@ -33,7 +33,7 @@ class Undead extends Monster {
             if ((dmgLessArmor) < 0) {
                 dmgLessArmor = 0;
             }
-            combatLog.textContent = `The ${Undead.name} hits you for ${dmgLessArmor} damage`
+            combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
             charHpDiv.textContent = `Hitpoints:  ${(targetHp - dmgLessArmor)}`
             if ((targetHp - dmgLessArmor) < 1) {
                 loser()
@@ -42,7 +42,7 @@ class Undead extends Monster {
         } else {
             monDmgAnimation('./assets/miss.jpg')
             console.log(`The ${this.name} missed!`)
-            combatLog.textContent = `The ${Undead.name} missed!`
+            combatLog.textContent = `The ${this.name} missed!`
             return targetHp;
         }
 
@@ -73,7 +73,7 @@ class Goblin extends Monster {
             if ((dmgLessArmor) < 0) {
                 dmgLessArmor = 0;
             }
-            combatLog.textContent = `The ${Undead.name} hits you for ${dmgLessArmor} damage`
+            combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
             charHpDiv.textContent = `Hitpoints:  ${(targetHp - dmgLessArmor)}`
             if ((targetHp - dmgLessArmor) < 1) {
                 loser()
@@ -82,7 +82,8 @@ class Goblin extends Monster {
         } else {
             monDmgAnimation('./assets/miss.jpg')
             console.log(`The ${this.name} missed!`)
-            combatLog.textContent = `The ${Undead.name} missed!`
+            console.log(this)
+            combatLog.textContent = `The ${this.name} missed!`
             return targetHp;
         }
 

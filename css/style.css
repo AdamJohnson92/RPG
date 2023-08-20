@@ -30,9 +30,9 @@ header {
     flex-direction: row;
     justify-content: center;
     align-content: center;
-    border: 10px solid var(--gold);
+    border: 10px ridge var(--gold);
     padding: 30px;
-    border-radius: 100px;
+    border-radius: 7px;
     width: 40vw;
     background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
     margin: 10px;
@@ -67,10 +67,10 @@ main {
     margin: 10px;
     display: flex;
     flex-direction: column;
-    border: 10px solid var(--gold);
+    border: 10px ridge var(--gold);
     padding: 10px;
     background-color: var(--grey);
-    border-radius: 50px;
+    border-radius: 5px;
     /* background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%); */
 }
 
@@ -109,12 +109,12 @@ p {
 
 .btn {
     color: black;
-    margin: 20px;
+    margin: 15px;
     width: 200px;
     height: 75px;
     font-family: 'Yatra One', cursive;
     font-size: 20px;
-    border: 5px solid gold;
+    border: 8px ridge var(--gold);
     border-radius: 5px;
     background-color: var(--silver);
 }
@@ -140,6 +140,12 @@ p {
     align-items: center;
     height: 700px;
     padding-top: 0px;
+    padding: 0;
+}
+
+#combat-log {
+    line-height: 20px;
+    text-align: center;
 }
 
 button:hover {
@@ -160,34 +166,40 @@ button:hover {
     background-color: white;
     margin: 10px;
     padding: 0;
-    height: 450px;
-    width:400px;
+    height: 500px;
+    width: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    border: 10px solid var(--gold);
-    border-radius: 20px;
+    border: 10px ridge var(--silver);
+    border-radius: 8px;
 }
 
 #arena-banner {
     flex-direction: row;
+    border: none;
+    border-bottom: 10px ridge var(--gold);
     justify-content: space-around;
-    margin-top:0px;
+    margin-top: 0px;
+    background-color: none;
+    padding: 0px;
 }
 
-#turn-display{
-    padding: 10px;
+#turn-display {
+    padding: 0px;
     border: 10px double black;
     border-radius: 20px;
+
 }
 
-.stam-div{
-    display:flex;
+.stam-div {
+    display: flex;
     font-size: 20px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    background-color: none;
 }
 
 .arena-img {
@@ -212,14 +224,15 @@ button:hover {
 }
 
 .arena-placement {
-    
+
     justify-content: center;
 }
 
 @media screen and (max-width: 1500px) {
-    header{
+    header {
         align-content: center;
     }
+
     h1 {
         font-size: 40px;
         text-align: center;
@@ -230,7 +243,7 @@ button:hover {
     }
 
     .container {
-        width: 60%;
+        width: 70%;
     }
 
     h3 {
@@ -253,11 +266,13 @@ button:hover {
         flex-wrap: wrap;
         flex-direction: column;
         align-items: center;
-     
+
     }
-#equipment-card{
-    width: auto;
-}
+
+    #equipment-card {
+        width: auto;
+    }
+
     #character-img-div {
         height: 50px;
         width: 50px;
@@ -286,5 +301,26 @@ button:hover {
         height: 70px;
         position: absolute;
         top: 40px;
+    }
+
+    #arena-banner {
+        flex-direction: row;
+        border: none;
+        border-bottom: 10px ridge var(--gold);
+        justify-content: space-around;
+        margin-top: 0px;
+        width: 100%;
+    }
+    
+    #turn-display {
+        padding: 0px;
+        border: 10px double black;
+        border-radius: 20px;
+        text-align: center;
+    
+    }
+
+    .stam-div {
+        font-size: 8px;
     }
 }

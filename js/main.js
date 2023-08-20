@@ -77,7 +77,7 @@ function playGame() {
     console.log(selectCharacter(event))
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
-    combatLog.textContent = ''
+    combatLog.textContent = 'Begin!'
     monster = goblin
     monster.currentHp = monster.maxHp
     chosenCharacter.currentHp = chosenCharacter.maxHp
@@ -111,11 +111,12 @@ playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 
 function winner() {
     combatLog.textContent = `You slayed the ${monster.name}!`
-    attackBtn1.style.display = 'none'
-    attackBtn2.style.display = 'none'
-    specialBtn1.style.display = 'none'
+    attackBtn1.style.visibility = 'hidden'
+        attackBtn2.style.visibility = 'hidden'
+        specialBtn1.style.display='none'
     arenaMonsterAvatar.style.display = 'none'
     monsterHpBar.style.display = 'none'
+    heroHpBar.style.display = 'none'
     monsterStaminaCounter.textContent = ''
     playAgainBtn.style.display = 'block'
     turnDisplay.textContent = 'You Win!'
@@ -125,8 +126,9 @@ function winner() {
 function loser() {
     console.log('you died!')
     combatLog.textContent = `You Died!`
-    attackBtn1.style.display = 'none'
-    attackBtn2.style.display = 'none'
+    attackBtn1.style.visibility = 'hidden'
+    attackBtn2.style.visibility = 'hidden'
+    specialBtn1.style.display='none'
     arenaHeroAvatar.style.display = 'none'
     heroHpBar.style.display = 'none'
     heroStaminaCounter.textContent = ' '
@@ -150,7 +152,7 @@ function attackRoll1() {
     if (monsterCombatHp < 1) {
         winner()
     }
-    if (heroStaminaCounter.textContent < 1) {
+    if ((heroStaminaCounter.textContent < 1) && (monsterCombatHp > 0)){
         monsterStaminaCounter.textContent = 1
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)

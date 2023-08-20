@@ -1,4 +1,5 @@
 import { combatLog, heroStaminaCounter } from "../docElements.js";
+import { chosenCharacter } from "../main.js";
 import {  dmgAnimation } from "../combatUtil.js";
 
 let heroStaminaNum;
@@ -28,10 +29,11 @@ class Greatsword extends Weapon {
         if (naturalRoll >= target) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
-            combatLog.textContent = `You swing your greatsword in a wide arc for ${damage} damage`
-            console.log(`You deal ${damage} damage`)
+            console.log(`base damage: ${damage}`)
+            const totalDmg = damage + chosenCharacter.strength
+            combatLog.textContent = `You swing your greatsword in a wide arc for ${totalDmg} damage`
 
-            return targetHp - damage;
+            return targetHp - totalDmg;
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')
@@ -48,9 +50,11 @@ class Greatsword extends Weapon {
         if (naturalRoll >= target) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
-            combatLog.textContent = `You thrust your greatsword forward for ${damage} damage`
-            console.log(`You deal ${damage} damage`)
-            return targetHp - damage;
+            console.log(`base damage: ${damage}`)
+            const totalDmg = damage + chosenCharacter.strength
+            combatLog.textContent = `You swing your greatsword in a wide arc for ${totalDmg} damage`
+
+            return targetHp - totalDmg;
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')
@@ -70,12 +74,15 @@ class DoubleDaggers extends Weapon {
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
-            const damage1 = Math.floor(Math.random() * (4 - 2) + 2);
-            const damage2 = Math.floor(Math.random() * (4 - 2) + 2);
+            const damage1 = Math.floor(Math.random() * (3 - 1) + 1);
+            const damage2 = Math.floor(Math.random() * (3 - 1) + 1);
             dmgAnimation('./assets/damage.jpg')
-            combatLog.textContent = `You slash with your first dagger for ${damage1} damage, and follow up with a slash from your second dagger for ${damage2} damage.`
-            console.log(`You deal ${damage1 + damage2} damage`)
-            return targetHp - (damage1 + damage2);
+            console.log(`base damage: ${damage1 + damage2}`)
+            const totalDmg1 = damage1 + chosenCharacter.dexterity
+            const totalDmg2 = damage2 + chosenCharacter.dexterity
+            combatLog.textContent = `You slash with your first dagger for ${totalDmg1} damage, and follow up with a slash from your second dagger for ${totalDmg2} damage.`
+            console.log(`You deal ${totalDmg1 + totalDmg2} damage`)
+            return targetHp - (totalDmg1 + totalDmg2);
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')
@@ -90,12 +97,14 @@ class DoubleDaggers extends Weapon {
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
-            const damage1 = Math.floor(Math.random() * (5 - 2) + 2);
-            const damage2 = Math.floor(Math.random() * (5 - 2) + 2);
+            const damage1 = Math.floor(Math.random() * (3 - 2) + 2);
+            const damage2 = Math.floor(Math.random() * (3 - 2) + 2);
             dmgAnimation('./assets/damage.jpg')
-            combatLog.textContent = `You stab your first dagger for ${damage1} damage, and follow up with a stab from your second dagger for ${damage2} damage.`
+            const totalDmg1 = damage1 + chosenCharacter.dexterity
+            const totalDmg2 = damage2 + chosenCharacter.dexterity
+            combatLog.textContent = `You stab your first dagger for ${totalDmg1} damage, and follow up with a stab from your second dagger for ${totalDmg2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)
-            return targetHp - (damage1 + damage2);
+            return targetHp - (totalDmg1 + totalDmg2);
         } else {
             console.log('You missed!')
             dmgAnimation('./assets/miss.jpg')

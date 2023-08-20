@@ -3,26 +3,25 @@ import { undead, goblin } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay } from "./docElements.js"
 
 let isHeroTurn = true
-function turnBannerChange(truthiness){
+function turnBannerChange(truthiness) {
     if (truthiness === true) {
         turnDisplay.style.backgroundColor = 'var(--green)'
         turnDisplay.textContent = 'Your Turn'
+        attackBtn1.style.visibility = 'visible'
+        attackBtn2.style.visibility = 'visible'
+        specialBtn1.style.visibility = 'visible'
+        chosenCharacter.undo1()
     } else {
         turnDisplay.style.backgroundColor = 'var(--red)'
         turnDisplay.textContent = "Enemy's Turn"
+        attackBtn1.style.visibility = 'hidden'
+        attackBtn2.style.visibility = 'hidden'
+        specialBtn1.style.visibility = 'hidden'
     }
-    
-}
 
-function hideBtnsCPUTurn() {
-    attackBtn1.style.display = 'none'
-    attackBtn2.style.display = 'none'
-    specialBtn1.style.display = 'none'
 }
 
 function cpuPause() {
-    console.log('is cpuPause happening?')
-    hideBtnsCPUTurn()
     setTimeout(changeTurn1, 2000)
 }
 
@@ -48,9 +47,6 @@ function changeTurn2() {
         isHeroTurn = true
         turnBannerChange(isHeroTurn)
         heroStaminaCounter.textContent = chosenCharacter.staminaPoints
-        attackBtn1.style.display = 'block'
-        attackBtn2.style.display = 'block'
-        specialBtn1.style.display = 'block'
     }
 
 }
