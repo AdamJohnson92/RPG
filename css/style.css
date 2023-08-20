@@ -136,6 +136,7 @@ p {
 #combat-div {
     display: none;
     align-items: center;
+    height: 700px;
 }
 
 button:hover {
