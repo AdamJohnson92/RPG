@@ -1,6 +1,6 @@
 import { characterRoster } from './constructors/character.js';
 import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, monsterStaminaCounter } from './docElements.js';
-import { undead } from './constructors/monster.js';
+import { undead, goblin } from './constructors/monster.js';
 import { cpuPause } from './combatUtil.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
@@ -23,7 +23,7 @@ const selectCharacter = function (event) {
 
     charImgDiv.setAttribute("src", chosenCharacter.img)
     arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
-    arenaMonsterAvatar.setAttribute("src", undead.img)
+    arenaMonsterAvatar.setAttribute("src", goblin.img)
 
     charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.currentHp}`
@@ -68,7 +68,7 @@ function generateCharBtns() {
 };
 
 //-------------------------------------------
-let target;
+let monster;
 
 const heroHpBar = document.getElementById('hero-hp-bar')
 const monsterHpBar = document.getElementById('monster-hp-bar')
@@ -78,14 +78,14 @@ function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
     combatLog.textContent = ''
-    target = undead
-    target.currentHp = target.maxHp
+    monster = goblin
+    monster.currentHp = monster.maxHp
     chosenCharacter.currentHp = chosenCharacter.maxHp
-    console.log(target)
+    console.log(monster)
     heroHpBar.textContent = chosenCharacter.currentHp;
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
-    monsterHpBar.textContent = target.currentHp;
-    monsterStaminaCounter.textContent = target.staminaPoints
+    monsterHpBar.textContent = monster.currentHp;
+    monsterStaminaCounter.textContent = monster.staminaPoints
 }
 
 function renderCharSelectionDiv() {
@@ -108,7 +108,7 @@ playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 //------------------------------
 
 function winner() {
-    combatLog.textContent = `You slayed the ${target.name}!`
+    combatLog.textContent = `You slayed the ${monster.name}!`
     attackBtn1.style.display = 'none'
     attackBtn2.style.display = 'none'
     specialBtn1.style.display = 'none'
@@ -136,9 +136,9 @@ function attackRoll1() {
     heroStaminaNum--
     heroStaminaCounter.textContent = heroStaminaNum
 
-    const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat)
+    const monsterCombatHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    target.currentHp = monsterCombatHp
+    monster.currentHp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
     // cpuPause()
     if (monsterCombatHp < 1) {
@@ -156,9 +156,9 @@ function attackRoll2() {
     heroStaminaNum--
     heroStaminaCounter.textContent = heroStaminaNum
 
-    const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat)
+    const monsterCombatHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    target.currentHp = monsterCombatHp
+    monster.currentHp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
 
     if (monsterCombatHp < 1) {

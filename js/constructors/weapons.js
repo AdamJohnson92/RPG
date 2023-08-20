@@ -38,8 +38,8 @@ class Greatsword extends Weapon {
             combatLog.textContent = 'You missed!';
             return targetHp
         }
-
     }
+    
     attackDam2(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
@@ -57,7 +57,6 @@ class Greatsword extends Weapon {
             combatLog.textContent = 'You missed!';
             return targetHp
         }
-
     }
 }
 
@@ -71,8 +70,8 @@ class DoubleDaggers extends Weapon {
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
-            const damage1 = Math.floor(Math.random() * (6 - 2) + 1);
-            const damage2 = Math.floor(Math.random() * (6 - 2) + 1);
+            const damage1 = Math.floor(Math.random() * (4 - 2) + 2);
+            const damage2 = Math.floor(Math.random() * (4 - 2) + 2);
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You slash with your first dagger for ${damage1} damage, and follow up with a slash from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)
@@ -84,15 +83,15 @@ class DoubleDaggers extends Weapon {
             return targetHp
         }
     };
-    
+
     attackDam2(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
 
         if (naturalRoll >= target) {
-            const damage1 = Math.floor(Math.random() * (7 - 2) + 1);
-            const damage2 = Math.floor(Math.random() * (7 - 2) + 1);
+            const damage1 = Math.floor(Math.random() * (5 - 2) + 2);
+            const damage2 = Math.floor(Math.random() * (5 - 2) + 2);
             dmgAnimation('./assets/damage.jpg')
             combatLog.textContent = `You stab your first dagger for ${damage1} damage, and follow up with a stab from your second dagger for ${damage2} damage.`
             console.log(`You deal ${damage1 + damage2} damage`)

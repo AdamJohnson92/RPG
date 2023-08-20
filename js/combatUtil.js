@@ -1,6 +1,5 @@
 import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monsterHpBar, heroHpBar } from "./main.js"
-import { heroStaminaNum } from "./constructors/weapons.js"
-import { undead } from "./constructors/monster.js"
+import { undead, goblin } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter } from "./docElements.js"
 
 function hideBtnsCPUTurn() {
@@ -26,7 +25,7 @@ function changeTurn1() {
         if (monHpNum < 1) {
             return
         } else {
-            const heroCombatHp = undead.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
+            const heroCombatHp = goblin.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
             chosenCharacter.currentHp = heroCombatHp
             heroHpBar.textContent = heroCombatHp
 
@@ -46,8 +45,6 @@ function changeTurn2() {
     }
 
 }
-
-//NOTE TO SELF: MUST MAKE EACH CHARACTER HAVE DIFFERENT MOVE POINT VALUES
 
 function dmgAnimation(src) {
     dmgSlashAppear(src);
