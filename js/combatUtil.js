@@ -1,46 +1,35 @@
-import { attackBtn1, attackBtn2, chosenCharacter, monsterHpBar, heroHpBar, loser } from "./main.js"
+import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monsterHpBar, heroHpBar } from "./main.js"
 import { heroStaminaNum } from "./constructors/weapons.js"
 import { undead } from "./constructors/monster.js"
-import { monsterDmgImg, heroDmgImg } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter } from "./docElements.js"
 
-let heroStaminaCounter = document.getElementById('hero-stamina-counter')
-heroStaminaCounter.setAttribute('class', 'stamina-counter')
-heroStaminaCounter.setAttribute('id', 'hero-stamina-counter')
-
-heroStaminaCounter.textContent = 2
-
-const monsterStaminaCounter = document.getElementById('monster-stamina-counter')
-monsterStaminaCounter.setAttribute('class', 'stamina-counter')
-monsterStaminaCounter.setAttribute('id', 'monster-stamina-counter')
-monsterStaminaCounter.textContent = 1
-
-
-let heroCombatHp;
 function hideBtnsCPUTurn() {
+    console.log('is hideBtnsCPUTurn happening?')
     attackBtn1.style.display = 'none'
     attackBtn2.style.display = 'none'
+    specialBtn1.style.display = 'none'
 }
 
 function cpuPause() {
-    if (heroStaminaNum < 1) {
-        setTimeout(hideBtnsCPUTurn, 0)
-        setTimeout(changeTurn1, 1500)
-    }
+    console.log('is cpuPause happening?')
+    hideBtnsCPUTurn()
+    setTimeout(changeTurn1, 1000)
 }
 
 function changeTurn1() {
+    console.log('is changeTurn1 happening?')
     const monHpNum = parseInt(monsterHpBar.textContent)
-    if ((heroStaminaNum < 1) && (monHpNum > 0)) {
+    console.log(heroStaminaCounter.textContent)
+    if ((heroStaminaCounter.textContent < 1) && (monHpNum > 0)) {
+        console.log('what about this?')
         monsterStaminaCounter.textContent = 1
         if (monHpNum < 1) {
             return
         } else {
-            console.log(monHpNum)
-            const heroCombatHp = undead.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp)
-            console.log('hero combat hp' + ' ' + heroCombatHp)
+            const heroCombatHp = undead.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
             chosenCharacter.currentHp = heroCombatHp
             heroHpBar.textContent = heroCombatHp
-            
+
             return heroCombatHp;
         }
 
@@ -53,8 +42,9 @@ function changeTurn2() {
         heroStaminaCounter.textContent = chosenCharacter.staminaPoints
         attackBtn1.style.display = 'block'
         attackBtn2.style.display = 'block'
-    } 
-    
+        specialBtn1.style.display = 'block'
+    }
+
 }
 
 //NOTE TO SELF: MUST MAKE EACH CHARACTER HAVE DIFFERENT MOVE POINT VALUES

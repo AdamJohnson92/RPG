@@ -51,5 +51,13 @@ const combatDiv = document.getElementById('combat-div')
 const combatLog = document.getElementById('combat-log')
 const playAgainBtn = document.getElementById('play-again')
 
+let heroStaminaCounter = document.getElementById('hero-stamina-counter')
+heroStaminaCounter.setAttribute('class', 'stamina-counter')
+heroStaminaCounter.setAttribute('id', 'hero-stamina-counter')
 
-export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, heroDmgImg}
+const monsterStaminaCounter = document.getElementById('monster-stamina-counter')
+monsterStaminaCounter.setAttribute('class', 'stamina-counter')
+monsterStaminaCounter.setAttribute('id', 'monster-stamina-counter')
+
+
+export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter}

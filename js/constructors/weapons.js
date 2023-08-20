@@ -1,5 +1,5 @@
-import { monsterDmgImg, combatLog } from "../docElements.js";
-import { heroStaminaCounter, dmgAnimation, cpuPause } from "../combatUtil.js";
+import { combatLog } from "../docElements.js";
+import { heroStaminaCounter, dmgAnimation} from "../combatUtil.js";
 
 let heroStaminaNum;
 
@@ -21,13 +21,9 @@ class Greatsword extends Weapon {
 
     }
     attackDam1(target, targetHp) {
-        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
-        heroStaminaNum --
-        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
-        cpuPause()
 
         if (naturalRoll >= target) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
@@ -45,14 +41,9 @@ class Greatsword extends Weapon {
 
     }
     attackDam2(target, targetHp) {
-        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
-        heroStaminaNum --
-        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
-
-        cpuPause()
 
         if (naturalRoll >= target) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
@@ -75,13 +66,9 @@ class DoubleDaggers extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(target, targetHp) {
-        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
-        heroStaminaNum --
-        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
-        cpuPause()
 
         if (naturalRoll >= target) {
             const damage1 = Math.floor(Math.random() * (6 - 2) + 1);
@@ -96,15 +83,12 @@ class DoubleDaggers extends Weapon {
             combatLog.textContent = 'You missed!';
             return targetHp
         }
-    }
+    };
+    
     attackDam2(target, targetHp) {
-        heroStaminaNum = parseInt(heroStaminaCounter.textContent)
-        heroStaminaNum --
-        heroStaminaCounter.textContent = heroStaminaNum
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
         // const totalRoll = naturalRoll + stat
-        cpuPause()
 
         if (naturalRoll >= target) {
             const damage1 = Math.floor(Math.random() * (7 - 2) + 1);

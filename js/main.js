@@ -1,22 +1,23 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog } from './docElements.js';
+import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, monsterStaminaCounter } from './docElements.js';
 import { undead } from './constructors/monster.js';
-import { heroStaminaCounter, monsterStaminaCounter } from './combatUtil.js';
+import { cpuPause } from './combatUtil.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
 
+let heroStaminaNum;
 
 //--------------------------------------------------------------
 let chosenCharacter = {};
-const selectCharacter = function(event) {
-    
+const selectCharacter = function (event) {
+
     for (let i = 0; i < characterRoster.length; i++) {
         if (event.target.matches(`#${characterRoster[i].name}`)) {
             chosenCharacter = characterRoster[i]
             console.log(chosenCharacter)
-        } 
-        
+        }
+
     }
     charNameDiv.textContent = `${chosenCharacter.name}`
 
@@ -48,6 +49,7 @@ const selectCharacter = function(event) {
 
     attackBtn1.textContent = chosenCharacter.weapon.attack1;
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
+    specialBtn1.textContent = chosenCharacter.special
     return chosenCharacter;
 };
 
@@ -82,11 +84,11 @@ function playGame() {
     console.log(target)
     heroHpBar.textContent = chosenCharacter.currentHp;
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
-    monsterHpBar.textContent=target.currentHp;
-    console.log(typeof monsterHpBar.textContent)
+    monsterHpBar.textContent = target.currentHp;
+    monsterStaminaCounter.textContent = target.staminaPoints
 }
 
-function renderCharSelectionDiv (){
+function renderCharSelectionDiv() {
     arenaMonsterAvatar.style.display = 'flex'
     monsterHpBar.style.display = 'flex'
     arenaHeroAvatar.style.display = 'flex'
@@ -94,8 +96,9 @@ function renderCharSelectionDiv (){
     playAgainBtn.style.display = 'none'
     attackBtn1.style.display = 'block'
     attackBtn2.style.display = 'block'
+    specialBtn1.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
-    combatDiv.style.display = 'none' 
+    combatDiv.style.display = 'none'
     // target.currentHp = target.maxHp
 }
 
@@ -104,17 +107,18 @@ playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 
 //------------------------------
 
-function winner(){
+function winner() {
     combatLog.textContent = `You slayed the ${target.name}!`
     attackBtn1.style.display = 'none'
     attackBtn2.style.display = 'none'
+    specialBtn1.style.display = 'none'
     arenaMonsterAvatar.style.display = 'none'
     monsterHpBar.style.display = 'none'
-    monsterStaminaCounter.textContent = ' '
+    monsterStaminaCounter.textContent = ''
     playAgainBtn.style.display = 'block'
 }
 
-function loser(){
+function loser() {
     console.log('you died!')
     combatLog.textContent = `You Died!`
     attackBtn1.style.display = 'none'
@@ -127,44 +131,66 @@ function loser(){
 
 //must add stat modifiers
 function attackRoll1() {
-    
-    console.log(`The target has ${target.currentHp} hp`)
-    const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat) 
+
+    heroStaminaNum = parseInt(heroStaminaCounter.textContent)
+    heroStaminaNum--
+    heroStaminaCounter.textContent = heroStaminaNum
+
+    const monsterCombatHp = chosenCharacter.weapon.attackDam1(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat)
 
     target.currentHp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
-
-    console.log(`The target now has ${monsterCombatHp} hp`)
+    // cpuPause()
     if (monsterCombatHp < 1) {
         winner()
     }
-    console.log(chosenCharacter.currentHp)
+    if (heroStaminaCounter.textContent < 1) {
+        cpuPause()
+    }
 }
 
 //must add stat modifiers
 function attackRoll2() {
-    
-    console.log(`The target has ${target.currentHp} hp`)
-    const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat) 
+
+    heroStaminaNum = parseInt(heroStaminaCounter.textContent)
+    heroStaminaNum--
+    heroStaminaCounter.textContent = heroStaminaNum
+
+    const monsterCombatHp = chosenCharacter.weapon.attackDam2(target.hitChanceRate, target.currentHp, chosenCharacter.weapon.modifyingStat)
 
     target.currentHp = monsterCombatHp
     monsterHpBar.textContent = monsterCombatHp
 
-
-    console.log(`The target now has ${monsterCombatHp} hp`)
     if (monsterCombatHp < 1) {
-       winner()
+        winner()
+    }
+
+    if (heroStaminaCounter.textContent < 1) {
+        cpuPause()
+    }
+};
+
+function special1(){
+    heroStaminaNum = parseInt(heroStaminaCounter.textContent)
+    heroStaminaNum--
+    heroStaminaCounter.textContent = heroStaminaNum
+
+    chosenCharacter.special1()
+
+    if (heroStaminaCounter.textContent < 1) {
+        cpuPause()
     }
 }
 
-
 const attackBtn1 = document.getElementById('attack-1')
 const attackBtn2 = document.getElementById('attack-2')
+const specialBtn1 = document.getElementById('special-button-1')
 
 attackBtn1.addEventListener('click', attackRoll1)
 attackBtn2.addEventListener('click', attackRoll2)
+specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()
 
-export {attackBtn1, attackBtn2, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser}
+export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser }
 
