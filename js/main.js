@@ -1,7 +1,7 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, monsterStaminaCounter } from './docElements.js';
+import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay,monsterStaminaCounter } from './docElements.js';
 import { undead, goblin } from './constructors/monster.js';
-import { cpuPause } from './combatUtil.js';
+import { cpuPause, isHeroTurn, turnBannerChange} from './combatUtil.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
@@ -86,6 +86,8 @@ function playGame() {
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
     monsterHpBar.textContent = monster.currentHp;
     monsterStaminaCounter.textContent = monster.staminaPoints
+    turnDisplay.textContent = 'Your Turn'
+    turnBannerChange(isHeroTurn)
 }
 
 function renderCharSelectionDiv() {
@@ -116,6 +118,8 @@ function winner() {
     monsterHpBar.style.display = 'none'
     monsterStaminaCounter.textContent = ''
     playAgainBtn.style.display = 'block'
+    turnDisplay.textContent = 'You Win!'
+    turnDisplay.style.backgroundColor = 'var(--gold)'
 }
 
 function loser() {
@@ -127,6 +131,8 @@ function loser() {
     heroHpBar.style.display = 'none'
     heroStaminaCounter.textContent = ' '
     playAgainBtn.style.display = 'block'
+    turnDisplay.textContent= 'You Died'
+    turnDisplay.style.backgroundColor = 'var(--red)'
 }
 
 //must add stat modifiers
@@ -145,6 +151,9 @@ function attackRoll1() {
         winner()
     }
     if (heroStaminaCounter.textContent < 1) {
+        monsterStaminaCounter.textContent = 1
+        let isHeroTurn = false
+        turnBannerChange(isHeroTurn)
         cpuPause()
     }
 }
@@ -166,6 +175,9 @@ function attackRoll2() {
     }
 
     if (heroStaminaCounter.textContent < 1) {
+        monsterStaminaCounter.textContent = 1
+        let isHeroTurn = false
+        turnBannerChange(isHeroTurn)
         cpuPause()
     }
 };
@@ -178,6 +190,9 @@ function special1(){
     chosenCharacter.special1()
 
     if (heroStaminaCounter.textContent < 1) {
+        monsterStaminaCounter.textContent = 1
+        let isHeroTurn = false
+        turnBannerChange(isHeroTurn)
         cpuPause()
     }
 }

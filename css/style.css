@@ -10,6 +10,8 @@
     --brown: rgb(66, 36, 18);
     --gold: gold;
     --silver: rgb(163, 163, 163);
+    --green: rgb(56, 151, 80);
+    --red: rgb(180, 12, 12);
 }
 
 
@@ -137,6 +139,7 @@ p {
     display: none;
     align-items: center;
     height: 700px;
+    padding-top: 0px;
 }
 
 button:hover {
@@ -157,7 +160,7 @@ button:hover {
     background-color: white;
     margin: 10px;
     padding: 0;
-    height: 250px;
+    height: 450px;
     width:400px;
     display: flex;
     flex-direction: row;
@@ -165,6 +168,26 @@ button:hover {
     align-items: center;
     border: 10px solid var(--gold);
     border-radius: 20px;
+}
+
+#arena-banner {
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top:0px;
+}
+
+#turn-display{
+    padding: 10px;
+    border: 10px double black;
+    border-radius: 20px;
+}
+
+.stam-div{
+    display:flex;
+    font-size: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .arena-img {
@@ -187,12 +210,6 @@ button:hover {
     align-content: center;
     margin-left: 5px;
 }
-
-.stamina-counter {
-    position: absolute;
-    top: 35px;
-}
-
 
 .arena-placement {
     

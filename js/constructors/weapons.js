@@ -1,5 +1,5 @@
-import { combatLog } from "../docElements.js";
-import { heroStaminaCounter, dmgAnimation} from "../combatUtil.js";
+import { combatLog, heroStaminaCounter } from "../docElements.js";
+import {  dmgAnimation } from "../combatUtil.js";
 
 let heroStaminaNum;
 

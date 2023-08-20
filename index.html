@@ -22,17 +22,19 @@
             <button class="btn" id="play-btn">Play</button>
         </div>
         <div class='container' id="combat-div">
-
+            <div class="container" id="arena-banner">
+                <div class="stam-div" id="hero-stam">Your Stamina:   <span id="hero-stam-counter"></span></div>
+                <h3 id="turn-display"></h3>
+                <div class="stam-div" id="monster-stam">Enemy Stamina:  <span id="monster-stam-counter"></span></div>
+            </div>
             <div id='arena'>
                 <div class='arena-placement' id='arena-hero'>
                     <p class='hp-bar' id="hero-hp-bar"></p>
-                    <p class="stamina-counter" id="hero-stamina-counter"></p>
                     <img class='arena-img' id="arena-hero-avatar">
                     <img class="dmg-img arena-img" id="hero-dmg">
                 </div>
                 <div class='arena-placement' id='arena-monster'>
                     <p class='hp-bar' id="monster-hp-bar"> </p>
-                    <p class="stamina-counter" id="monster-stamina-counter"></p>
                     <img class='arena-img' id="arena-monster-avatar">
                     <img class="dmg-img arena-img" id="monster-dmg">
                 </div>
