@@ -1,6 +1,7 @@
 import { changeTurn2, monDmgAnimation } from "../combatUtil.js";
 import { charHpDiv, combatLog, monsterStaminaCounter,} from "../docElements.js";
 import { chosenCharacter, loser } from "../main.js";
+
 //MONSTER CLASS CONSTRUCTORS
 class Monster {
     constructor(name, maxHp, currentHp, hitChanceRate, img, staminaPoints) {
@@ -18,14 +19,14 @@ class Undead extends Monster {
         super(name, maxHp, currentHp, hitChanceRate, img, staminaPoints)
     }
 
-    attack1(target, targetHp, targetArmor) {
+    attack1(targetHit, targetHp, targetArmor) {
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 8) + 8)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
         monsterStaminaCounter.textContent -- 
         changeTurn2()
 
-        if (naturalRoll >= target) {
+        if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (7 - 1) + 1);
             console.log('monster raw damage: ' + damage)
             monDmgAnimation('./assets/damage.jpg')
@@ -50,7 +51,7 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead ('Undead', 20, 20, 10, './assets/undead-static.jpg,', 1)
+const undead = new Undead ('Undead', 20, 20, 10, './assets/undead-static.jpg', 1)
 
 //-----------------------------------------------
 
@@ -59,14 +60,14 @@ class Goblin extends Monster {
         super(name, maxHp, currentHp, hitChanceRate, img, staminaPoints)
     }
 
-    attack1(target, targetHp, targetArmor) {
+    attack1(targetHit, targetHp, targetArmor) {
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 12) + 12)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
         monsterStaminaCounter.textContent -- 
         changeTurn2()
 
-        if (naturalRoll >= target) {
+        if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (9 - 1) + 1);
             console.log('monster raw damage: ' + damage)
             monDmgAnimation('./assets/damage.jpg')
@@ -94,5 +95,6 @@ class Goblin extends Monster {
 
 const goblin = new Goblin('Goblin', 20, 20, 12, './assets/goblin-static.jpg', 1)
 
+const monsterRoster = [goblin, undead]
 
-export { undead, goblin }
+export { monsterRoster }

@@ -1,5 +1,5 @@
-import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monsterHpBar, heroHpBar } from "./main.js"
-import { undead, goblin } from "./constructors/monster.js"
+import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar } from "./main.js"
+import { monsterRoster } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial } from "./docElements.js"
 
 let isHeroTurn = true
@@ -30,7 +30,7 @@ function changeTurn1() {
         if (monsterHpBar.textContent < 1) {
             return
         } else {
-            chosenCharacter.currentHp = goblin.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
+            chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
             heroHpBar.textContent = chosenCharacter.currentHp
 
             return chosenCharacter.currentHp;

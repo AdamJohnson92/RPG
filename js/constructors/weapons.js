@@ -18,13 +18,13 @@ class Greatsword extends Weapon {
     constructor(name, type, weight, attack1, attack2, modifyingStat) {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
-    attackDam1(target, targetHp) {
+    attackDam1(targetHit, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 3) + 3)
         console.log(`You roll ${naturalRoll}`)
         const totalRoll = naturalRoll + chosenCharacter.strength
         console.log(`total roll = ${totalRoll}`)
 
-        if (totalRoll >= target) {
+        if (totalRoll >= targetHit) {
             const damage = Math.floor(Math.random() * (9 - 2) + 2);
             dmgAnimation('./assets/damage.jpg')
             console.log(`base damage: ${damage}`)
@@ -40,13 +40,13 @@ class Greatsword extends Weapon {
         }
     }
 
-    attackDam2(target, targetHp) {
+    attackDam2(targetHit, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 1) + 1)
         console.log(`You roll ${naturalRoll}`)
         const totalRoll = naturalRoll + chosenCharacter.strength
         console.log(`total roll = ${totalRoll}`)
 
-        if (totalRoll >= target) {
+        if (totalRoll >= targetHit) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
             console.log(`base damage: ${damage}`)
@@ -67,7 +67,7 @@ class DoubleDaggers extends Weapon {
     constructor(name, type, weight, attack1, attack2, modifyingStat) {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
-    attackDam1(target, targetHp) {
+    attackDam1(targetHit, targetHp) {
         const naturalRoll1 = Math.floor(Math.random() * (20 - 5) + 2)
         console.log(`Your first roll is ${naturalRoll1}`)
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
@@ -80,7 +80,7 @@ class DoubleDaggers extends Weapon {
 
         let totalDmg1
         let multiLog1;
-        if (totalRoll1 >= target) {
+        if (totalRoll1 >= targetHit) {
             const damage1 = Math.floor(Math.random() * (3 - 1) + 1);
             dmgAnimation('./assets/damage.jpg')
             totalDmg1 = damage1 + chosenCharacter.dexterity
@@ -94,7 +94,7 @@ class DoubleDaggers extends Weapon {
 
         let totalDmg2;
         let multiLog2;
-        if (totalRoll2 >= target) {
+        if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (3 - 1) + 1);
             dmgAnimation('./assets/damage.jpg')
             totalDmg2 = damage2 + chosenCharacter.dexterity
@@ -111,7 +111,7 @@ class DoubleDaggers extends Weapon {
         return targetHp - (totalDmg1 + totalDmg2);
     };
 
-    attackDam2(target, targetHp) {
+    attackDam2(targetHit, targetHp) {
         const naturalRoll1 = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`Your first roll is ${naturalRoll1}`)
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
@@ -124,7 +124,7 @@ class DoubleDaggers extends Weapon {
 
         let totalDmg1
         let multiLog1;
-        if (totalRoll1 >= target) {
+        if (totalRoll1 >= targetHit) {
             const damage1 = Math.floor(Math.random() * (4 - 1) + 1);
             dmgAnimation('./assets/damage.jpg')
             totalDmg1 = damage1 + chosenCharacter.dexterity
@@ -139,7 +139,7 @@ class DoubleDaggers extends Weapon {
 
         let totalDmg2;
         let multiLog2;
-        if (totalRoll2 >= target) {
+        if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (4 - 1) + 1);
             dmgAnimation('./assets/damage.jpg')
             totalDmg2 = damage2 + chosenCharacter.dexterity

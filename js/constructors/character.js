@@ -22,6 +22,9 @@ class Character {
         this.img = img;
         this.staminaPoints = staminaPoints;
     }
+    takePotion(){
+        //must write code for taking a potion
+    }
 }
 //-----
 class Knight extends Character {

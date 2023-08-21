@@ -1,7 +1,7 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay,monsterStaminaCounter } from './docElements.js';
-import { undead, goblin } from './constructors/monster.js';
-import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay} from './combatUtil.js';
+import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter } from './docElements.js';
+import { monsterRoster } from './constructors/monster.js';
+import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay } from './combatUtil.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
@@ -23,8 +23,7 @@ const selectCharacter = function (event) {
 
     charImgDiv.setAttribute("src", chosenCharacter.img)
     arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
-    arenaMonsterAvatar.setAttribute("src", goblin.img)
-
+    charContainer.style.display = 'flex'
     charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.currentHp}`
     charStrDiv.textContent = `Strength: ${chosenCharacter.strength}`
@@ -43,13 +42,14 @@ const selectCharacter = function (event) {
     charArmorWeight.textContent = `Weight: ${chosenCharacter.armor.weight}`
     charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
 
-    charContainer.style.display = 'flex'
+
 
     playBtn.style.display = 'block'
 
     attackBtn1.textContent = chosenCharacter.weapon.attack1;
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
     specialBtn1.textContent = chosenCharacter.special
+
     return chosenCharacter;
 };
 
@@ -68,19 +68,30 @@ function generateCharBtns() {
 };
 
 //-------------------------------------------
-let monster;
+let monster = {};
+
+const generateMonster = function () {
+    const randomMonster = monsterRoster[Math.floor(Math.random() * monsterRoster.length)]
+    return randomMonster;
+}
+
+// let chosenMonster = generateMonster()
+
 
 const heroHpBar = document.getElementById('hero-hp-bar')
 const monsterHpBar = document.getElementById('monster-hp-bar')
 
 function playGame() {
+    
     console.log(selectCharacter(event))
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
     combatLog.textContent = 'Begin!'
-    monster = goblin
+    monster = generateMonster()
+    arenaMonsterAvatar.setAttribute("src", monster.img)
     monster.currentHp = monster.maxHp
     chosenCharacter.currentHp = chosenCharacter.maxHp
+    charHpDiv.textContent = `Hitpoints: ${chosenCharacter.maxHp}`
     console.log(monster)
     heroHpBar.textContent = chosenCharacter.currentHp;
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
@@ -102,7 +113,6 @@ function renderCharSelectionDiv() {
     specialBtn1.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
     combatDiv.style.display = 'none'
-    // target.currentHp = target.maxHp
 }
 
 playBtn.addEventListener('click', playGame)
@@ -113,8 +123,8 @@ playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 function winner() {
     combatLog.textContent = `You have slain the ${monster.name}!`
     attackBtn1.style.visibility = 'hidden'
-        attackBtn2.style.visibility = 'hidden'
-        specialBtn1.style.display='none'
+    attackBtn2.style.visibility = 'hidden'
+    specialBtn1.style.display = 'none'
     arenaMonsterAvatar.style.display = 'none'
     monsterHpBar.style.display = 'none'
     heroHpBar.style.display = 'none'
@@ -128,12 +138,12 @@ function loser() {
     combatLog.textContent = `You Died!`
     attackBtn1.style.visibility = 'hidden'
     attackBtn2.style.visibility = 'hidden'
-    specialBtn1.style.display='none'
+    specialBtn1.style.display = 'none'
     arenaHeroAvatar.style.display = 'none'
     heroHpBar.style.display = 'none'
     heroStaminaCounter.textContent = ' '
     playAgainBtn.style.display = 'block'
-    turnDisplay.textContent= 'You Died'
+    turnDisplay.textContent = 'You Died'
     turnDisplay.style.backgroundColor = 'var(--red)'
 }
 
@@ -145,12 +155,12 @@ function attackRoll1() {
 
     monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    monsterHpBar.textContent =  monster.currentHp
-    
+    monsterHpBar.textContent = monster.currentHp
+
     if (monster.currentHp < 1) {
         winner()
     }
-    if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)){
+    if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
         monsterStaminaCounter.textContent = 1
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
@@ -166,7 +176,7 @@ function attackRoll2() {
 
     monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    monsterHpBar.textContent =  monster.currentHp
+    monsterHpBar.textContent = monster.currentHp
 
     if (monster.currentHp < 1) {
         winner()
@@ -180,7 +190,7 @@ function attackRoll2() {
     }
 };
 
-function special1(){
+function special1() {
     heroStaminaNum = parseInt(heroStaminaCounter.textContent)
     heroStaminaNum--
     heroStaminaCounter.textContent = heroStaminaNum
@@ -205,5 +215,5 @@ specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()
 
-export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser }
+export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster }
 

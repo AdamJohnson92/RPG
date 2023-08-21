@@ -109,7 +109,9 @@ p {
 
 #character-card {
     background-image:url('../assets/parchment-background.PNG');
+    background-size: cover;
     position: relative;
+    background-image: brightness(50%);
 }
 
 #equipment-card {
