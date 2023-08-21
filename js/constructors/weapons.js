@@ -19,13 +19,13 @@ class Greatsword extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(target, targetHp) {
-        const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
+        const naturalRoll = Math.floor(Math.random() * (20 - 3) + 3)
         console.log(`You roll ${naturalRoll}`)
         const totalRoll = naturalRoll + chosenCharacter.strength
         console.log(`total roll = ${totalRoll}`)
 
         if (totalRoll >= target) {
-            const damage = Math.floor(Math.random() * (10 - 3) + 3);
+            const damage = Math.floor(Math.random() * (9 - 2) + 2);
             dmgAnimation('./assets/damage.jpg')
             console.log(`base damage: ${damage}`)
             const totalDmg = damage + chosenCharacter.strength
@@ -41,7 +41,7 @@ class Greatsword extends Weapon {
     }
 
     attackDam2(target, targetHp) {
-        const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
+        const naturalRoll = Math.floor(Math.random() * (20 - 1) + 1)
         console.log(`You roll ${naturalRoll}`)
         const totalRoll = naturalRoll + chosenCharacter.strength
         console.log(`total roll = ${totalRoll}`)
