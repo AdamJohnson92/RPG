@@ -22,21 +22,18 @@ function turnBannerChange(truthiness) {
 }
 
 function cpuPause() {
-    console.log('this shouldnt be here')
     setTimeout(changeTurn1, 2000)
 }
 
 function changeTurn1() {
-    const monHpNum = parseInt(monsterHpBar.textContent)
-    if ((heroStaminaCounter.textContent < 1) && (monHpNum > 0)) {
-        if (monHpNum < 1) {
+    if ((heroStaminaCounter.textContent < 1) && (monsterHpBar.textContent > 0)) {
+        if (monsterHpBar.textContent < 1) {
             return
         } else {
-            const heroCombatHp = goblin.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
-            chosenCharacter.currentHp = heroCombatHp
-            heroHpBar.textContent = heroCombatHp
+            chosenCharacter.currentHp = goblin.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
+            heroHpBar.textContent = chosenCharacter.currentHp
 
-            return heroCombatHp;
+            return chosenCharacter.currentHp;
         }
 
     } else { return }

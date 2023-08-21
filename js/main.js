@@ -144,15 +144,15 @@ function attackRoll1() {
     heroStaminaNum--
     heroStaminaCounter.textContent = heroStaminaNum
 
-    const monsterCombatHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
+    monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    monster.currentHp = monsterCombatHp
-    monsterHpBar.textContent = monsterCombatHp
-    // cpuPause()
-    if (monsterCombatHp < 1) {
+    monsterHpBar.textContent =  monster.currentHp
+    console.log(monster)
+    
+    if (monster.currentHp < 1) {
         winner()
     }
-    if ((heroStaminaCounter.textContent < 1) && (monsterCombatHp > 0)){
+    if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)){
         monsterStaminaCounter.textContent = 1
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
@@ -167,12 +167,11 @@ function attackRoll2() {
     heroStaminaNum--
     heroStaminaCounter.textContent = heroStaminaNum
 
-    const monsterCombatHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
+    monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    monster.currentHp = monsterCombatHp
-    monsterHpBar.textContent = monsterCombatHp
+    monsterHpBar.textContent =  monster.currentHp
 
-    if (monsterCombatHp < 1) {
+    if (monster.currentHp < 1) {
         winner()
     }
 

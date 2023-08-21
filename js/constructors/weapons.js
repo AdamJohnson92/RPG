@@ -87,7 +87,6 @@ class DoubleDaggers extends Weapon {
             console.log(`total damage 1: ${totalDmg1}`)
             multiLog1 = `deals ${totalDmg1} damage`
         } else {
-            console.log('Your first attack missed!')
             totalDmg1 = 0
             dmgAnimation('./assets/miss.jpg')
             multiLog1 = 'misses';
@@ -102,7 +101,6 @@ class DoubleDaggers extends Weapon {
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
-            console.log('Your second attack missed!')
             totalDmg2 = 0
             dmgAnimation('./assets/miss.jpg')
             multiLog2 = 'misses';

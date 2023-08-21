@@ -1,7 +1,7 @@
 import { changeTurn2, monDmgAnimation } from "../combatUtil.js";
 import { charHpDiv, combatLog, monsterStaminaCounter,} from "../docElements.js";
 import { chosenCharacter, loser } from "../main.js";
-//CHARACTER CLASS CONSTRUCTORS
+//MONSTER CLASS CONSTRUCTORS
 class Monster {
     constructor(name, maxHp, currentHp, hitChanceRate, img, staminaPoints) {
         this.name = name;
@@ -35,6 +35,7 @@ class Undead extends Monster {
             }
             combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
             charHpDiv.textContent = `Hitpoints:  ${(targetHp - dmgLessArmor)}`
+            console.log(chosenCharacter)
             if ((targetHp - dmgLessArmor) < 1) {
                 loser()
             }
@@ -75,6 +76,7 @@ class Goblin extends Monster {
             }
             combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
             charHpDiv.textContent = `Hitpoints:  ${(targetHp - dmgLessArmor)}`
+            console.log(chosenCharacter)
             if ((targetHp - dmgLessArmor) < 1) {
                 loser()
             }
