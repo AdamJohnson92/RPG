@@ -2,6 +2,7 @@ import { valeGreatsword, slickDoubleDaggers } from "./weapons.js";
 import { plateArmor, leatherArmor } from "./armor.js";
 import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial } from '../docElements.js'
 import { chosenCharacter } from "../main.js";
+import { buffDisplay, clearBuffDisplay } from "../combatUtil.js";
 
 
 //CHARACTER CLASS CONSTRUCTORS
@@ -31,10 +32,7 @@ class Knight extends Character {
     special1() {
         this.armor.armorRating = this.armor.armorRating + 2
         charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
-        charArmorRating.style.backgroundColor = 'var(--gold)'
-        charArmorRating.style.boxShadow = '0 0 7px 10px var(--gold)'
-        charSpecial.style.backgroundColor = 'var(--gold)'
-        charSpecial.style.boxShadow = '0 0 7px 10px var(--gold)'
+        buffDisplay(charArmorRating)
         console.log("Your damage reduction is increased by 2 for one turn")
         combatLog.textContent = "Your damage reduction is increased by 2 for one turn"
     }
@@ -43,10 +41,7 @@ class Knight extends Character {
         if (this.armor.armorRating > 2) {
             this.armor.armorRating = 2
         }
-        charArmorRating.style.backgroundColor = 'transparent'
-        charArmorRating.style.boxShadow = 'none'
-        charSpecial.style.backgroundColor = 'transparent'
-        charSpecial.style.boxShadow = 'none'
+        clearBuffDisplay()
         charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
     }
 }
@@ -65,16 +60,14 @@ class Rogue extends Character {
         charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
         console.log("Your hit chance rating is increased by 2 for one turn")
         combatLog.textContent = "Your hit chance rating is increased by 2 for one turn"
-        charHitDiv.style.color = 'var(--gold)'
-        charSpecial.style.color = 'var(--gold)'
+        buffDisplay(charHitDiv)
     }
 
     undo1() {
         if (this.hitChanceRate > 14) {
             this.hitChanceRate = 14
-        } charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
-        charHitDiv.style.color = 'black'
-        charSpecial.style.color = 'black'
+        } clearBuffDisplay()
+        charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
     }
     
 }

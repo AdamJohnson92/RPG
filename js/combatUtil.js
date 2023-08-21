@@ -1,6 +1,6 @@
 import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monsterHpBar, heroHpBar } from "./main.js"
 import { undead, goblin } from "./constructors/monster.js"
-import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial } from "./docElements.js"
 
 let isHeroTurn = true
 function turnBannerChange(truthiness) {
@@ -40,13 +40,27 @@ function changeTurn1() {
 }
 
 function changeTurn2() {
-    console.log(heroHpBar.textContent)
     if ((monsterStaminaCounter.textContent < 1) && (heroHpBar.textContent > 0)) {
         isHeroTurn = true
         turnBannerChange(isHeroTurn)
         heroStaminaCounter.textContent = chosenCharacter.staminaPoints
     }
+}
 
+function buffDisplay(statDiv) {
+    statDiv.style.backgroundColor = 'var(--gold)'
+    statDiv.style.boxShadow = '0 0 7px 10px var(--gold)'
+    charSpecial.style.backgroundColor = 'var(--gold)'
+    charSpecial.style.boxShadow = '0 0 7px 10px var(--gold)'
+}
+
+function clearBuffDisplay() {
+    charArmorRating.style.backgroundColor = 'transparent'
+    charArmorRating.style.boxShadow = 'none'
+    charHitDiv.style.backgroundColor = 'transparent'
+    charHitDiv.style.boxShadow = 'none'
+    charSpecial.style.backgroundColor = 'transparent'
+    charSpecial.style.boxShadow = 'none'
 }
 
 function dmgAnimation(src) {
@@ -77,4 +91,4 @@ function monDmgSlashDisappear() {
 }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, monDmgAnimation, isHeroTurn, turnBannerChange }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay }
