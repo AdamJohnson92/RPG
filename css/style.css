@@ -31,7 +31,7 @@ header {
     justify-content: center;
     align-content: center;
     border: 10px ridge var(--gold);
-    padding: 30px;
+    padding: 20px;
     border-radius: 7px;
     width: 40vw;
     background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
@@ -39,8 +39,9 @@ header {
 }
 
 h1 {
-    font-size: 80px;
+    font-size: 90px;
     background-color: transparent;
+
 }
 
 h2 {

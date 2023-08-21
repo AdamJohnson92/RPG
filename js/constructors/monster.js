@@ -70,7 +70,7 @@ class Goblin extends Monster {
         if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (9 - 1) + 1);
             console.log('monster raw damage: ' + damage)
-            monDmgAnimation('./assets/damage.jpg')
+            monDmgAnimation('./assets/damage.png')
             let dmgLessArmor = damage - targetArmor
             if ((dmgLessArmor) < 0) {
                 dmgLessArmor = 0;
@@ -83,7 +83,7 @@ class Goblin extends Monster {
             }
             return targetHp - dmgLessArmor;
         } else {
-            monDmgAnimation('./assets/miss.jpg')
+            monDmgAnimation('./assets/miss.png')
             console.log(`The ${this.name} missed!`)
             console.log(this)
             combatLog.textContent = `The ${this.name} missed!`

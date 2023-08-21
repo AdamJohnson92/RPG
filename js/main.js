@@ -75,9 +75,6 @@ const generateMonster = function () {
     return randomMonster;
 }
 
-// let chosenMonster = generateMonster()
-
-
 const heroHpBar = document.getElementById('hero-hp-bar')
 const monsterHpBar = document.getElementById('monster-hp-bar')
 

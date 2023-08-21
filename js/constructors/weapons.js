@@ -26,7 +26,7 @@ class Greatsword extends Weapon {
 
         if (totalRoll >= targetHit) {
             const damage = Math.floor(Math.random() * (9 - 2) + 2);
-            dmgAnimation('./assets/damage.jpg')
+            dmgAnimation('./assets/damage.png')
             console.log(`base damage: ${damage}`)
             const totalDmg = damage + chosenCharacter.strength
             combatLog.textContent = `You swing your greatsword in a wide arc for ${totalDmg} damage`
@@ -34,7 +34,7 @@ class Greatsword extends Weapon {
             return targetHp - totalDmg;
         } else {
             console.log('You missed!')
-            dmgAnimation('./assets/miss.jpg')
+            dmgAnimation('./assets/miss.png')
             combatLog.textContent = 'You missed!';
             return targetHp
         }
@@ -48,7 +48,7 @@ class Greatsword extends Weapon {
 
         if (totalRoll >= targetHit) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
-            dmgAnimation('./assets/damage.jpg')
+            dmgAnimation('./assets/damage.png')
             console.log(`base damage: ${damage}`)
             const totalDmg = damage + chosenCharacter.strength
             combatLog.textContent = `You swing your greatsword in a wide arc for ${totalDmg} damage`
@@ -56,7 +56,7 @@ class Greatsword extends Weapon {
             return targetHp - totalDmg;
         } else {
             console.log('You missed!')
-            dmgAnimation('./assets/miss.jpg')
+            dmgAnimation('./assets/miss.png')
             combatLog.textContent = 'You missed!';
             return targetHp
         }
@@ -82,13 +82,13 @@ class DoubleDaggers extends Weapon {
         let multiLog1;
         if (totalRoll1 >= targetHit) {
             const damage1 = Math.floor(Math.random() * (3 - 1) + 1);
-            dmgAnimation('./assets/damage.jpg')
+            dmgAnimation('./assets/damage.png')
             totalDmg1 = damage1 + chosenCharacter.dexterity
             console.log(`total damage 1: ${totalDmg1}`)
             multiLog1 = `deals ${totalDmg1} damage`
         } else {
             totalDmg1 = 0
-            dmgAnimation('./assets/miss.jpg')
+            dmgAnimation('./assets/miss.png')
             multiLog1 = 'misses';
         }
 
@@ -96,13 +96,13 @@ class DoubleDaggers extends Weapon {
         let multiLog2;
         if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (3 - 1) + 1);
-            dmgAnimation('./assets/damage.jpg')
+            dmgAnimation('./assets/damage.png')
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
             totalDmg2 = 0
-            dmgAnimation('./assets/miss.jpg')
+            dmgAnimation('./assets/miss.png')
             multiLog2 = 'misses';
         }
 
@@ -126,14 +126,14 @@ class DoubleDaggers extends Weapon {
         let multiLog1;
         if (totalRoll1 >= targetHit) {
             const damage1 = Math.floor(Math.random() * (4 - 1) + 1);
-            dmgAnimation('./assets/damage.jpg')
+            dmgAnimation('./assets/damage.png')
             totalDmg1 = damage1 + chosenCharacter.dexterity
             console.log(`total damage 1: ${totalDmg1}`)
             multiLog1 = `deals ${totalDmg1} damage`
         } else {
             console.log('Your first attack missed!')
             totalDmg1 = 0
-            dmgAnimation('./assets/miss.jpg')
+            dmgAnimation('./assets/miss.png')
             multiLog1 = 'misses';
         }
 
@@ -141,14 +141,14 @@ class DoubleDaggers extends Weapon {
         let multiLog2;
         if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (4 - 1) + 1);
-            dmgAnimation('./assets/damage.jpg')
+            dmgAnimation('./assets/damage.png')
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
             console.log('Your second attack missed!')
             totalDmg2 = 0
-            dmgAnimation('./assets/miss.jpg')
+            dmgAnimation('./assets/miss.png')
             multiLog2 = 'misses';
         }
 
