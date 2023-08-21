@@ -22,6 +22,7 @@ function turnBannerChange(truthiness) {
 }
 
 function cpuPause() {
+    console.log('this shouldnt be here')
     setTimeout(changeTurn1, 2000)
 }
 

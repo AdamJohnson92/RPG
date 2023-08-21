@@ -2,8 +2,6 @@ import { combatLog, heroStaminaCounter } from "../docElements.js";
 import { chosenCharacter } from "../main.js";
 import { dmgAnimation } from "../combatUtil.js";
 
-let heroStaminaNum;
-
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
     constructor(name, type, weight, attack1, attack2, modifyingStat) {
@@ -165,5 +163,5 @@ class DoubleDaggers extends Weapon {
 const valeGreatsword = new Greatsword("Vale's Greatsword", 'Sword', 6, 'Sweep Attack', 'Lunge Attack', 'strength')
 const slickDoubleDaggers = new DoubleDaggers("Slick's Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
 
-export { valeGreatsword, slickDoubleDaggers, heroStaminaNum }
+export { valeGreatsword, slickDoubleDaggers }
 
