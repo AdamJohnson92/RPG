@@ -31,8 +31,10 @@ class Knight extends Character {
     special1() {
         this.armor.armorRating = this.armor.armorRating + 2
         charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
-        charArmorRating.style.color = 'var(--gold)'
-        charSpecial.style.color = 'var(--gold)'
+        charArmorRating.style.backgroundColor = 'var(--gold)'
+        charArmorRating.style.boxShadow = '0 0 7px 10px var(--gold)'
+        charSpecial.style.backgroundColor = 'var(--gold)'
+        charSpecial.style.boxShadow = '0 0 7px 10px var(--gold)'
         console.log("Your damage reduction is increased by 2 for one turn")
         combatLog.textContent = "Your damage reduction is increased by 2 for one turn"
     }
@@ -41,8 +43,10 @@ class Knight extends Character {
         if (this.armor.armorRating > 2) {
             this.armor.armorRating = 2
         }
-        charArmorRating.style.color = 'black'
-        charSpecial.style.color = 'black'
+        charArmorRating.style.backgroundColor = 'transparent'
+        charArmorRating.style.boxShadow = 'none'
+        charSpecial.style.backgroundColor = 'transparent'
+        charSpecial.style.boxShadow = 'none'
         charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
     }
 }

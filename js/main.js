@@ -110,7 +110,7 @@ playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 //------------------------------
 
 function winner() {
-    combatLog.textContent = `You slayed the ${monster.name}!`
+    combatLog.textContent = `You have slain the ${monster.name}!`
     attackBtn1.style.visibility = 'hidden'
         attackBtn2.style.visibility = 'hidden'
         specialBtn1.style.display='none'
@@ -137,7 +137,6 @@ function loser() {
     turnDisplay.style.backgroundColor = 'var(--red)'
 }
 
-//must add stat modifiers
 function attackRoll1() {
 
     heroStaminaNum = parseInt(heroStaminaCounter.textContent)
@@ -147,7 +146,6 @@ function attackRoll1() {
     monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
     monsterHpBar.textContent =  monster.currentHp
-    console.log(monster)
     
     if (monster.currentHp < 1) {
         winner()
@@ -160,7 +158,6 @@ function attackRoll1() {
     }
 }
 
-//must add stat modifiers
 function attackRoll2() {
 
     heroStaminaNum = parseInt(heroStaminaCounter.textContent)
@@ -175,7 +172,7 @@ function attackRoll2() {
         winner()
     }
 
-    if (heroStaminaCounter.textContent < 1) {
+    if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
         monsterStaminaCounter.textContent = 1
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
