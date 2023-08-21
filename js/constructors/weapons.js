@@ -1,6 +1,6 @@
 import { combatLog, heroStaminaCounter } from "../docElements.js";
 import { chosenCharacter } from "../main.js";
-import {  dmgAnimation } from "../combatUtil.js";
+import { dmgAnimation } from "../combatUtil.js";
 
 let heroStaminaNum;
 
@@ -19,14 +19,14 @@ class Weapon {
 class Greatsword extends Weapon {
     constructor(name, type, weight, attack1, attack2, modifyingStat) {
         super(name, type, weight, attack1, attack2, modifyingStat)
-
     }
     attackDam1(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
-        // const totalRoll = naturalRoll + stat
+        const totalRoll = naturalRoll + chosenCharacter.strength
+        console.log(`total roll = ${totalRoll}`)
 
-        if (naturalRoll >= target) {
+        if (totalRoll >= target) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
             console.log(`base damage: ${damage}`)
@@ -41,13 +41,14 @@ class Greatsword extends Weapon {
             return targetHp
         }
     }
-    
+
     attackDam2(target, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
         console.log(`You roll ${naturalRoll}`)
-        // const totalRoll = naturalRoll + stat
+        const totalRoll = naturalRoll + chosenCharacter.strength
+        console.log(`total roll = ${totalRoll}`)
 
-        if (naturalRoll >= target) {
+        if (totalRoll >= target) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.jpg')
             console.log(`base damage: ${damage}`)
@@ -69,48 +70,95 @@ class DoubleDaggers extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(target, targetHp) {
-        const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
-        console.log(`You roll ${naturalRoll}`)
-        // const totalRoll = naturalRoll + stat
+        const naturalRoll1 = Math.floor(Math.random() * (20 - 5) + 2)
+        console.log(`Your first roll is ${naturalRoll1}`)
+        const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+        console.log(`Your first total roll is ${totalRoll1}`)
 
-        if (naturalRoll >= target) {
+        const naturalRoll2 = Math.floor(Math.random() * (20 - 5) + 2)
+        console.log(`Your second roll is ${naturalRoll2}`)
+        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+        console.log(`Your second total roll is ${totalRoll2}`)
+
+        let totalDmg1
+        let multiLog1;
+        if (totalRoll1 >= target) {
             const damage1 = Math.floor(Math.random() * (3 - 1) + 1);
+            dmgAnimation('./assets/damage.jpg')
+            totalDmg1 = damage1 + chosenCharacter.dexterity
+            console.log(`total damage 1: ${totalDmg1}`)
+            multiLog1 = `deals ${totalDmg1} damage`
+        } else {
+            console.log('Your first attack missed!')
+            totalDmg1 = 0
+            dmgAnimation('./assets/miss.jpg')
+            multiLog1 = 'misses';
+        }
+
+        let totalDmg2;
+        let multiLog2;
+        if (totalRoll2 >= target) {
             const damage2 = Math.floor(Math.random() * (3 - 1) + 1);
             dmgAnimation('./assets/damage.jpg')
-            console.log(`base damage: ${damage1 + damage2}`)
-            const totalDmg1 = damage1 + chosenCharacter.dexterity
-            const totalDmg2 = damage2 + chosenCharacter.dexterity
-            combatLog.textContent = `You slash with your first dagger for ${totalDmg1} damage, and follow up with a slash from your second dagger for ${totalDmg2} damage.`
-            console.log(`You deal ${totalDmg1 + totalDmg2} damage`)
-            return targetHp - (totalDmg1 + totalDmg2);
+            totalDmg2 = damage2 + chosenCharacter.dexterity
+            console.log(`total damage 2: ${totalDmg2}`)
+            multiLog2 = `deals ${totalDmg2} damage`
         } else {
-            console.log('You missed!')
+            console.log('Your second attack missed!')
+            totalDmg2 = 0
             dmgAnimation('./assets/miss.jpg')
-            combatLog.textContent = 'You missed!';
-            return targetHp
+            multiLog2 = 'misses';
         }
+
+        combatLog.textContent = `Your first dagger ${multiLog1}, and you follow up with your second dagger that ${multiLog2}.`
+
+        return targetHp - (totalDmg1 + totalDmg2);
     };
 
     attackDam2(target, targetHp) {
-        const naturalRoll = Math.floor(Math.random() * (20 - 2) + 2)
-        console.log(`You roll ${naturalRoll}`)
-        // const totalRoll = naturalRoll + stat
+        const naturalRoll1 = Math.floor(Math.random() * (20 - 2) + 2)
+        console.log(`Your first roll is ${naturalRoll1}`)
+        const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+        console.log(`Your first total roll is ${totalRoll1}`)
 
-        if (naturalRoll >= target) {
-            const damage1 = Math.floor(Math.random() * (3 - 2) + 2);
-            const damage2 = Math.floor(Math.random() * (3 - 2) + 2);
+        const naturalRoll2 = Math.floor(Math.random() * (20 - 2) + 2)
+        console.log(`Your second roll is ${naturalRoll2}`)
+        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+        console.log(`Your second total roll is ${totalRoll2}`)
+
+        let totalDmg1
+        let multiLog1;
+        if (totalRoll1 >= target) {
+            const damage1 = Math.floor(Math.random() * (4 - 1) + 1);
             dmgAnimation('./assets/damage.jpg')
-            const totalDmg1 = damage1 + chosenCharacter.dexterity
-            const totalDmg2 = damage2 + chosenCharacter.dexterity
-            combatLog.textContent = `You stab your first dagger for ${totalDmg1} damage, and follow up with a stab from your second dagger for ${totalDmg2} damage.`
-            console.log(`You deal ${damage1 + damage2} damage`)
-            return targetHp - (totalDmg1 + totalDmg2);
+            totalDmg1 = damage1 + chosenCharacter.dexterity
+            console.log(`total damage 1: ${totalDmg1}`)
+            multiLog1 = `deals ${totalDmg1} damage`
         } else {
-            console.log('You missed!')
+            console.log('Your first attack missed!')
+            totalDmg1 = 0
             dmgAnimation('./assets/miss.jpg')
-            combatLog.textContent = 'You missed!';
-            return targetHp
+            multiLog1 = 'misses';
         }
+
+        let totalDmg2;
+        let multiLog2;
+        if (totalRoll2 >= target) {
+            const damage2 = Math.floor(Math.random() * (4 - 1) + 1);
+            dmgAnimation('./assets/damage.jpg')
+            totalDmg2 = damage2 + chosenCharacter.dexterity
+            console.log(`total damage 2: ${totalDmg2}`)
+            multiLog2 = `deals ${totalDmg2} damage`
+        } else {
+            console.log('Your second attack missed!')
+            totalDmg2 = 0
+            dmgAnimation('./assets/miss.jpg')
+            multiLog2 = 'misses';
+        }
+
+        combatLog.textContent = `Your first dagger ${multiLog1}, and you follow up with your second dagger that ${multiLog2}.`
+
+        return targetHp - (totalDmg1 + totalDmg2);
     }
 }
 
