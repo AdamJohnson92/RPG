@@ -29,7 +29,7 @@ class Undead extends Monster {
         if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (7 - 1) + 1);
             console.log('monster raw damage: ' + damage)
-            monDmgAnimation('./assets/damage.jpg')
+            monDmgAnimation('./assets/damage.png')
             let dmgLessArmor = damage - targetArmor
             if ((dmgLessArmor) < 0) {
                 dmgLessArmor = 0;
@@ -42,7 +42,7 @@ class Undead extends Monster {
             }
             return targetHp - dmgLessArmor;
         } else {
-            monDmgAnimation('./assets/miss.jpg')
+            monDmgAnimation('./assets/miss.png')
             console.log(`The ${this.name} missed!`)
             combatLog.textContent = `The ${this.name} missed!`
             return targetHp;
