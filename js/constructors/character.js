@@ -49,7 +49,7 @@ class Knight extends Character {
     }
 }
 
-const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.jpg", 2)
+const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", 2)
 
 //--------
 

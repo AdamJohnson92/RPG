@@ -51,7 +51,7 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead ('Undead', 20, 20, 10, './assets/undead-static.jpg', 1)
+const undead = new Undead ('Undead', 20, 20, 10, './assets/undead-static.png', 1)
 
 //-----------------------------------------------
 
@@ -93,7 +93,7 @@ class Goblin extends Monster {
     }
 }
 
-const goblin = new Goblin('Goblin', 20, 20, 12, './assets/goblin-static.jpg', 1)
+const goblin = new Goblin('Goblin', 20, 20, 12, './assets/goblin-static.png', 1)
 
 const monsterRoster = [goblin, undead]
 

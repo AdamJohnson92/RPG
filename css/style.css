@@ -29,7 +29,6 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-content: center;
     border: 10px ridge var(--gold);
     padding: 20px;
     border-radius: 7px;
@@ -41,7 +40,7 @@ header {
 h1 {
     font-size: 90px;
     background-color: transparent;
-
+    text-align: center;
 }
 
 h2 {
@@ -94,6 +93,7 @@ p {
 
 #character-img-div {
     height: 110px;
+    background-color: white;
     width: 110px;
     position: relative;
     bottom:10px;
@@ -167,7 +167,6 @@ button:hover {
 }
 
 .arena-placement {
-
     display: flex;
     flex-direction: row;
     width: 100px;
@@ -176,7 +175,7 @@ button:hover {
 
 #arena {
     position: relative;
-    background-color: white;
+    background-image: linear-gradient(lightblue 0%, lightblue 58%, var(--brown) 62%, var(--brown) 100%);
     margin: 10px;
     padding: 0;
     height: 500px;
