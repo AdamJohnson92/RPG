@@ -260,6 +260,19 @@ button:hover {
     justify-content: center;
 }
 
+.health-bar{
+    height: 15px;
+    width: 120px;
+    border: 5px solid black;
+    align-items: left;
+}
+
+#hero-health-juice{
+    background-color: red;
+    width: 100%;
+    height:15px;
+}
+
 @media screen and (max-width: 1500px) {
     header {
         align-content: center;

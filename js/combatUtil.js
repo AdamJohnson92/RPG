@@ -36,6 +36,7 @@ function changeTurn1() {
             chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
             heroHpBar.textContent = chosenCharacter.currentHp
 
+            
             return chosenCharacter.currentHp;
         }
     } else { return }

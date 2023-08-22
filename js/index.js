@@ -223,5 +223,14 @@ specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()
 
+const heroHealthBar = document.getElementById("hero-health-bar-div")
+const healthNode = document.getElementById('hero-health-juice')
+
+function damageHealthBar(maxHp, currentHp){
+    healthNode.style.width = `${(currentHp/maxHp) * 100}%`
+}
+
+// damageHealthBar(20, 15)
+
 export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack }
 
