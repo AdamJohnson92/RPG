@@ -68,7 +68,7 @@ class DoubleDaggers extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(targetHit, targetHp) {
-        const naturalRoll1 = Math.floor(Math.random() * (20 - 5) + 2)
+        const naturalRoll1 = Math.floor(Math.random() * (20 - 4) + 2)
         console.log(`Your first roll is ${naturalRoll1}`)
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
         console.log(`Your first total roll is ${totalRoll1}`)
@@ -76,7 +76,7 @@ class DoubleDaggers extends Weapon {
         let totalDmg1
         let multiLog1;
         if (totalRoll1 >= targetHit) {
-            const damage1 = Math.floor(Math.random() * (3 - 1) + 1);
+            const damage1 = Math.floor(Math.random() * (2 - 1) + 1);
             dmgAnimation('./assets/damage.png', 1)
             totalDmg1 = damage1 + chosenCharacter.dexterity
             console.log(`total damage 1: ${totalDmg1}`)
@@ -87,7 +87,7 @@ class DoubleDaggers extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = Math.floor(Math.random() * (20 - 5) + 2)
+        const naturalRoll2 = Math.floor(Math.random() * (20 - 4) + 2)
         console.log(`Your second roll is ${naturalRoll2}`)
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
         console.log(`Your second total roll is ${totalRoll2}`)
@@ -97,7 +97,7 @@ class DoubleDaggers extends Weapon {
         let totalDmg2;
         let multiLog2;
         if (totalRoll2 >= targetHit) {
-            const damage2 = Math.floor(Math.random() * (3 - 1) + 1);
+            const damage2 = Math.floor(Math.random() * (2 - 1) + 1);
             dmgAnimation2('./assets/damage-2.png', 2)
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
@@ -114,12 +114,12 @@ class DoubleDaggers extends Weapon {
     };
 
     attackDam2(targetHit, targetHp) {
-        const naturalRoll1 = Math.floor(Math.random() * (20 - 2) + 2)
+        const naturalRoll1 = Math.floor(Math.random() * (18 - 2) + 2)
         console.log(`Your first roll is ${naturalRoll1}`)
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
         console.log(`Your first total roll is ${totalRoll1}`)
 
-        const naturalRoll2 = Math.floor(Math.random() * (20 - 2) + 2)
+        const naturalRoll2 = Math.floor(Math.random() * (18 - 2) + 2)
         console.log(`Your second roll is ${naturalRoll2}`)
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
         console.log(`Your second total roll is ${totalRoll2}`)

@@ -1,6 +1,6 @@
 import { changeTurn2, monDmgAnimation, monsterAttackAnimation } from "../combatUtil.js";
 import { charHpDiv, combatLog, monsterStaminaCounter, } from "../docElements.js";
-import { chosenCharacter, loser } from "../index.js";
+import { chosenCharacter, loser, heroHealthJuice } from "../index.js";
 
 //MONSTER CLASS CONSTRUCTORS
 class Monster {
@@ -40,6 +40,7 @@ class Undead extends Monster {
             charHpDiv.textContent = `Hitpoints:  ${(targetHp - dmgLessArmor)}`
             console.log(chosenCharacter)
             if ((targetHp - dmgLessArmor) < 1) {
+                heroHealthJuice.style.width = '0%'
                 loser()
             }
             return targetHp - dmgLessArmor;

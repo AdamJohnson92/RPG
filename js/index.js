@@ -75,7 +75,9 @@ let monster = {};
 
 const generateMonster = function () {
     const randomMonster = monsterRoster[Math.floor(Math.random() * monsterRoster.length)]
-    return randomMonster;
+    //for testing against goblin
+    return monsterRoster[0]
+    // return randomMonster;
 }
 
 const heroHpBar = document.getElementById('hero-hp-bar')
@@ -141,7 +143,6 @@ function loser() {
     attackBtn2.style.visibility = 'hidden'
     specialBtn1.style.display = 'none'
     arenaHeroAvatar.style.display = 'none'
-    heroHpBar.style.display = 'none'
     heroStaminaCounter.textContent = ' '
     playAgainBtn.style.display = 'block'
     turnDisplay.textContent = 'You Died'
@@ -225,8 +226,10 @@ const heroHealthJuice = document.getElementById('hero-health-juice')
 function damageHeroHealthBar(maxHp, currentHp) {
     if (currentHp < 0) {
         heroHealthJuice.style.width = "0%"
+    } else {
+        heroHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
     }
-    heroHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
+    
 }
 const monsterHealthBar = document.getElementById('monster-health-bar')
 const monsterHealthJuice = document.getElementById('monster-health-juice')
@@ -234,10 +237,10 @@ const monsterHealthJuice = document.getElementById('monster-health-juice')
 function damageMonsterHealthBar(maxHp, currentHp) {
     if (currentHp < 0) {
         monsterHealthJuice.style.width = "0%"
+    } else {
+         monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
     }
-    monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
-
 }
 
-export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar }
+export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar, heroHealthJuice }
 
