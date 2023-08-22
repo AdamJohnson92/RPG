@@ -23,13 +23,13 @@ class Undead extends Monster {
     attack1(targetHit, targetHp, targetArmor) {
         monsterAttackAnimation()
         console.log(chosenCharacter)
-        const naturalRoll = Math.floor(Math.random() * (20 - 8) + 8)
+        const naturalRoll = Math.floor(Math.random() * (20 - 10) + 8)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
         monsterStaminaCounter.textContent--
         changeTurn2()
 
         if (naturalRoll >= targetHit) {
-            let damage = Math.floor(Math.random() * (7 - 1) + 1);
+            let damage = Math.floor(Math.random() * (7 - 2) + 2);
             console.log('monster raw damage: ' + damage)
             monDmgAnimation('./assets/damage.png')
             let dmgLessArmor = damage - targetArmor
@@ -53,7 +53,7 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead('Undead', 20, 20, 10, './assets/undead-static.png','./assets/undead-static.png', 1)
+const undead = new Undead('Undead', 23, 23, 10, './assets/undead-static.png','./assets/undead-static.png', 1)
 
 //-----------------------------------------------
 
@@ -71,7 +71,7 @@ class Goblin extends Monster {
         changeTurn2()
 
         if (naturalRoll >= targetHit) {
-            let damage = Math.floor(Math.random() * (9 - 1) + 1);
+            let damage = Math.floor(Math.random() * (9 - 2) + 2);
             console.log('monster raw damage: ' + damage)
             monDmgAnimation('./assets/damage.png')
             let dmgLessArmor = damage - targetArmor
@@ -96,7 +96,7 @@ class Goblin extends Monster {
     }
 }
 
-const goblin = new Goblin('Goblin', 20, 20, 12, './assets/goblin-static.png', './assets/goblin-static.png', 1)
+const goblin = new Goblin('Goblin', 35, 35, 12, './assets/goblin-static.png', './assets/goblin-static.png', 1)
 
 const monsterRoster = [goblin, undead]
 
