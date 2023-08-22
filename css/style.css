@@ -93,10 +93,10 @@ p {
 
 #character-img-div {
     height: 110px;
-    background-color: white;
+    background-image: linear-gradient(lightblue 0%, lightblue 40%, rgb(148, 107, 70) 45%, rgb(110, 79, 52) 100%);
     width: 110px;
     position: relative;
-    bottom:10px;
+    bottom: 10px;
     border: 7px ridge var(--silver);
 }
 
@@ -109,7 +109,7 @@ p {
 }
 
 #character-card {
-    background-image:url('../assets/parchment-background.PNG');
+    background-image: url('../assets/parchment-background.PNG');
     background-size: cover;
     position: relative;
     background-image: brightness(50%);
@@ -175,7 +175,7 @@ button:hover {
 
 #arena {
     position: relative;
-    background-image: linear-gradient(lightblue 0%, lightblue 58%, var(--brown) 62%, var(--brown) 100%);
+    background-image: linear-gradient(lightblue 0%, lightblue 58%, rgb(148, 107, 70) 62%, rgb(110, 79, 52) 100%);
     margin: 10px;
     padding: 0;
     height: 500px;
@@ -215,12 +215,12 @@ button:hover {
     font-size: 20px;
     align-items: center;
     background-color: var(--silver);
-    border: 10px ridge ;
+    border: 10px ridge;
     border-radius: 10px;
     padding-left: 10px;
     padding-right: 10px;
     height: 30px;
-    
+
 }
 
 .arena-img {
@@ -333,13 +333,13 @@ button:hover {
         margin-top: 0px;
         width: 100%;
     }
-    
+
     #turn-display {
         padding: 0px;
         border: 10px double black;
         border-radius: 20px;
         text-align: center;
-    
+
     }
 
     .stam-div {

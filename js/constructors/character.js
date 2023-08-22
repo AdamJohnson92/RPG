@@ -1,7 +1,7 @@
 import { valeGreatsword, slickDoubleDaggers } from "./weapons.js";
 import { plateArmor, leatherArmor } from "./armor.js";
 import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial } from '../docElements.js'
-import { chosenCharacter } from "../main.js";
+import { chosenCharacter } from "../index.js";
 import { buffDisplay, clearBuffDisplay } from "../combatUtil.js";
 
 

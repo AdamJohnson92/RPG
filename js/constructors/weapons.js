@@ -1,6 +1,6 @@
 import { combatLog, heroStaminaCounter } from "../docElements.js";
-import { chosenCharacter } from "../main.js";
-import { dmgAnimation } from "../combatUtil.js";
+import { chosenCharacter } from "../index.js";
+import { dmgAnimation, dmgAnimation2 } from "../combatUtil.js";
 
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
@@ -73,11 +73,6 @@ class DoubleDaggers extends Weapon {
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
         console.log(`Your first total roll is ${totalRoll1}`)
 
-        const naturalRoll2 = Math.floor(Math.random() * (20 - 5) + 2)
-        console.log(`Your second roll is ${naturalRoll2}`)
-        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
-        console.log(`Your second total roll is ${totalRoll2}`)
-
         let totalDmg1
         let multiLog1;
         if (totalRoll1 >= targetHit) {
@@ -92,17 +87,24 @@ class DoubleDaggers extends Weapon {
             multiLog1 = 'misses';
         }
 
+        const naturalRoll2 = Math.floor(Math.random() * (20 - 5) + 2)
+        console.log(`Your second roll is ${naturalRoll2}`)
+        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+        console.log(`Your second total roll is ${totalRoll2}`)
+
+
+
         let totalDmg2;
         let multiLog2;
         if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (3 - 1) + 1);
-            dmgAnimation('./assets/damage.png')
+            dmgAnimation2('./assets/damage-2.png')
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
             totalDmg2 = 0
-            dmgAnimation('./assets/miss.png')
+            dmgAnimation2('./assets/miss-2.png')
             multiLog2 = 'misses';
         }
 
@@ -141,14 +143,14 @@ class DoubleDaggers extends Weapon {
         let multiLog2;
         if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (4 - 1) + 1);
-            dmgAnimation('./assets/damage.png')
+            dmgAnimation2('./assets/damage-2.png')
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
             console.log('Your second attack missed!')
             totalDmg2 = 0
-            dmgAnimation('./assets/miss.png')
+            dmgAnimation2('./assets/miss-2.png')
             multiLog2 = 'misses';
         }
 

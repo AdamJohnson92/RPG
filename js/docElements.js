@@ -46,6 +46,7 @@ charAvatar.append(charNameDiv, charImgDiv)
 const playBtn = document.getElementById('play-btn')
 const charSelectionDiv = document.getElementById('character-selection-div')
 const monsterDmgImg = document.getElementById('monster-dmg')
+const monsterDmgImg2 = document.getElementById('monster-dmg-2')
 const heroDmgImg = document.getElementById('hero-dmg')
 const combatDiv = document.getElementById('combat-div')
 const combatLog = document.getElementById('combat-log')
@@ -60,4 +61,4 @@ const monsterStaminaCounter = document.getElementById('monster-stam-counter')
 monsterStaminaCounter.setAttribute('class', 'stamina-counter')
 
 
-export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, heroDmgImg, heroStaminaCounter, turnDisplay, monsterStaminaCounter}
+export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, monsterDmgImg2, heroDmgImg, heroStaminaCounter, turnDisplay, monsterStaminaCounter}

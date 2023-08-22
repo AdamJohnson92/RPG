@@ -1,6 +1,6 @@
-import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar } from "./main.js"
+import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar } from "./index.js"
 import { monsterRoster } from "./constructors/monster.js"
-import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2 } from "./docElements.js"
 
 let isHeroTurn = true
 function turnBannerChange(truthiness) {
@@ -76,6 +76,21 @@ function dmgSlashDisappear() {
     monsterDmgImg.style.display = 'none'
 }
 
+/////MUST MAKE THIS MORE DRY????????? Second parameter that is only sent with the second attack
+
+function dmgAnimation2(src) {
+    dmgSlashAppear2(src);
+    setTimeout(dmgSlashDisappear2, 500)
+}
+function dmgSlashAppear2(src) {
+    monsterDmgImg2.setAttribute('src', src)
+    monsterDmgImg2.style.display = 'block'
+}
+
+function dmgSlashDisappear2() {
+    monsterDmgImg2.style.display = 'none'
+}
+
 //--------
 function monDmgAnimation(src) {
     monDmgSlashAppear(src);
@@ -91,4 +106,4 @@ function monDmgSlashDisappear() {
 }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay }

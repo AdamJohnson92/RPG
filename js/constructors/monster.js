@@ -1,6 +1,6 @@
 import { changeTurn2, monDmgAnimation } from "../combatUtil.js";
-import { charHpDiv, combatLog, monsterStaminaCounter,} from "../docElements.js";
-import { chosenCharacter, loser } from "../main.js";
+import { charHpDiv, combatLog, monsterStaminaCounter, } from "../docElements.js";
+import { chosenCharacter, loser } from "../index.js";
 
 //MONSTER CLASS CONSTRUCTORS
 class Monster {
@@ -23,7 +23,7 @@ class Undead extends Monster {
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 8) + 8)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
-        monsterStaminaCounter.textContent -- 
+        monsterStaminaCounter.textContent--
         changeTurn2()
 
         if (naturalRoll >= targetHit) {
@@ -51,7 +51,7 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead ('Undead', 20, 20, 10, './assets/undead-static.png', 1)
+const undead = new Undead('Undead', 20, 20, 10, './assets/undead-static.png', 1)
 
 //-----------------------------------------------
 
@@ -64,7 +64,7 @@ class Goblin extends Monster {
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 12) + 12)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
-        monsterStaminaCounter.textContent -- 
+        monsterStaminaCounter.textContent--
         changeTurn2()
 
         if (naturalRoll >= targetHit) {
