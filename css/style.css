@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-
 }
 
 :root {
@@ -61,7 +60,7 @@ main {
     width: 100vw;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 .container {
@@ -227,6 +226,18 @@ button:hover {
     width: 150px;
     height: 150px;
     position: absolute;
+}
+
+#arena-hero-attack {
+    display: none;
+    position: relative;
+    left: 50px;
+}
+
+#arena-monster-attack {
+    display: none;
+    position: relative;
+    right: 50px;
 }
 
 .dmg-img {

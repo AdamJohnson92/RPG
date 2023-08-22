@@ -77,13 +77,13 @@ class DoubleDaggers extends Weapon {
         let multiLog1;
         if (totalRoll1 >= targetHit) {
             const damage1 = Math.floor(Math.random() * (3 - 1) + 1);
-            dmgAnimation('./assets/damage.png')
+            dmgAnimation('./assets/damage.png', 1)
             totalDmg1 = damage1 + chosenCharacter.dexterity
             console.log(`total damage 1: ${totalDmg1}`)
             multiLog1 = `deals ${totalDmg1} damage`
         } else {
             totalDmg1 = 0
-            dmgAnimation('./assets/miss.png')
+            dmgAnimation('./assets/miss.png', 1)
             multiLog1 = 'misses';
         }
 
@@ -98,13 +98,13 @@ class DoubleDaggers extends Weapon {
         let multiLog2;
         if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (3 - 1) + 1);
-            dmgAnimation2('./assets/damage-2.png')
+            dmgAnimation2('./assets/damage-2.png', 2)
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
             totalDmg2 = 0
-            dmgAnimation2('./assets/miss-2.png')
+            dmgAnimation2('./assets/miss-2.png', 2)
             multiLog2 = 'misses';
         }
 
@@ -128,14 +128,14 @@ class DoubleDaggers extends Weapon {
         let multiLog1;
         if (totalRoll1 >= targetHit) {
             const damage1 = Math.floor(Math.random() * (4 - 1) + 1);
-            dmgAnimation('./assets/damage.png')
+            dmgAnimation('./assets/damage.png', 1)
             totalDmg1 = damage1 + chosenCharacter.dexterity
             console.log(`total damage 1: ${totalDmg1}`)
             multiLog1 = `deals ${totalDmg1} damage`
         } else {
             console.log('Your first attack missed!')
             totalDmg1 = 0
-            dmgAnimation('./assets/miss.png')
+            dmgAnimation('./assets/miss.png', 1)
             multiLog1 = 'misses';
         }
 
@@ -143,14 +143,14 @@ class DoubleDaggers extends Weapon {
         let multiLog2;
         if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (4 - 1) + 1);
-            dmgAnimation2('./assets/damage-2.png')
+            dmgAnimation2('./assets/damage-2.png', 2)
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
             console.log('Your second attack missed!')
             totalDmg2 = 0
-            dmgAnimation2('./assets/miss-2.png')
+            dmgAnimation2('./assets/miss-2.png', 2)
             multiLog2 = 'misses';
         }
 
@@ -160,8 +160,8 @@ class DoubleDaggers extends Weapon {
     }
 }
 
-const valeGreatsword = new Greatsword("Vale's Greatsword", 'Sword', 6, 'Sweep Attack', 'Lunge Attack', 'strength')
-const slickDoubleDaggers = new DoubleDaggers("Slick's Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
+const valeGreatsword = new Greatsword("Greatsword", 'Sword', 6, 'Sweep Attack', 'Lunge Attack', 'strength')
+const slickDoubleDaggers = new DoubleDaggers("Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
 
 export { valeGreatsword, slickDoubleDaggers }
 

@@ -1,10 +1,13 @@
 import { characterRoster } from './constructors/character.js';
 import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
-import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay } from './combatUtil.js';
+import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation } from './combatUtil.js';
 
 const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
+const arenaHeroAttack = document.getElementById('arena-hero-attack')
+
 const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
+const arenaMonsterAttack = document.getElementById('arena-monster-attack')
 
 let heroStaminaNum;
 
@@ -22,7 +25,7 @@ const selectCharacter = function (event) {
     charNameDiv.textContent = `${chosenCharacter.name}`
 
     charImgDiv.setAttribute("src", chosenCharacter.img)
-    arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
+    
     charContainer.style.display = 'flex'
     charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.currentHp}`
@@ -85,7 +88,11 @@ function playGame() {
     combatDiv.style.display = 'flex'
     combatLog.textContent = 'Begin!'
     monster = generateMonster()
+    arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
+    arenaHeroAttack.setAttribute('src', chosenCharacter.attackImg)
+    console.log(chosenCharacter.attackImg)
     arenaMonsterAvatar.setAttribute("src", monster.img)
+    arenaMonsterAttack.setAttribute('src', monster.attackImg)
     monster.currentHp = monster.maxHp
     chosenCharacter.currentHp = chosenCharacter.maxHp
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.maxHp}`
@@ -146,6 +153,8 @@ function loser() {
 
 function attackRoll1() {
 
+    heroAttackAnimation()
+
     heroStaminaNum = parseInt(heroStaminaCounter.textContent)
     heroStaminaNum--
     heroStaminaCounter.textContent = heroStaminaNum
@@ -166,6 +175,8 @@ function attackRoll1() {
 }
 
 function attackRoll2() {
+
+    heroAttackAnimation()
 
     heroStaminaNum = parseInt(heroStaminaCounter.textContent)
     heroStaminaNum--
@@ -212,5 +223,5 @@ specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()
 
-export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster }
+export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack }
 
