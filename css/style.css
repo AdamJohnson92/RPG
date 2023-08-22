@@ -246,13 +246,16 @@ button:hover {
     transition: all 1s ease-in-out;
 }
 
-.hp-bar {
+.health-bar {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 10px;
+    top: 20px;
     align-content: center;
-    margin-left: 5px;
+    margin-left: 5px;height: 15px;
+    width: 120px;
+    border: 5px solid black;
+    align-items: left;
 }
 
 .arena-placement {
@@ -260,14 +263,14 @@ button:hover {
     justify-content: center;
 }
 
-.health-bar{
-    height: 15px;
-    width: 120px;
-    border: 5px solid black;
-    align-items: left;
-}
 
 #hero-health-juice{
+    background-color: red;
+    width: 100%;
+    height:15px;
+}
+
+#monster-health-juice{
     background-color: red;
     width: 100%;
     height:15px;

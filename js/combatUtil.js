@@ -1,4 +1,4 @@
-import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from "./index.js"
+import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar } from "./index.js"
 import { monsterRoster } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2 } from "./docElements.js"
 
@@ -29,21 +29,21 @@ function cpuPause() {
 }
 
 function changeTurn1() {
-    if ((heroStaminaCounter.textContent < 1) && (monsterHpBar.textContent > 0)) {
-        if (monsterHpBar.textContent < 1) {
+    if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
+        if (monster.currentHp < 1) {
             return
         } else {
             chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
-            heroHpBar.textContent = chosenCharacter.currentHp
 
-            
+            damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
+
             return chosenCharacter.currentHp;
         }
     } else { return }
 }
 
 function changeTurn2() {
-    if ((monsterStaminaCounter.textContent < 1) && (heroHpBar.textContent > 0)) {
+    if ((monsterStaminaCounter.textContent < 1) && (chosenCharacter.currentHp > 0)) {
         isHeroTurn = true
         turnBannerChange(isHeroTurn)
         heroStaminaCounter.textContent = chosenCharacter.staminaPoints

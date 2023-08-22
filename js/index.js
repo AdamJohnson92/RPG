@@ -25,7 +25,7 @@ const selectCharacter = function (event) {
     charNameDiv.textContent = `${chosenCharacter.name}`
 
     charImgDiv.setAttribute("src", chosenCharacter.img)
-    
+
     charContainer.style.display = 'flex'
     charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.currentHp}`
@@ -82,7 +82,7 @@ const heroHpBar = document.getElementById('hero-hp-bar')
 const monsterHpBar = document.getElementById('monster-hp-bar')
 
 function playGame() {
-    
+
     console.log(selectCharacter(event))
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
@@ -97,9 +97,7 @@ function playGame() {
     chosenCharacter.currentHp = chosenCharacter.maxHp
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.maxHp}`
     console.log(monster)
-    heroHpBar.textContent = chosenCharacter.currentHp;
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
-    monsterHpBar.textContent = monster.currentHp;
     monsterStaminaCounter.textContent = monster.staminaPoints
     turnDisplay.textContent = 'Your Turn'
     turnBannerChange(isHeroTurn)
@@ -108,9 +106,9 @@ function playGame() {
 function renderCharSelectionDiv() {
     clearBuffDisplay()
     arenaMonsterAvatar.style.display = 'flex'
-    monsterHpBar.style.display = 'flex'
     arenaHeroAvatar.style.display = 'flex'
-    heroHpBar.style.display = 'flex'
+    heroHealthJuice.style.width = '100%'
+    monsterHealthJuice.style.width = '100%'
     playAgainBtn.style.display = 'none'
     attackBtn1.style.display = 'block'
     attackBtn2.style.display = 'block'
@@ -130,8 +128,7 @@ function winner() {
     attackBtn2.style.visibility = 'hidden'
     specialBtn1.style.display = 'none'
     arenaMonsterAvatar.style.display = 'none'
-    monsterHpBar.style.display = 'none'
-    heroHpBar.style.display = 'none'
+
     playAgainBtn.style.display = 'block'
     turnDisplay.textContent = 'You Win!'
     turnDisplay.style.backgroundColor = 'var(--gold)'
@@ -161,7 +158,7 @@ function attackRoll1() {
 
     monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    monsterHpBar.textContent = monster.currentHp
+    damageMonsterHealthBar(monster.maxHp, monster.currentHp)
 
     if (monster.currentHp < 1) {
         winner()
@@ -184,7 +181,7 @@ function attackRoll2() {
 
     monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
-    monsterHpBar.textContent = monster.currentHp
+    damageMonsterHealthBar(monster.maxHp, monster.currentHp)
 
     if (monster.currentHp < 1) {
         winner()
@@ -222,15 +219,25 @@ attackBtn2.addEventListener('click', attackRoll2)
 specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()
+const heroHealthBar = document.getElementById('hero-health-bar')
+const heroHealthJuice = document.getElementById('hero-health-juice')
 
-const heroHealthBar = document.getElementById("hero-health-bar-div")
-const healthNode = document.getElementById('hero-health-juice')
+function damageHeroHealthBar(maxHp, currentHp) {
+    if (currentHp < 0) {
+        heroHealthJuice.style.width = "0%"
+    }
+    heroHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
+}
+const monsterHealthBar = document.getElementById('monster-health-bar')
+const monsterHealthJuice = document.getElementById('monster-health-juice')
 
-function damageHealthBar(maxHp, currentHp){
-    healthNode.style.width = `${(currentHp/maxHp) * 100}%`
+function damageMonsterHealthBar(maxHp, currentHp) {
+    if (currentHp < 0) {
+        monsterHealthJuice.style.width = "0%"
+    }
+    monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
+
 }
 
-// damageHealthBar(20, 15)
-
-export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack }
+export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar }
 
