@@ -211,16 +211,7 @@ button:hover {
 }
 
 .stam-div {
-    display: flex;
-    font-size: 20px;
-    align-items: center;
-    background-color: var(--silver);
-    border: 10px ridge;
-    border-radius: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 30px;
-
+    display: none;
 }
 
 .arena-img {
@@ -247,6 +238,13 @@ button:hover {
     transition: all 1s ease-in-out;
 }
 
+
+
+.arena-placement {
+
+    justify-content: center;
+}
+
 .health-bar {
     display: flex;
     flex-direction: column;
@@ -255,27 +253,34 @@ button:hover {
     align-content: center;
     margin-left: 5px;height: 15px;
     width: 120px;
-    border: 5px solid black;
+    border: 3px solid black;
+    align-items: left;
+}
+.stam-bar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    align-content: center;
+    margin-left: 5px;
+    height: 15px;
+    width: 120px;
+    border: 3px solid black;
     align-items: left;
 }
 
-.arena-placement {
-
-    justify-content: center;
-}
-
-
-#hero-health-juice{
+.health-juice{
     background-color: red;
     width: 100%;
     height:15px;
 }
 
-#monster-health-juice{
-    background-color: red;
+.stam-juice{
+    background-color: green;
     width: 100%;
-    height:15px;
+    height: 15px;
 }
+
 
 @media screen and (max-width: 1500px) {
     header {
@@ -370,8 +375,15 @@ button:hover {
     }
 
     .health-bar {
-        height: 10px;
+        height: 5px;
         width: 70px;
+        top: 10px;
+    }
+
+    .stam-bar{
+        height: 5px;
+        width: 70px;
+        top: 25px;
     }
 
 

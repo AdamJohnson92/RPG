@@ -100,7 +100,9 @@ function playGame() {
     charHpDiv.textContent = `Hitpoints: ${chosenCharacter.maxHp}`
     console.log(monster)
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
+    changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
     monsterStaminaCounter.textContent = monster.staminaPoints
+    changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
     turnDisplay.textContent = 'Your Turn'
     turnBannerChange(isHeroTurn)
 }
@@ -153,9 +155,9 @@ function attackRoll1() {
 
     heroAttackAnimation()
 
-    heroStaminaNum = parseInt(heroStaminaCounter.textContent)
-    heroStaminaNum--
-    heroStaminaCounter.textContent = heroStaminaNum
+    heroStaminaCounter.textContent --
+
+    changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
     monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
@@ -166,6 +168,7 @@ function attackRoll1() {
     }
     if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
         monsterStaminaCounter.textContent = 1
+        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
         cpuPause()
@@ -176,9 +179,9 @@ function attackRoll2() {
 
     heroAttackAnimation()
 
-    heroStaminaNum = parseInt(heroStaminaCounter.textContent)
-    heroStaminaNum--
-    heroStaminaCounter.textContent = heroStaminaNum
+    heroStaminaCounter.textContent --
+
+    changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
     monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
 
@@ -190,6 +193,7 @@ function attackRoll2() {
 
     if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
         monsterStaminaCounter.textContent = 1
+        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
         cpuPause()
@@ -197,14 +201,16 @@ function attackRoll2() {
 };
 
 function special1() {
-    heroStaminaNum = parseInt(heroStaminaCounter.textContent)
-    heroStaminaNum--
-    heroStaminaCounter.textContent = heroStaminaNum
+
+    heroStaminaCounter.textContent --
+
+    changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
     chosenCharacter.special1()
 
     if (heroStaminaCounter.textContent < 1) {
         monsterStaminaCounter.textContent = 1
+        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
         cpuPause()
@@ -220,6 +226,9 @@ attackBtn2.addEventListener('click', attackRoll2)
 specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()
+
+
+//THIS SHIT'S GOTTA GO SOMEWHERE ELSE
 const heroHealthBar = document.getElementById('hero-health-bar')
 const heroHealthJuice = document.getElementById('hero-health-juice')
 
@@ -242,5 +251,17 @@ function damageMonsterHealthBar(maxHp, currentHp) {
     }
 }
 
-export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar, heroHealthJuice }
+//---------------------------------------------
+const heroStamJuice = document.getElementById('hero-stam-juice')
+const monsterStamJuice = document.getElementById('monster-stam-juice')
+
+function changeHeroStaminaBar(maxStam, currentStam){
+    heroStamJuice.style.width = `${(currentStam/maxStam * 100)}%`
+}
+
+function changeMonsterStaminaBar(maxStam, currentStam){
+    monsterStamJuice.style.width = `${(currentStam/maxStam * 100)}%`
+}
+
+export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar, changeHeroStaminaBar, changeMonsterStaminaBar, heroHealthJuice }
 

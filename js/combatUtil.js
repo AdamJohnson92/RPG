@@ -1,4 +1,4 @@
-import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar } from "./index.js"
+import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar, changeHeroStaminaBar, changeMonsterStaminaBar } from "./index.js"
 import { monsterRoster } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2 } from "./docElements.js"
 
@@ -33,6 +33,8 @@ function changeTurn1() {
         if (monster.currentHp < 1) {
             return
         } else {
+            monsterStaminaCounter.textContent--
+            changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
             chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
 
             damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
@@ -47,6 +49,8 @@ function changeTurn2() {
         isHeroTurn = true
         turnBannerChange(isHeroTurn)
         heroStaminaCounter.textContent = chosenCharacter.staminaPoints
+        changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
+
     }
 }
 
