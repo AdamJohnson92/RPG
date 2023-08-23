@@ -116,8 +116,8 @@ playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 
 function winner() {
     combatLog.textContent = `You have slain the ${monster.name}!`
-    attackBtn1.style.visibility = 'hidden'
-    attackBtn2.style.visibility = 'hidden'
+    attackBtn1.style.display = 'none'
+    attackBtn2.style.display = 'none'
     specialBtn1.style.display = 'none'
     potionBtn.style.display = 'none'
     arenaMonsterAvatar.style.display = 'none'
@@ -130,8 +130,8 @@ function winner() {
 function loser() {
     console.log('you died!')
     combatLog.textContent = `You Died!`
-    attackBtn1.style.visibility = 'hidden'
-    attackBtn2.style.visibility = 'hidden'
+    attackBtn1.style.display = 'none'
+    attackBtn2.style.display = 'none'
     specialBtn1.style.display = 'none'
     potionBtn.style.display = 'none'
     arenaHeroAvatar.style.display = 'none'

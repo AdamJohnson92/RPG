@@ -67,8 +67,8 @@ main {
 
 .container {
     width: 40vw;
-    height: fit-content;
-    margin: 10px;
+    height: auto;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     border: 10px ridge var(--gold);
@@ -150,16 +150,11 @@ p {
 #combat-div {
     display: none;
     align-items: center;
-    height: 700px;
     padding-top: 0px;
     padding: 0;
 }
 
-#combat-log {
-    line-height: 20px;
-    text-align: center;
-    margin-left: 0
-}
+
 
 button:hover {
     cursor: pointer;
@@ -238,8 +233,6 @@ button:hover {
     transition: all 1s ease-in-out;
 }
 
-
-
 .arena-placement {
 
     justify-content: center;
@@ -282,6 +275,43 @@ button:hover {
     height: 15px;
 }
 
+#combat-UI-div {
+    width: 100%;
+    margin:5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height:220px;
+    padding: 0;
+    border-bottom: none;
+}
+
+#combat-log-parent-div {
+    height:80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#combat-log {
+    line-height: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+#combat-btn-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+}
+
+.combat-btn{
+    margin: 10px;
+    width: 120px;
+}
 
 @media screen and (max-width: 1500px) {
     header {
@@ -390,5 +420,15 @@ button:hover {
 
     .stam-div {
         font-size: 8px;
+    }
+
+    #combat-btn-div {
+        
+        height: auto;
+    }
+    
+    .combat-btn{
+        margin: 2px;
+        width: 120px;
     }
 }
