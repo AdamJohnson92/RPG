@@ -76,7 +76,7 @@ main {
     
     background-color: var(--grey);
     border-radius: 5px;
-    /* background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%); */
+    background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%);
 }
 
 .card{
