@@ -41,7 +41,8 @@ const selectCharacter = function (event) {
     attackBtn1.textContent = chosenCharacter.weapon.attack1;
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
     specialBtn1.textContent = chosenCharacter.special
-
+    potionsLeft = chosenCharacter.potionCount
+console.log(potionsLeft)
     return chosenCharacter;
 };
 
@@ -187,8 +188,9 @@ function special1() {
     }
 }
 
+let potionsLeft; 
 function drinkPotion() {
-    if (chosenCharacter.potionCount < 1) {
+    if (potionsLeft < 1) {
         combatLog.textContent = 'You are all out of potions!'
     } else {
         heroStaminaCounter.textContent --
@@ -196,9 +198,9 @@ function drinkPotion() {
 
         chosenCharacter.takePotion()
 
-        console.log(chosenCharacter.potionCount)
-        chosenCharacter.potionCount --
-        console.log(chosenCharacter.potionCount)
+        console.log(potionsLeft)
+        potionsLeft --
+        console.log(potionsLeft)
 
         if (heroStaminaCounter.textContent < 1) {
             monsterStaminaCounter.textContent = 1
