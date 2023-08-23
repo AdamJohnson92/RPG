@@ -11,17 +11,22 @@
     --silver: rgb(163, 163, 163);
     --green: rgb(56, 151, 80);
     --red: rgb(180, 12, 12);
+    height: 100vh;
+    background-image: linear-gradient(var(--brown) 0%, black 100%);
+    background-size:cover;
 }
 
 
 body {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(var(--brown) 0%, black 100%);
-    background-size: cover;
+    background-size:cover;
+    
     font-family: 'Yatra One', cursive;
 
 }
@@ -64,6 +69,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    
 }
 
 .container {
@@ -329,6 +335,8 @@ button:hover {
 }
 
 footer{
+    position: relative;
+    bottom: 0px;
     display: flex;
     flex-direction: row;
     height: 100px;

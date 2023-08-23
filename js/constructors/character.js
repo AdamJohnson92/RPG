@@ -91,7 +91,7 @@ class Rogue extends Character {
 }
 
 const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
-    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 2)
+    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1)
 
 const characterRoster = [valeChar, slickChar]
 
