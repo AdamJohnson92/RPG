@@ -1,11 +1,10 @@
 import { chosenCharacter, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, attackBtn1, attackBtn2, specialBtn1 } from "./index.js"
-import { monsterRoster } from "./constructors/monster.js"
 import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, heroHealthJuice,monsterHealthJuice,  } from "./docElements.js"
-
 
 //------------------------
 //CONTROLLS WHOSE TURN IT IS
 //---------------------
+
 let isHeroTurn = true
 function turnBannerChange(truthiness) {
     if (truthiness === true) {
@@ -91,7 +90,6 @@ function clearBuffDisplay() {
     charSpecial.style.backgroundColor = 'transparent'
     charSpecial.style.boxShadow = 'none'
 }
-
 
 //-------------------------------------------
 //DAMAGE ANIMATIONS

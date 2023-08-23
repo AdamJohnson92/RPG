@@ -1,4 +1,4 @@
-import { combatLog, heroStaminaCounter } from "../docElements.js";
+import { combatLog } from "../docElements.js";
 import { chosenCharacter } from "../index.js";
 import { dmgAnimation, dmgAnimation2 } from "../combatUtil.js";
 
@@ -19,10 +19,9 @@ class Greatsword extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(targetHit, targetHp) {
+        console.log(this.modifyingStat)
         const naturalRoll = Math.floor(Math.random() * (20 - 3) + 3)
-        console.log(`You roll ${naturalRoll}`)
         const totalRoll = naturalRoll + chosenCharacter.strength
-        console.log(`total roll = ${totalRoll}`)
 
         if (totalRoll >= targetHit) {
             const damage = Math.floor(Math.random() * (9 - 2) + 2);
@@ -42,16 +41,14 @@ class Greatsword extends Weapon {
 
     attackDam2(targetHit, targetHp) {
         const naturalRoll = Math.floor(Math.random() * (20 - 1) + 1)
-        console.log(`You roll ${naturalRoll}`)
         const totalRoll = naturalRoll + chosenCharacter.strength
-        console.log(`total roll = ${totalRoll}`)
 
         if (totalRoll >= targetHit) {
             const damage = Math.floor(Math.random() * (10 - 3) + 3);
             dmgAnimation('./assets/damage.png')
             console.log(`base damage: ${damage}`)
             const totalDmg = damage + chosenCharacter.strength
-            combatLog.textContent = `You swing your greatsword in a wide arc for ${totalDmg} damage`
+            combatLog.textContent = `You thrust your greatsword forward for ${totalDmg} damage`
 
             return targetHp - totalDmg;
         } else {
@@ -69,9 +66,7 @@ class DoubleDaggers extends Weapon {
     }
     attackDam1(targetHit, targetHp) {
         const naturalRoll1 = Math.floor(Math.random() * (20 - 4) + 2)
-        console.log(`Your first roll is ${naturalRoll1}`)
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
-        console.log(`Your first total roll is ${totalRoll1}`)
 
         let totalDmg1
         let multiLog1;
@@ -88,11 +83,7 @@ class DoubleDaggers extends Weapon {
         }
 
         const naturalRoll2 = Math.floor(Math.random() * (20 - 4) + 2)
-        console.log(`Your second roll is ${naturalRoll2}`)
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
-        console.log(`Your second total roll is ${totalRoll2}`)
-
-
 
         let totalDmg2;
         let multiLog2;
@@ -108,21 +99,14 @@ class DoubleDaggers extends Weapon {
             multiLog2 = 'misses';
         }
 
-        combatLog.textContent = `Your first dagger ${multiLog1}, and you follow up with your second dagger that ${multiLog2}.`
+        combatLog.textContent = `Your first dagger slash ${multiLog1}, and you follow up with your second dagger that ${multiLog2}.`
 
         return targetHp - (totalDmg1 + totalDmg2);
     };
 
     attackDam2(targetHit, targetHp) {
         const naturalRoll1 = Math.floor(Math.random() * (18 - 2) + 2)
-        console.log(`Your first roll is ${naturalRoll1}`)
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
-        console.log(`Your first total roll is ${totalRoll1}`)
-
-        const naturalRoll2 = Math.floor(Math.random() * (18 - 2) + 2)
-        console.log(`Your second roll is ${naturalRoll2}`)
-        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
-        console.log(`Your second total roll is ${totalRoll2}`)
 
         let totalDmg1
         let multiLog1;
@@ -139,6 +123,9 @@ class DoubleDaggers extends Weapon {
             multiLog1 = 'misses';
         }
 
+        const naturalRoll2 = Math.floor(Math.random() * (18 - 2) + 2)
+        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+
         let totalDmg2;
         let multiLog2;
         if (totalRoll2 >= targetHit) {
@@ -154,7 +141,7 @@ class DoubleDaggers extends Weapon {
             multiLog2 = 'misses';
         }
 
-        combatLog.textContent = `Your first dagger ${multiLog1}, and you follow up with your second dagger that ${multiLog2}.`
+        combatLog.textContent = `Your first dagger stab ${multiLog1}, and you follow up with your second dagger that ${multiLog2}.`
 
         return targetHp - (totalDmg1 + totalDmg2);
     }

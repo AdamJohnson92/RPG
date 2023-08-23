@@ -35,7 +35,7 @@ const selectCharacter = function (event) {
     charArmorClass.textContent = `Armor Class: ${chosenCharacter.armor.armorClass}`
     charArmorWeight.textContent = `Weight: ${chosenCharacter.armor.weight}`
     charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
-
+    
     playBtn.style.display = 'block'
 
     attackBtn1.textContent = chosenCharacter.weapon.attack1;
@@ -65,20 +65,17 @@ let monster = {};
 const generateMonster = function () {
     const randomMonster = monsterRoster[Math.floor(Math.random() * monsterRoster.length)]
     //for testing against goblin
-    return monsterRoster[0]
-    // return randomMonster;
+    // return monsterRoster[0]
+    return randomMonster;
 }
 
 function playGame() {
-
-    console.log(selectCharacter(event))
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
     combatLog.textContent = 'Begin!'
     monster = generateMonster()
     arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
     arenaHeroAttack.setAttribute('src', chosenCharacter.attackImg)
-    console.log(chosenCharacter.attackImg)
     arenaMonsterAvatar.setAttribute("src", monster.img)
     arenaMonsterAttack.setAttribute('src', monster.attackImg)
     monster.currentHp = monster.maxHp
@@ -95,6 +92,8 @@ function playGame() {
 
 function renderCharSelectionDiv() {
     clearBuffDisplay()
+    //Sets everything within the 
+    combatDiv.style.display = 'none'
     arenaMonsterAvatar.style.display = 'flex'
     arenaHeroAvatar.style.display = 'flex'
     heroHealthJuice.style.width = '100%'
@@ -104,7 +103,7 @@ function renderCharSelectionDiv() {
     attackBtn2.style.display = 'block'
     specialBtn1.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
-    combatDiv.style.display = 'none'
+    
 }
 
 playBtn.addEventListener('click', playGame)
@@ -137,15 +136,20 @@ function loser() {
     turnDisplay.style.backgroundColor = 'var(--red)'
 }
 
-function attackRoll1() {
+function attackRoll(event) {
 
     heroAttackAnimation()
 
     heroStaminaCounter.textContent --
-
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
-    monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
+    if (event.target === attackBtn1){
+        console.log('this is attack 1')
+        monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
+    } else if (event.target === attackBtn2){
+        console.log('this is attack 2')
+        monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
+    }
 
     damageMonsterHealthBar(monster.maxHp, monster.currentHp)
 
@@ -155,41 +159,16 @@ function attackRoll1() {
     if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
         monsterStaminaCounter.textContent = 1
         changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
+    
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
         cpuPause()
     }
 }
 
-function attackRoll2() {
-
-    heroAttackAnimation()
-
-    heroStaminaCounter.textContent --
-
-    changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
-
-    monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
-
-    damageMonsterHealthBar(monster.maxHp, monster.currentHp)
-
-    if (monster.currentHp < 1) {
-        winner()
-    }
-
-    if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
-        monsterStaminaCounter.textContent = 1
-        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
-        let isHeroTurn = false
-        turnBannerChange(isHeroTurn)
-        cpuPause()
-    }
-};
-
 function special1() {
 
     heroStaminaCounter.textContent --
-
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
     chosenCharacter.special1()
@@ -207,8 +186,8 @@ const attackBtn1 = document.getElementById('attack-1')
 const attackBtn2 = document.getElementById('attack-2')
 const specialBtn1 = document.getElementById('special-button-1')
 
-attackBtn1.addEventListener('click', attackRoll1)
-attackBtn2.addEventListener('click', attackRoll2)
+attackBtn1.addEventListener('click', attackRoll)
+attackBtn2.addEventListener('click', attackRoll)
 specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()

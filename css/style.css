@@ -19,7 +19,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--brown);
+    background-image: linear-gradient(var(--brown) 0%, black 100%);
+    background-size: cover;
     font-family: 'Yatra One', cursive;
 
 }
@@ -58,6 +59,7 @@ h3 {
 
 main {
     width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -65,7 +67,7 @@ main {
 
 .container {
     width: 40vw;
-    height: auto;
+    height: fit-content;
     margin: 10px;
     display: flex;
     flex-direction: column;
@@ -134,8 +136,6 @@ p {
 
 #character-selection-div {
     align-items: center;
-
-
 }
 
 #play-btn {
