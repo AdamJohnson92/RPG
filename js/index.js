@@ -107,7 +107,7 @@ function renderCharSelectionDiv() {
     potionBtn.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
     //this won't work if future characters have more than one potion
-    chosenCharacter.potionCount ++
+    potionsLeft = chosenCharacter.potionCount
 }
 
 playBtn.addEventListener('click', playGame)
