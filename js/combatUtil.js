@@ -1,4 +1,4 @@
-import { chosenCharacter, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, attackBtn1, attackBtn2, specialBtn1 } from "./index.js"
+import { chosenCharacter, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, attackBtn1, attackBtn2, specialBtn1, potionBtn } from "./index.js"
 import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, heroHealthJuice,monsterHealthJuice,  } from "./docElements.js"
 
 //------------------------
@@ -13,6 +13,7 @@ function turnBannerChange(truthiness) {
         attackBtn1.style.visibility = 'visible'
         attackBtn2.style.visibility = 'visible'
         specialBtn1.style.visibility = 'visible'
+        potionBtn.style.visibility = 'visible'
         chosenCharacter.undo1()
     } else {
         turnDisplay.style.backgroundColor = 'var(--red)'
@@ -20,6 +21,7 @@ function turnBannerChange(truthiness) {
         attackBtn1.style.visibility = 'hidden'
         attackBtn2.style.visibility = 'hidden'
         specialBtn1.style.visibility = 'hidden'
+        potionBtn.style.visibility = 'hidden'
     }
 }
 
@@ -188,4 +190,4 @@ function monsterAttackDisappear() {
 // }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice }

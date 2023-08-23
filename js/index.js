@@ -65,8 +65,8 @@ let monster = {};
 const generateMonster = function () {
     const randomMonster = monsterRoster[Math.floor(Math.random() * monsterRoster.length)]
     //for testing against goblin
-    // return monsterRoster[0]
-    return randomMonster;
+    return monsterRoster[0]
+    // return randomMonster;
 }
 
 function playGame() {
@@ -102,6 +102,7 @@ function renderCharSelectionDiv() {
     attackBtn1.style.display = 'block'
     attackBtn2.style.display = 'block'
     specialBtn1.style.display = 'block'
+    potionBtn.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
     
 }
@@ -116,6 +117,7 @@ function winner() {
     attackBtn1.style.visibility = 'hidden'
     attackBtn2.style.visibility = 'hidden'
     specialBtn1.style.display = 'none'
+    potionBtn.style.display = 'none'
     arenaMonsterAvatar.style.display = 'none'
 
     playAgainBtn.style.display = 'block'
@@ -129,6 +131,7 @@ function loser() {
     attackBtn1.style.visibility = 'hidden'
     attackBtn2.style.visibility = 'hidden'
     specialBtn1.style.display = 'none'
+    potionBtn.style.display = 'none'
     arenaHeroAvatar.style.display = 'none'
     heroStaminaCounter.textContent = ' '
     playAgainBtn.style.display = 'block'
@@ -183,7 +186,20 @@ function special1() {
 }
 
 function drinkPotion(){
-    
+    heroStaminaCounter.textContent --
+    changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
+
+    chosenCharacter.takePotion()
+
+    if (heroStaminaCounter.textContent < 1) {
+        monsterStaminaCounter.textContent = 1
+        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
+        let isHeroTurn = false
+        turnBannerChange(isHeroTurn)
+        cpuPause()
+    }
+
+
 }
 
 const attackBtn1 = document.getElementById('attack-1')
@@ -208,5 +224,5 @@ function changeMonsterStaminaBar(maxStam, currentStam){
     monsterStamJuice.style.width = `${(currentStam/maxStam * 100)}%`
 }
 
-export { attackBtn1, attackBtn2, specialBtn1,  heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar,  }
+export { attackBtn1, attackBtn2, specialBtn1,  heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, potionBtn }
 

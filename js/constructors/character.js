@@ -2,7 +2,7 @@ import { valeGreatsword, slickDoubleDaggers } from "./weapons.js";
 import { plateArmor, leatherArmor } from "./armor.js";
 import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial } from '../docElements.js'
 import { chosenCharacter } from "../index.js";
-import { buffDisplay, clearBuffDisplay } from "../combatUtil.js";
+import { buffDisplay, clearBuffDisplay, heroHealthJuice } from "../combatUtil.js";
 
 
 //CHARACTER CLASS CONSTRUCTORS
@@ -24,7 +24,17 @@ class Character {
         this.staminaPoints = staminaPoints;
     }
     takePotion(){
-        //must write code for taking a potion
+        const healAmount = Math.floor(Math.random() * (5 - 2) + 2);
+        console.log
+        console.log('glug glug glug glug')
+        if((this.currentHp + healAmount) > this.maxHp){
+            this.currentHp = this.maxHp
+        } else {
+            this.currentHp = healAmount + this.currentHp
+        }
+        heroHealthJuice.style.width = `${(this.currentHp / this.maxHp) * 100}%`
+        charHpDiv.textContent = `Hitpoints: ${this.currentHp}`
+        combatLog.textContent = `You heal for ${healAmount} hitpoints.`
     }
 }
 //-----
