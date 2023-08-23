@@ -35,7 +35,7 @@ const selectCharacter = function (event) {
     charArmorClass.textContent = `Armor Class: ${chosenCharacter.armor.armorClass}`
     charArmorWeight.textContent = `Weight: ${chosenCharacter.armor.weight}`
     charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
-    
+
     playBtn.style.display = 'block'
 
     attackBtn1.textContent = chosenCharacter.weapon.attack1;
@@ -84,6 +84,7 @@ function playGame() {
     console.log(monster)
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
+    
     monsterStaminaCounter.textContent = monster.staminaPoints
     changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
     turnDisplay.textContent = 'Your Turn'
@@ -104,7 +105,8 @@ function renderCharSelectionDiv() {
     specialBtn1.style.display = 'block'
     potionBtn.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
-    
+    //this won't work if future characters have more than one potion
+    chosenCharacter.potionCount ++
 }
 
 playBtn.addEventListener('click', playGame)
@@ -143,13 +145,13 @@ function attackRoll(event) {
 
     heroAttackAnimation()
 
-    heroStaminaCounter.textContent --
+    heroStaminaCounter.textContent--
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
-    if (event.target === attackBtn1){
+    if (event.target === attackBtn1) {
         console.log('this is attack 1')
         monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
-    } else if (event.target === attackBtn2){
+    } else if (event.target === attackBtn2) {
         console.log('this is attack 2')
         monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
     }
@@ -162,7 +164,7 @@ function attackRoll(event) {
     if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
         monsterStaminaCounter.textContent = 1
         changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
-    
+
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
         cpuPause()
@@ -171,7 +173,7 @@ function attackRoll(event) {
 
 function special1() {
 
-    heroStaminaCounter.textContent --
+    heroStaminaCounter.textContent--
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
     chosenCharacter.special1()
@@ -185,22 +187,31 @@ function special1() {
     }
 }
 
-function drinkPotion(){
-    heroStaminaCounter.textContent --
-    changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
+function drinkPotion() {
+    if (chosenCharacter.potionCount < 1) {
+        combatLog.textContent = 'You are all out of potions!'
+    } else {
+        heroStaminaCounter.textContent --
+        changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
-    chosenCharacter.takePotion()
+        chosenCharacter.takePotion()
 
-    if (heroStaminaCounter.textContent < 1) {
-        monsterStaminaCounter.textContent = 1
-        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
-        let isHeroTurn = false
-        turnBannerChange(isHeroTurn)
-        cpuPause()
+        console.log(chosenCharacter.potionCount)
+        chosenCharacter.potionCount --
+        console.log(chosenCharacter.potionCount)
+
+        if (heroStaminaCounter.textContent < 1) {
+            monsterStaminaCounter.textContent = 1
+            changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
+            let isHeroTurn = false
+            turnBannerChange(isHeroTurn)
+            cpuPause()
+        }
+
+
     }
-
-
 }
+
 
 const attackBtn1 = document.getElementById('attack-1')
 const attackBtn2 = document.getElementById('attack-2')
@@ -216,13 +227,13 @@ generateCharBtns()
 
 //---------------------------------------------
 
-function changeHeroStaminaBar(maxStam, currentStam){
-    heroStamJuice.style.width = `${(currentStam/maxStam * 100)}%`
+function changeHeroStaminaBar(maxStam, currentStam) {
+    heroStamJuice.style.width = `${(currentStam / maxStam * 100)}%`
 }
 
-function changeMonsterStaminaBar(maxStam, currentStam){
-    monsterStamJuice.style.width = `${(currentStam/maxStam * 100)}%`
+function changeMonsterStaminaBar(maxStam, currentStam) {
+    monsterStamJuice.style.width = `${(currentStam / maxStam * 100)}%`
 }
 
-export { attackBtn1, attackBtn2, specialBtn1,  heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, potionBtn }
+export { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, potionBtn }
 

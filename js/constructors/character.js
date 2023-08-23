@@ -1,13 +1,13 @@
 import { valeGreatsword, slickDoubleDaggers } from "./weapons.js";
 import { plateArmor, leatherArmor } from "./armor.js";
-import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial } from '../docElements.js'
-import { chosenCharacter } from "../index.js";
+import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial, heroStaminaCounter } from '../docElements.js'
+import { chosenCharacter, changeHeroStaminaBar } from "../index.js";
 import { buffDisplay, clearBuffDisplay, heroHealthJuice } from "../combatUtil.js";
 
 
 //CHARACTER CLASS CONSTRUCTORS
 class Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints) {
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
         this.name = name;
         this.charClass = charClass
         this.maxHp = maxHp;
@@ -22,25 +22,29 @@ class Character {
         this.img = img;
         this.attackImg = attackImg;
         this.staminaPoints = staminaPoints;
+        this.potionCount = potionCount
     }
-    takePotion(){
-        const healAmount = Math.floor(Math.random() * (5 - 2) + 2);
-        console.log
-        console.log('glug glug glug glug')
-        if((this.currentHp + healAmount) > this.maxHp){
-            this.currentHp = this.maxHp
-        } else {
-            this.currentHp = healAmount + this.currentHp
-        }
-        heroHealthJuice.style.width = `${(this.currentHp / this.maxHp) * 100}%`
-        charHpDiv.textContent = `Hitpoints: ${this.currentHp}`
-        combatLog.textContent = `You heal for ${healAmount} hitpoints.`
+    //MUST MAKE POTION COUNTER THAT DECREMENTS TO 0 SO PLAYER CAN ONLY USE ONCE
+    takePotion() {
+            const healAmount = Math.floor(Math.random() * (4 - 2) + 2);
+            console.log
+            console.log('glug glug glug glug')
+            if ((this.currentHp + healAmount) > this.maxHp) {
+                this.currentHp = this.maxHp
+            } else {
+                this.currentHp = healAmount + this.currentHp
+            }
+            heroHealthJuice.style.width = `${(this.currentHp / this.maxHp) * 100}%`
+            charHpDiv.textContent = `Hitpoints: ${this.currentHp}`
+            combatLog.textContent = `You heal for ${healAmount} hitpoints.`
+
+
     }
 }
 //-----
 class Knight extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount)
     }
 
     special1() {
@@ -60,13 +64,13 @@ class Knight extends Character {
     }
 }
 
-const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2)
+const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2, 1)
 
 //--------
 
 class Rogue extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount)
     }
 
     special1() {
@@ -83,11 +87,11 @@ class Rogue extends Character {
         } clearBuffDisplay()
         charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
     }
-    
+
 }
 
 const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
-    "./assets/slick-static.png", "./assets/slick-attack.png", 3)
+    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 2)
 
 const characterRoster = [valeChar, slickChar]
 
