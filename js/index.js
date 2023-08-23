@@ -182,13 +182,19 @@ function special1() {
     }
 }
 
+function drinkPotion(){
+    
+}
+
 const attackBtn1 = document.getElementById('attack-1')
 const attackBtn2 = document.getElementById('attack-2')
 const specialBtn1 = document.getElementById('special-button-1')
+const potionBtn = document.getElementById('potion-button')
 
 attackBtn1.addEventListener('click', attackRoll)
 attackBtn2.addEventListener('click', attackRoll)
 specialBtn1.addEventListener('click', special1)
+potionBtn.addEventListener('click', drinkPotion)
 
 generateCharBtns()
 
