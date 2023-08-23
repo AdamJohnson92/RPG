@@ -67,7 +67,7 @@ main {
 
 .container {
     width: 40vw;
-    height: auto;
+    height: fit-content;
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -110,6 +110,7 @@ p {
 }
 
 #character-card {
+    height: 490px;
     background-image: url('../assets/parchment-background.PNG');
     background-size: cover;
     position: relative;
@@ -117,6 +118,7 @@ p {
 }
 
 #equipment-card {
+    height: 490px;
     background-image: url('../assets/leather-background.PNG');
     background-size: cover;
 }
@@ -313,6 +315,15 @@ button:hover {
     width: 120px;
 }
 
+footer{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (max-width: 1500px) {
     header {
         align-content: center;
@@ -328,7 +339,7 @@ button:hover {
     }
 
     .container {
-        width: 70%;
+        width: 85%;
     }
 
     h3 {
@@ -369,6 +380,7 @@ button:hover {
         align-items: center;
         align-content: center;
         justify-content: center;
+        padding: 10px;
     }
 
 
