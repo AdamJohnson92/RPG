@@ -1,6 +1,6 @@
 import { changeTurn2, monDmgAnimation, monsterAttackAnimation } from "../combatUtil.js";
-import { charHpDiv, combatLog, monsterStaminaCounter, } from "../docElements.js";
-import { chosenCharacter, loser, heroHealthJuice } from "../index.js";
+import { charHpDiv, combatLog, monsterStaminaCounter, heroHealthJuice} from "../docElements.js";
+import { chosenCharacter, loser,  } from "../index.js";
 
 //MONSTER CLASS CONSTRUCTORS
 class Monster {

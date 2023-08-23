@@ -1,15 +1,7 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter } from './docElements.js';
+import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
-import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation } from './combatUtil.js';
-
-const arenaHeroAvatar = document.getElementById('arena-hero-avatar')
-const arenaHeroAttack = document.getElementById('arena-hero-attack')
-
-const arenaMonsterAvatar = document.getElementById('arena-monster-avatar')
-const arenaMonsterAttack = document.getElementById('arena-monster-attack')
-
-let heroStaminaNum;
+import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation, damageMonsterHealthBar } from './combatUtil.js';
 
 //--------------------------------------------------------------
 let chosenCharacter = {};
@@ -20,7 +12,6 @@ const selectCharacter = function (event) {
             chosenCharacter = characterRoster[i]
             console.log(chosenCharacter)
         }
-
     }
     charNameDiv.textContent = `${chosenCharacter.name}`
 
@@ -44,8 +35,6 @@ const selectCharacter = function (event) {
     charArmorClass.textContent = `Armor Class: ${chosenCharacter.armor.armorClass}`
     charArmorWeight.textContent = `Weight: ${chosenCharacter.armor.weight}`
     charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
-
-
 
     playBtn.style.display = 'block'
 
@@ -79,9 +68,6 @@ const generateMonster = function () {
     return monsterRoster[0]
     // return randomMonster;
 }
-
-const heroHpBar = document.getElementById('hero-hp-bar')
-const monsterHpBar = document.getElementById('monster-hp-bar')
 
 function playGame() {
 
@@ -227,33 +213,7 @@ specialBtn1.addEventListener('click', special1)
 
 generateCharBtns()
 
-
-//THIS SHIT'S GOTTA GO SOMEWHERE ELSE
-const heroHealthBar = document.getElementById('hero-health-bar')
-const heroHealthJuice = document.getElementById('hero-health-juice')
-
-function damageHeroHealthBar(maxHp, currentHp) {
-    if (currentHp < 0) {
-        heroHealthJuice.style.width = "0%"
-    } else {
-        heroHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
-    }
-    
-}
-const monsterHealthBar = document.getElementById('monster-health-bar')
-const monsterHealthJuice = document.getElementById('monster-health-juice')
-
-function damageMonsterHealthBar(maxHp, currentHp) {
-    if (currentHp < 0) {
-        monsterHealthJuice.style.width = "0%"
-    } else {
-         monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
-    }
-}
-
 //---------------------------------------------
-const heroStamJuice = document.getElementById('hero-stam-juice')
-const monsterStamJuice = document.getElementById('monster-stam-juice')
 
 function changeHeroStaminaBar(maxStam, currentStam){
     heroStamJuice.style.width = `${(currentStam/maxStam * 100)}%`
@@ -263,5 +223,5 @@ function changeMonsterStaminaBar(maxStam, currentStam){
     monsterStamJuice.style.width = `${(currentStam/maxStam * 100)}%`
 }
 
-export { attackBtn1, attackBtn2, specialBtn1, monsterHpBar, heroHpBar, heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar, changeHeroStaminaBar, changeMonsterStaminaBar, heroHealthJuice }
+export { attackBtn1, attackBtn2, specialBtn1,  heroStaminaCounter, chosenCharacter, loser, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar,  }
 

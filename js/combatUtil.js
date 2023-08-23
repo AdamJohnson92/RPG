@@ -1,6 +1,6 @@
-import { attackBtn1, attackBtn2, specialBtn1, chosenCharacter, monster, monsterHpBar, heroHpBar, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, damageHeroHealthBar, changeHeroStaminaBar, changeMonsterStaminaBar } from "./index.js"
+import { chosenCharacter, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, attackBtn1, attackBtn2, specialBtn1 } from "./index.js"
 import { monsterRoster } from "./constructors/monster.js"
-import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2 } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, heroHealthJuice,monsterHealthJuice,  } from "./docElements.js"
 
 
 //------------------------
@@ -53,6 +53,24 @@ function changeTurn2() {
 
     }
 }
+//------------------------------
+//-----------------------------
+function damageHeroHealthBar(maxHp, currentHp) {
+    if (currentHp < 0) {
+        heroHealthJuice.style.width = "0%"
+    } else {
+        heroHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
+    }
+    
+}
+
+function damageMonsterHealthBar(maxHp, currentHp) {
+    if (currentHp < 0) {
+        monsterHealthJuice.style.width = "0%"
+    } else {
+         monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
+    }
+}
 
 
 ////-----------------
@@ -86,7 +104,6 @@ function dmgSlashAppear(src) {
     monsterDmgImg.setAttribute('src', src)
     monsterDmgImg.style.display = 'block'
 }
-
 function dmgSlashDisappear() {
     monsterDmgImg.style.display = 'none'
 }
@@ -101,7 +118,6 @@ function dmgSlashAppear2(src) {
     monsterDmgImg2.setAttribute('src', src)
     monsterDmgImg2.style.display = 'block'
 }
-
 function dmgSlashDisappear2() {
     monsterDmgImg2.style.display = 'none'
 }
@@ -121,19 +137,17 @@ function monDmgSlashDisappear() {
 }
 
 //-----------------
-//ATTACK ANIMATIONs
+//CHARACTER ATTACK ANIMATIONS
 //------------------
 
 function heroAttackAnimation() {
     heroAttackAppear()
     setTimeout(heroAttackDisappear, 500)
 }
-
 function heroAttackAppear() {
     arenaHeroAvatar.style.display = 'none'
     arenaHeroAttack.style.display = 'block'
 }
-
 function heroAttackDisappear() {
     arenaHeroAttack.style.display = 'none'
     arenaHeroAvatar.style.display = 'block'
@@ -145,12 +159,10 @@ function monsterAttackAnimation(){
     monsterAttackAppear()
     setTimeout(monsterAttackDisappear, 500)
 }
-
 function monsterAttackAppear() {
     arenaMonsterAvatar.style.display = 'none'
     arenaMonsterAttack.style.display = 'block'
 }
-
 function monsterAttackDisappear() {
     arenaMonsterAttack.style.display = 'none'
     arenaMonsterAvatar.style.display = 'block'
@@ -178,4 +190,4 @@ function monsterAttackDisappear() {
 // }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar }
