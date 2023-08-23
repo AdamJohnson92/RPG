@@ -16,6 +16,7 @@
 
 body {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -30,7 +31,7 @@ header {
     flex-direction: row;
     justify-content: center;
     border: 10px ridge var(--gold);
-    padding: 20px;
+    padding: 0px;
     border-radius: 7px;
     width: 40vw;
     background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
@@ -59,7 +60,7 @@ h3 {
 
 main {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -72,10 +73,22 @@ main {
     display: flex;
     flex-direction: column;
     border: 10px ridge var(--gold);
-    padding: 10px;
+    
     background-color: var(--grey);
     border-radius: 5px;
     /* background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%); */
+}
+
+.card{
+    width: 40vw;
+    height: fit-content;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 10px ridge var(--gold);
+    padding: 10px;
+    background-color: var(--grey);
+    border-radius: 5px;
 }
 
 p {
@@ -110,7 +123,7 @@ p {
 }
 
 #character-card {
-    height: 490px;
+    height: auto;
     background-image: url('../assets/parchment-background.PNG');
     background-size: cover;
     position: relative;
@@ -118,7 +131,7 @@ p {
 }
 
 #equipment-card {
-    height: 490px;
+    height: auto;
     background-image: url('../assets/leather-background.PNG');
     background-size: cover;
 }
@@ -153,7 +166,7 @@ p {
     display: none;
     align-items: center;
     padding-top: 0px;
-    padding: 0;
+    height:700px;
 }
 
 
@@ -341,6 +354,12 @@ footer{
     .container {
         width: 85%;
     }
+    .card {
+        width: 85%;
+        height: auto;
+        margin: 0px;
+        padding: 10px;
+    }
 
     h3 {
         font-size: 15px;
@@ -365,13 +384,9 @@ footer{
 
     }
 
-    #equipment-card {
-        width: auto;
-    }
-
     #character-img-div {
-        height: 50px;
-        width: 50px;
+        height: 90px;
+        width: 90px;
         border: 5px ridge var(--silver)
     }
 
@@ -380,7 +395,7 @@ footer{
         align-items: center;
         align-content: center;
         justify-content: center;
-        padding: 10px;
+        height: auto;
     }
 
 

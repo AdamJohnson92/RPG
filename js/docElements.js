@@ -2,7 +2,7 @@ const charContainer = document.getElementById('char-container')
 charContainer.setAttribute("class", "container")
 
 const charCard = document.createElement('div')
-charCard.setAttribute("class", "container")
+charCard.setAttribute("class", "card")
 charCard.setAttribute('id', 'character-card')
 
 const charAvatar = document.createElement('div')
@@ -18,7 +18,7 @@ const charHitDiv = document.createElement('p')
 const charSpecial = document.createElement('p')
 
 const equipCard = document.createElement('div')
-equipCard.setAttribute("class", "container")
+equipCard.setAttribute("class", "card")
 equipCard.setAttribute('id', 'equipment-card')
 
 const charWeaponName = document.createElement('h3')
