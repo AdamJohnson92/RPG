@@ -405,10 +405,11 @@ footer{
 @media screen and (max-width: 1500px) {
     header {
         align-content: center;
+
     }
 
     h1 {
-        font-size: 40px;
+        font-size: 35px;
         text-align: center;
     }
 
@@ -422,7 +423,7 @@ footer{
     .card {
         width: 85%;
         height: auto;
-        margin: 0px;
+        margin: 5px;
         padding: 10px;
     }
 
@@ -518,6 +519,7 @@ footer{
 
     #potion-lid{
         border: 1px solid black;
+        border-bottom: 0px;
     }
 
     #potion-bottle{
