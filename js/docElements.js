@@ -1,47 +1,32 @@
 const charContainer = document.getElementById('char-container')
 charContainer.setAttribute("class", "container")
 
-const charCard = document.createElement('div')
-charCard.setAttribute("class", "card")
-charCard.setAttribute('id', 'character-card')
+const charCard = document.getElementById("character-card")
 
-const charAvatar = document.createElement('div')
-charAvatar.setAttribute('id', 'character-avatar-div')
-const charNameDiv = document.createElement('h1')
+const charAvatar = document.getElementById('character-avatar-div')
+const charNameDiv = document.getElementById("char-name")
+const charImgDiv = document.getElementById("character-img-div")
 
-const charClassDiv = document.createElement('h3')
-const charHpDiv = document.createElement('p')
-const charStrDiv = document.createElement('p')
-const charDexDiv = document.createElement('p')
-const charWisDiv = document.createElement('p')
-const charHitDiv = document.createElement('p')
-const charSpecial = document.createElement('p')
+const charClassDiv = document.getElementById("char-class-div")
+const charHpDiv = document.getElementById("char-hp-div")
+const charStrDiv = document.getElementById('char-str-div')
+const charDexDiv = document.getElementById('char-dex-div')
+const charWisDiv = document.getElementById('char-wis-div')
+const charHitDiv = document.getElementById('char-hit-div')
+const charSpecial = document.getElementById('char-special-div')
 
-const equipCard = document.createElement('div')
-equipCard.setAttribute("class", "card")
-equipCard.setAttribute('id', 'equipment-card')
+const equipCard = document.getElementById('equipment-card')
 
-const charWeaponName = document.createElement('h3')
-const charWeaponType = document.createElement('p')
-const charWeaponWeight = document.createElement('p')
-const charWeaponAttack1 = document.createElement('p')
-const charWeaponAttack2 = document.createElement('p')
+const charWeaponName = document.getElementById('weapon-name')
+const charWeaponType = document.getElementById('weapon-type')
+const charWeaponWeight = document.getElementById('weapon-weight')
+const charWeaponAttack1 = document.getElementById('weapon-attack-1')
+const charWeaponAttack2 = document.getElementById('weapon-attack-2')
 
-const charArmorName = document.createElement('h3')
-const charArmorClass = document.createElement('p')
-const charArmorWeight = document.createElement('p')
-const charArmorRating = document.createElement('p')
-
-
-const charImgDiv = document.createElement("img")
-charImgDiv.setAttribute("id", "character-img-div")
-
-charCard.append(charAvatar, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial)
-equipCard.append(charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating)
-
-charContainer.append(charCard, equipCard)
-
-charAvatar.append(charNameDiv, charImgDiv)
+const charArmorName = document.getElementById('armor-name')
+const charArmorClass = document.getElementById('armor-class')
+const charArmorWeight = document.getElementById('armor-weight')
+const charArmorRating = document.getElementById('armor-rating')
 
 const playBtn = document.getElementById('play-btn')
 
@@ -63,7 +48,6 @@ const playAgainBtn = document.getElementById('play-again')
 let heroStaminaCounter = document.getElementById('hero-stam-counter')
 heroStaminaCounter.setAttribute('class', 'stamina-counter')
 const heroStamJuice = document.getElementById('hero-stam-juice')
-
 
 let turnDisplay = document.getElementById('turn-display')
 

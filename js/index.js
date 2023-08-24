@@ -18,20 +18,20 @@ const selectCharacter = function (event) {
     charImgDiv.setAttribute("src", chosenCharacter.img)
 
     charContainer.style.display = 'flex'
-    charClassDiv.textContent = `Class: ${chosenCharacter.charClass}`
-    charHpDiv.textContent = `Hitpoints: ${chosenCharacter.currentHp}`
-    charStrDiv.textContent = `Strength: ${chosenCharacter.strength}`
-    charDexDiv.textContent = `Dexterity: ${chosenCharacter.dexterity}`
-    charWisDiv.textContent = `Wisdom: ${chosenCharacter.wisdom}`
-    charHitDiv.textContent = `Hit Chance: ${chosenCharacter.hitChanceRate}`
-    charSpecial.textContent = `Special Ability: ${chosenCharacter.special}`
+    charClassDiv.textContent = `${chosenCharacter.charClass}`
+    charHpDiv.textContent = `${chosenCharacter.currentHp}`
+    charStrDiv.textContent = `${chosenCharacter.strength}`
+    charDexDiv.textContent = `${chosenCharacter.dexterity}`
+    charWisDiv.textContent = `${chosenCharacter.wisdom}`
+    charHitDiv.textContent = `${chosenCharacter.hitChanceRate}`
+    charSpecial.textContent = `${chosenCharacter.special}`
 
-    charWeaponName.textContent = `Weapon: ${chosenCharacter.weapon.name}`
-    charWeaponType.textContent = `Weapon Type: ${chosenCharacter.weapon.type}`
-    charWeaponWeight.textContent = `Weight: ${chosenCharacter.weapon.weight}`
-    charWeaponAttack1.textContent = `Attack 1: ${chosenCharacter.weapon.attack1}`
-    charWeaponAttack2.textContent = `Attack 2: ${chosenCharacter.weapon.attack2}`
-    charArmorName.textContent = `Armor: ${chosenCharacter.armor.name}`
+    charWeaponName.textContent = `${chosenCharacter.weapon.name}`
+    charWeaponType.textContent = `${chosenCharacter.weapon.type}`
+    charWeaponWeight.textContent = `${chosenCharacter.weapon.weight}`
+    charWeaponAttack1.textContent = `${chosenCharacter.weapon.attack1}`
+    charWeaponAttack2.textContent = `${chosenCharacter.weapon.attack2}`
+    charArmorName.textContent = `${chosenCharacter.armor.name}`
     charArmorClass.textContent = `Armor Class: ${chosenCharacter.armor.armorClass}`
     charArmorWeight.textContent = `Weight: ${chosenCharacter.armor.weight}`
     charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
@@ -62,7 +62,6 @@ function generateCharBtns() {
 
 //-------------------------------------------
 let monster = {};
-
 const generateMonster = function () {
     const randomMonster = monsterRoster[Math.floor(Math.random() * monsterRoster.length)]
     //for testing against goblin
@@ -106,7 +105,6 @@ function renderCharSelectionDiv() {
     specialBtn1.style.display = 'block'
     potionBtn.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
-    //this won't work if future characters have more than one potion
     potionsLeft = chosenCharacter.potionCount
 }
 
