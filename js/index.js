@@ -65,8 +65,8 @@ let monster = {};
 const generateMonster = function () {
     const randomMonster = monsterRoster[Math.floor(Math.random() * monsterRoster.length)]
     //for testing against goblin
-    return monsterRoster[0]
-    // return randomMonster;
+    // return monsterRoster[0]
+    return randomMonster;
 }
 
 function playGame() {

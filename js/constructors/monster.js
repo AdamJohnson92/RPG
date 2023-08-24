@@ -23,7 +23,7 @@ class Undead extends Monster {
     attack1(targetHit, targetHp, targetArmor) {
         monsterAttackAnimation()
         console.log(chosenCharacter)
-        const naturalRoll = Math.floor(Math.random() * (20 - 10) + 8)
+        const naturalRoll = Math.floor(Math.random() * (20 - 10) + 10)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
         changeTurn2()
 
@@ -53,7 +53,7 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead('Undead', 23, 23, 10, './assets/undead-static.png','./assets/undead-static.png', 1)
+const undead = new Undead('Undead', 23, 23, 12, './assets/undead-static.png','./assets/undead-static.png', 1)
 
 //-----------------------------------------------
 
@@ -95,7 +95,7 @@ class Goblin extends Monster {
     }
 }
 
-const goblin = new Goblin('Goblin', 35, 35, 12, './assets/goblin-static.png', './assets/goblin-static.png', 1)
+const goblin = new Goblin('Goblin', 35, 35, 13, './assets/goblin-static.png', './assets/goblin-static.png', 1)
 
 const monsterRoster = [goblin, undead]
 

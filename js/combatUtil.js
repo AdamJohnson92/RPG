@@ -78,6 +78,8 @@ function changePotionMeter(maxPotion, currentPotion) {
     potionJuice.style.height = `${(currentPotion/maxPotion) * 100}%`
     if ((currentPotion/maxPotion) * 100 < 100) {
         potionJuice.style.borderRadius = '0px 0px 100px 100px'
+    } else {
+        potionJuice.style.borderRadius = '100px'
     }
     console.log(potionJuice.style.height)
 }
