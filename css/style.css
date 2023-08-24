@@ -44,7 +44,7 @@ header {
 }
 
 h1 {
-    font-size: 90px;
+    font-size: 60px;
     background-color: transparent;
     text-align: center;
 }
@@ -166,6 +166,7 @@ span {
 
 #character-selection-div {
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #play-btn {

@@ -1,5 +1,5 @@
-import { valeGreatsword, slickDoubleDaggers } from "./weapons.js";
-import { plateArmor, leatherArmor } from "./armor.js";
+import { valeGreatsword, slickDoubleDaggers, unarmed } from "./weapons.js";
+import { plateArmor, leatherArmor, tunic } from "./armor.js";
 import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial, heroStaminaCounter } from '../docElements.js'
 import { chosenCharacter, changeHeroStaminaBar } from "../index.js";
 import { buffDisplay, clearBuffDisplay, heroHealthJuice } from "../combatUtil.js";
@@ -26,17 +26,17 @@ class Character {
     }
     //MUST MAKE POTION COUNTER THAT DECREMENTS TO 0 SO PLAYER CAN ONLY USE ONCE
     takePotion() {
-            const healAmount = Math.floor(Math.random() * (6 - 4) + 4);
-            console.log
-            console.log('glug glug glug glug')
-            if ((this.currentHp + healAmount) > this.maxHp) {
-                this.currentHp = this.maxHp
-            } else {
-                this.currentHp = healAmount + this.currentHp
-            }
-            heroHealthJuice.style.width = `${(this.currentHp / this.maxHp) * 100}%`
-            charHpDiv.textContent = `${this.currentHp}`
-            combatLog.textContent = `You heal for ${healAmount} hitpoints.`
+        const healAmount = Math.floor(Math.random() * (6 - 4) + 4);
+        console.log
+        console.log('glug glug glug glug')
+        if ((this.currentHp + healAmount) > this.maxHp) {
+            this.currentHp = this.maxHp
+        } else {
+            this.currentHp = healAmount + this.currentHp
+        }
+        heroHealthJuice.style.width = `${(this.currentHp / this.maxHp) * 100}%`
+        charHpDiv.textContent = `${this.currentHp}`
+        combatLog.textContent = `You heal for ${healAmount} hitpoints.`
 
 
     }
@@ -93,6 +93,31 @@ class Rogue extends Character {
 const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
     "./assets/slick-static.png", "./assets/slick-attack.png", 3, 2)
 
-const characterRoster = [valeChar, slickChar]
+class Monk extends Character {
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount)
+    }
+
+    //Must change Special
+    special1() {
+        this.hitChanceRate = this.hitChanceRate + 2
+        charHitDiv.textContent = `${this.hitChanceRate}`
+        console.log("Your hit chance rating is increased by 2 for one turn")
+        combatLog.textContent = "Your hit chance rating is increased by 2 for one turn"
+        buffDisplay(charHitDiv)
+    }
+
+    undo1() {
+        if (this.hitChanceRate > 15) {
+            this.hitChanceRate = 15
+        } clearBuffDisplay()
+        charHitDiv.textContent = `${this.hitChanceRate}`
+    }
+
+}
+
+const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 1, 1, 1, 15, unarmed, tunic, "Agile", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2)
+
+const characterRoster = [valeChar, slickChar, orbynChar]
 
 export { characterRoster }

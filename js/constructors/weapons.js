@@ -65,7 +65,7 @@ class DoubleDaggers extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(targetHit, targetHp) {
-        const naturalRoll1 = Math.floor(Math.random() * (20 - 4) + 2)
+        const naturalRoll1 = Math.floor(Math.random() * (20 - 4) + 4)
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
 
         let totalDmg1
@@ -82,7 +82,7 @@ class DoubleDaggers extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = Math.floor(Math.random() * (20 - 4) + 2)
+        const naturalRoll2 = Math.floor(Math.random() * (20 - 4) + 4)
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
 
         let totalDmg2;
@@ -147,8 +147,97 @@ class DoubleDaggers extends Weapon {
     }
 }
 
+class Unarmed extends Weapon {
+    constructor(name, type, weight, attack1, attack2, modifyingStat) {
+        super(name, type, weight, attack1, attack2, modifyingStat)
+    }
+    attackDam1(targetHit, targetHp) {
+        const naturalRoll1 = Math.floor(Math.random() * (20 - 5) + 5)
+        const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+
+        let totalDmg1
+        let multiLog1;
+        if (totalRoll1 >= targetHit) {
+            const damage1 = Math.floor(Math.random() * (1 - 1) + 1);
+            dmgAnimation('./assets/damage.png', 1)
+            totalDmg1 = damage1 + chosenCharacter.dexterity
+            console.log(`total damage 1: ${totalDmg1}`)
+            multiLog1 = `deals ${totalDmg1} damage`
+        } else {
+            totalDmg1 = 0
+            dmgAnimation('./assets/miss.png', 1)
+            multiLog1 = 'misses';
+        }
+
+        const naturalRoll2 = Math.floor(Math.random() * (20 - 5) + 5)
+        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+
+        let totalDmg2;
+        let multiLog2;
+        if (totalRoll2 >= targetHit) {
+            const damage2 = Math.floor(Math.random() * (1 - 1) + 1);
+            dmgAnimation2('./assets/damage-2.png', 2)
+            totalDmg2 = damage2 + chosenCharacter.dexterity
+            console.log(`total damage 2: ${totalDmg2}`)
+            multiLog2 = `deals ${totalDmg2} damage`
+        } else {
+            totalDmg2 = 0
+            dmgAnimation2('./assets/miss-2.png', 2)
+            multiLog2 = 'misses';
+        }
+
+        combatLog.textContent = `Your first strike ${multiLog1}, and you follow up a second strike that ${multiLog2}.`
+
+        return targetHp - (totalDmg1 + totalDmg2);
+    };
+
+    attackDam2(targetHit, targetHp) {
+        const naturalRoll1 = Math.floor(Math.random() * (18 - 2) + 2)
+        const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+
+        let totalDmg1
+        let multiLog1;
+        if (totalRoll1 >= targetHit) {
+            const damage1 = Math.floor(Math.random() * (2 - 1) + 1);
+            dmgAnimation('./assets/damage.png', 1)
+            totalDmg1 = damage1 + chosenCharacter.dexterity
+            console.log(`total damage 1: ${totalDmg1}`)
+            multiLog1 = `deals ${totalDmg1} damage`
+        } else {
+            console.log('Your first attack missed!')
+            totalDmg1 = 0
+            dmgAnimation('./assets/miss.png', 1)
+            multiLog1 = 'misses';
+        }
+
+        const naturalRoll2 = Math.floor(Math.random() * (18 - 2) + 2)
+        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+
+        let totalDmg2;
+        let multiLog2;
+        if (totalRoll2 >= targetHit) {
+            const damage2 = Math.floor(Math.random() * (2 - 1) + 1);
+            dmgAnimation2('./assets/damage-2.png', 2)
+            totalDmg2 = damage2 + chosenCharacter.dexterity
+            console.log(`total damage 2: ${totalDmg2}`)
+            multiLog2 = `deals ${totalDmg2} damage`
+        } else {
+            console.log('Your second attack missed!')
+            totalDmg2 = 0
+            dmgAnimation2('./assets/miss-2.png', 2)
+            multiLog2 = 'misses';
+        }
+
+        combatLog.textContent = `Your first kick ${multiLog1}, and you follow up with a second kick that ${multiLog2}.`
+
+        return targetHp - (totalDmg1 + totalDmg2);
+    }
+}
+
 const valeGreatsword = new Greatsword("Greatsword", 'Sword', 6, 'Sweep Attack', 'Lunge Attack', 'strength')
 const slickDoubleDaggers = new DoubleDaggers("Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
 
-export { valeGreatsword, slickDoubleDaggers }
+const unarmed = new Unarmed ('Unarmed', 'N/A', 0, 'Double Strike', 'Double Kick', 'dexterity')
+
+export { valeGreatsword, slickDoubleDaggers, unarmed }
 
