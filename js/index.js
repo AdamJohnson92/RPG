@@ -1,7 +1,7 @@
 import { characterRoster } from './constructors/character.js';
 import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
-import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation, damageMonsterHealthBar } from './combatUtil.js';
+import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation, damageMonsterHealthBar, changePotionMeter } from './combatUtil.js';
 
 //--------------------------------------------------------------
 let chosenCharacter = {};
@@ -42,7 +42,7 @@ const selectCharacter = function (event) {
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
     specialBtn1.textContent = chosenCharacter.special
     potionsLeft = chosenCharacter.potionCount
-console.log(potionsLeft)
+    console.log(potionsLeft)
     return chosenCharacter;
 };
 
@@ -84,7 +84,7 @@ function playGame() {
     console.log(monster)
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
-    
+
     monsterStaminaCounter.textContent = monster.staminaPoints
     changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
     turnDisplay.textContent = 'Your Turn'
@@ -106,6 +106,7 @@ function renderCharSelectionDiv() {
     potionBtn.style.display = 'block'
     charSelectionDiv.style.display = 'flex'
     potionsLeft = chosenCharacter.potionCount
+    changePotionMeter(chosenCharacter.potionCount, potionsLeft)
 }
 
 playBtn.addEventListener('click', playGame)
@@ -186,20 +187,21 @@ function special1() {
     }
 }
 
-let potionsLeft; 
+let potionsLeft;
 function drinkPotion() {
     if (potionsLeft < 1) {
         combatLog.textContent = 'You are all out of potions!'
     } else {
-        heroStaminaCounter.textContent --
+        heroStaminaCounter.textContent--
         changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
         chosenCharacter.takePotion()
 
         console.log(potionsLeft)
-        potionsLeft --
+        potionsLeft--
         console.log(potionsLeft)
 
+        changePotionMeter(chosenCharacter.potionCount, potionsLeft)
         if (heroStaminaCounter.textContent < 1) {
             monsterStaminaCounter.textContent = 1
             changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)

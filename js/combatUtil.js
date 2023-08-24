@@ -1,5 +1,5 @@
 import { chosenCharacter, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, attackBtn1, attackBtn2, specialBtn1, potionBtn } from "./index.js"
-import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, heroHealthJuice,monsterHealthJuice,  } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, heroHealthJuice,monsterHealthJuice, potionJuice } from "./docElements.js"
 
 //------------------------
 //CONTROLLS WHOSE TURN IT IS
@@ -71,6 +71,15 @@ function damageMonsterHealthBar(maxHp, currentHp) {
     } else {
          monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
     }
+}
+
+function changePotionMeter(maxPotion, currentPotion) {
+    console.log(potionJuice.style.height)
+    potionJuice.style.height = `${(currentPotion/maxPotion) * 100}%`
+    if ((currentPotion/maxPotion) * 100 < 100) {
+        potionJuice.style.borderRadius = '0px 0px 100px 100px'
+    }
+    console.log(potionJuice.style.height)
 }
 
 
@@ -190,4 +199,4 @@ function monsterAttackDisappear() {
 // }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter }

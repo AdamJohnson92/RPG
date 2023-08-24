@@ -316,7 +316,6 @@ button:hover {
     height:20px;
     top: 20px;
     left: 15px;
-    
 }
 
 #potion-lid{
@@ -329,14 +328,19 @@ button:hover {
 }
 
 #potion-bottle{
-    width: 90%;
-    height: 90%;
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
     border:2px solid black;
     border-radius: 100px;
+    align-items: end;
+    justify-content: center;
 }
 
 #potion-juice{
-    background-color: pink;
+    position:relative;
+    background-color: rgb(241, 153, 168);
     width:100%;
     height:100%;
     border-radius: 100px;
@@ -510,6 +514,14 @@ footer{
         width: 10px;
         top: 10px;
         left: 5px;
+    }
+
+    #potion-lid{
+        border: 1px solid black;
+    }
+
+    #potion-bottle{
+        border: 1px solid black
     }
 
     .stam-div {
