@@ -36,7 +36,7 @@ class Undead extends Monster {
                 dmgLessArmor = 0;
             }
             combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
-            charHpDiv.textContent = `Hitpoints:  ${(targetHp - dmgLessArmor)}`
+            charHpDiv.textContent = `${(targetHp - dmgLessArmor)}`
             console.log(chosenCharacter)
             if ((targetHp - dmgLessArmor) < 1) {
                 heroHealthJuice.style.width = '0%'
@@ -78,7 +78,7 @@ class Goblin extends Monster {
                 dmgLessArmor = 0;
             }
             combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
-            charHpDiv.textContent = `Hitpoints:  ${(targetHp - dmgLessArmor)}`
+            charHpDiv.textContent = `${(targetHp - dmgLessArmor)}`
             console.log(chosenCharacter)
             if ((targetHp - dmgLessArmor) < 1) {
                 loser()

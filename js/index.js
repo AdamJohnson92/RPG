@@ -32,9 +32,9 @@ const selectCharacter = function (event) {
     charWeaponAttack1.textContent = `${chosenCharacter.weapon.attack1}`
     charWeaponAttack2.textContent = `${chosenCharacter.weapon.attack2}`
     charArmorName.textContent = `${chosenCharacter.armor.name}`
-    charArmorClass.textContent = `Armor Class: ${chosenCharacter.armor.armorClass}`
-    charArmorWeight.textContent = `Weight: ${chosenCharacter.armor.weight}`
-    charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
+    charArmorClass.textContent = `${chosenCharacter.armor.armorClass}`
+    charArmorWeight.textContent = `${chosenCharacter.armor.weight}`
+    charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
 
     playBtn.style.display = 'block'
 
@@ -80,7 +80,7 @@ function playGame() {
     arenaMonsterAttack.setAttribute('src', monster.attackImg)
     monster.currentHp = monster.maxHp
     chosenCharacter.currentHp = chosenCharacter.maxHp
-    charHpDiv.textContent = `Hitpoints: ${chosenCharacter.maxHp}`
+    charHpDiv.textContent = `${chosenCharacter.maxHp}`
     console.log(monster)
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)

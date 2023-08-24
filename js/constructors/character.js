@@ -26,7 +26,7 @@ class Character {
     }
     //MUST MAKE POTION COUNTER THAT DECREMENTS TO 0 SO PLAYER CAN ONLY USE ONCE
     takePotion() {
-            const healAmount = Math.floor(Math.random() * (4 - 2) + 2);
+            const healAmount = Math.floor(Math.random() * (6 - 4) + 4);
             console.log
             console.log('glug glug glug glug')
             if ((this.currentHp + healAmount) > this.maxHp) {
@@ -35,7 +35,7 @@ class Character {
                 this.currentHp = healAmount + this.currentHp
             }
             heroHealthJuice.style.width = `${(this.currentHp / this.maxHp) * 100}%`
-            charHpDiv.textContent = `Hitpoints: ${this.currentHp}`
+            charHpDiv.textContent = `${this.currentHp}`
             combatLog.textContent = `You heal for ${healAmount} hitpoints.`
 
 
@@ -49,7 +49,7 @@ class Knight extends Character {
 
     special1() {
         this.armor.armorRating = this.armor.armorRating + 2
-        charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
+        charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
         buffDisplay(charArmorRating)
         console.log("Your damage reduction is increased by 2 for one turn")
         combatLog.textContent = "Your damage reduction is increased by 2 for one turn"
@@ -60,7 +60,7 @@ class Knight extends Character {
             this.armor.armorRating = 2
         }
         clearBuffDisplay()
-        charArmorRating.textContent = `Damage Reduction: ${chosenCharacter.armor.armorRating}`
+        charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
     }
 }
 
@@ -75,7 +75,7 @@ class Rogue extends Character {
 
     special1() {
         this.hitChanceRate = this.hitChanceRate + 2
-        charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
+        charHitDiv.textContent = `${this.hitChanceRate}`
         console.log("Your hit chance rating is increased by 2 for one turn")
         combatLog.textContent = "Your hit chance rating is increased by 2 for one turn"
         buffDisplay(charHitDiv)
@@ -85,7 +85,7 @@ class Rogue extends Character {
         if (this.hitChanceRate > 14) {
             this.hitChanceRate = 14
         } clearBuffDisplay()
-        charHitDiv.textContent = `Hit Chance: ${this.hitChanceRate}`
+        charHitDiv.textContent = `${this.hitChanceRate}`
     }
 
 }

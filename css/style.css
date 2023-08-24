@@ -108,6 +108,10 @@ p {
     border-radius: 10px;
 }
 
+span {
+    border-radius: 90px;
+}
+
 #char-container {
     display: none;
     flex-direction: row;
