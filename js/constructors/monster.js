@@ -87,7 +87,6 @@ class Goblin extends Monster {
         } else {
             monDmgAnimation('./assets/miss.png')
             console.log(`The ${this.name} missed!`)
-            console.log(this)
             combatLog.textContent = `The ${this.name} missed!`
             return targetHp;
         }

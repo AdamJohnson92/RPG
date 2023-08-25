@@ -42,7 +42,6 @@ const selectCharacter = function (event) {
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
     specialBtn1.textContent = chosenCharacter.special
     potionsLeft = chosenCharacter.potionCount
-    console.log(potionsLeft)
     return chosenCharacter;
 };
 

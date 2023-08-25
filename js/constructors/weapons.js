@@ -1,6 +1,7 @@
 import { combatLog } from "../docElements.js";
 import { chosenCharacter } from "../index.js";
 import { dmgAnimation, dmgAnimation2 } from "../combatUtil.js";
+import {confidentRoll, measuredRoll, riskyRoll} from '../att-dmg-rolls.js'
 
 //WEAPON CLASS CONSTRUCTORS
 class Weapon {
@@ -20,7 +21,7 @@ class Greatsword extends Weapon {
     }
     attackDam1(targetHit, targetHp) {
         console.log(this.modifyingStat)
-        const naturalRoll = Math.floor(Math.random() * (20 - 3) + 3)
+        const naturalRoll = confidentRoll()
         const totalRoll = naturalRoll + chosenCharacter.strength
 
         if (totalRoll >= targetHit) {
@@ -40,7 +41,7 @@ class Greatsword extends Weapon {
     }
 
     attackDam2(targetHit, targetHp) {
-        const naturalRoll = Math.floor(Math.random() * (20 - 1) + 1)
+        const naturalRoll = measuredRoll()
         const totalRoll = naturalRoll + chosenCharacter.strength
 
         if (totalRoll >= targetHit) {
@@ -65,7 +66,7 @@ class DoubleDaggers extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(targetHit, targetHp) {
-        const naturalRoll1 = Math.floor(Math.random() * (20 - 4) + 4)
+        const naturalRoll1 = confidentRoll()
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
 
         let totalDmg1
@@ -82,7 +83,7 @@ class DoubleDaggers extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = Math.floor(Math.random() * (20 - 4) + 4)
+        const naturalRoll2 = confidentRoll()
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
 
         let totalDmg2;
@@ -105,7 +106,7 @@ class DoubleDaggers extends Weapon {
     };
 
     attackDam2(targetHit, targetHp) {
-        const naturalRoll1 = Math.floor(Math.random() * (18 - 2) + 2)
+        const naturalRoll1 = riskyRoll()
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
 
         let totalDmg1
@@ -123,7 +124,7 @@ class DoubleDaggers extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = Math.floor(Math.random() * (18 - 2) + 2)
+        const naturalRoll2 = risky()
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
 
         let totalDmg2;
@@ -152,7 +153,7 @@ class Unarmed extends Weapon {
         super(name, type, weight, attack1, attack2, modifyingStat)
     }
     attackDam1(targetHit, targetHp) {
-        const naturalRoll1 = Math.floor(Math.random() * (20 - 5) + 5)
+        const naturalRoll1 = confidentRoll()
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
 
         let totalDmg1
@@ -169,7 +170,7 @@ class Unarmed extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = Math.floor(Math.random() * (20 - 5) + 5)
+        const naturalRoll2 = confidentRoll()
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
 
         let totalDmg2;
@@ -192,7 +193,7 @@ class Unarmed extends Weapon {
     };
 
     attackDam2(targetHit, targetHp) {
-        const naturalRoll1 = Math.floor(Math.random() * (18 - 2) + 2)
+        const naturalRoll1 = measuredRoll()
         const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
 
         let totalDmg1
@@ -210,7 +211,7 @@ class Unarmed extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = Math.floor(Math.random() * (18 - 2) + 2)
+        const naturalRoll2 = measuredRoll()
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
 
         let totalDmg2;
