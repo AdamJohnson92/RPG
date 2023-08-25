@@ -91,7 +91,7 @@ class Rogue extends Character {
 }
 
 const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
-    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 2)
+    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1)
 
 class Monk extends Character {
     constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
@@ -100,23 +100,31 @@ class Monk extends Character {
 
     //Must change Special
     special1() {
-        this.hitChanceRate = this.hitChanceRate + 2
+        this.hitChanceRate = this.hitChanceRate + 1
+        this.armor.armorRating = this.armor.armorRating + 1
         charHitDiv.textContent = `${this.hitChanceRate}`
-        console.log("Your hit chance rating is increased by 2 for one turn")
-        combatLog.textContent = "Your hit chance rating is increased by 2 for one turn"
+        charArmorRating.textContent = `${this.armor.armorRating}`
+        console.log("Your hit chance rating and your damage reduction are improved by 1 for one turn")
+        combatLog.textContent = "Your hit chance rating and your damage reduction are improved by 1 for one turn"
         buffDisplay(charHitDiv)
+        buffDisplay(charArmorRating)
     }
 
     undo1() {
         if (this.hitChanceRate > 15) {
             this.hitChanceRate = 15
-        } clearBuffDisplay()
+        } 
+    
         charHitDiv.textContent = `${this.hitChanceRate}`
+        if (this.armor.armorRating > 0) {
+            this.armor.armorRating = 0
+        } 
+        clearBuffDisplay()
     }
 
 }
 
-const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 1, 1, 1, 15, unarmed, tunic, "Agile", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2)
+const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 1, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2)
 
 const characterRoster = [valeChar, slickChar, orbynChar]
 
