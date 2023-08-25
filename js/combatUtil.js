@@ -1,5 +1,5 @@
 import { chosenCharacter, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, attackBtn1, attackBtn2, specialBtn1, potionBtn } from "./index.js"
-import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, heroHealthJuice,monsterHealthJuice, potionJuice } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, monsterDmgImg3, heroHealthJuice,monsterHealthJuice, potionJuice } from "./docElements.js"
 
 //------------------------
 //CONTROLLS WHOSE TURN IT IS
@@ -118,11 +118,10 @@ function dmgSlashAppear(src) {
 function dmgSlashDisappear() {
     monsterDmgImg.style.display = 'none'
 }
-
 /////MUST MAKE THIS MORE DRY Second parameter that is only sent with the second attack
 
-function dmgAnimation2(src, secondAttack) {
-    setTimeout(dmgSlashAppear2(src, secondAttack), 350);
+function dmgAnimation2(src) {
+    setTimeout(dmgSlashAppear2(src), 350);
     setTimeout(dmgSlashDisappear2, 850)
 }
 function dmgSlashAppear2(src) {
@@ -131,6 +130,18 @@ function dmgSlashAppear2(src) {
 }
 function dmgSlashDisappear2() {
     monsterDmgImg2.style.display = 'none'
+}
+//-------------------------------------
+function dmgAnimation3(src) {
+    setTimeout(dmgSlashAppear3(src), 500);
+    setTimeout(dmgSlashDisappear3, 1000)
+}
+function dmgSlashAppear3(src) {
+    monsterDmgImg3.setAttribute('src', src)
+    monsterDmgImg3.style.display = 'block'
+}
+function dmgSlashDisappear3() {
+    monsterDmgImg3.style.display = 'none'
 }
 
 //Damage animations for when monster attack
@@ -201,4 +212,4 @@ function monsterAttackDisappear() {
 // }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter }

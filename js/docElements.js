@@ -40,6 +40,7 @@ const arenaMonsterAttack = document.getElementById('arena-monster-attack')
 
 const monsterDmgImg = document.getElementById('monster-dmg')
 const monsterDmgImg2 = document.getElementById('monster-dmg-2')
+const monsterDmgImg3 = document.getElementById('monster-dmg-3')
 const heroDmgImg = document.getElementById('hero-dmg')
 const combatDiv = document.getElementById('combat-div')
 const combatLog = document.getElementById('combat-log')
@@ -62,4 +63,4 @@ const monsterHealthJuice = document.getElementById('monster-health-juice')
 
 
 
-export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, monsterDmgImg2, heroDmgImg, heroHealthJuice, heroStaminaCounter, heroStamJuice, potionJuice,  turnDisplay, monsterHealthJuice, monsterStaminaCounter, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack}
+export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, monsterDmgImg2, monsterDmgImg3, heroDmgImg, heroHealthJuice, heroStaminaCounter, heroStamJuice, potionJuice,  turnDisplay, monsterHealthJuice, monsterStaminaCounter, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack}

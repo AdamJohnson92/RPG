@@ -263,7 +263,6 @@ button:hover {
 .dmg-img {
     display: none;
     position: absolute;
-    transition: all 1s ease-in-out;
 }
 
 .arena-placement {

@@ -1,6 +1,6 @@
 import { combatLog } from "../docElements.js";
 import { chosenCharacter } from "../index.js";
-import { dmgAnimation, dmgAnimation2 } from "../combatUtil.js";
+import { dmgAnimation, dmgAnimation2, dmgAnimation3 } from "../combatUtil.js";
 import {confidentRoll, measuredRoll, riskyRoll} from '../att-dmg-rolls.js'
 
 //WEAPON CLASS CONSTRUCTORS
@@ -177,17 +177,36 @@ class Unarmed extends Weapon {
         let multiLog2;
         if (totalRoll2 >= targetHit) {
             const damage2 = Math.floor(Math.random() * (1 - 1) + 1);
-            dmgAnimation2('./assets/damage-2.png', 2)
+            dmgAnimation2('./assets/damage-2.png')
             totalDmg2 = damage2 + chosenCharacter.dexterity
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
             totalDmg2 = 0
-            dmgAnimation2('./assets/miss-2.png', 2)
+            dmgAnimation2('./assets/miss-2.png')
             multiLog2 = 'misses';
         }
 
-        combatLog.textContent = `Your first strike ${multiLog1}, and you follow up a second strike that ${multiLog2}.`
+        const naturalRoll3 = confidentRoll()
+        const totalRoll3 = naturalRoll3 + chosenCharacter.dexterity
+
+        let totalDmg3;
+        let multiLog3= 'poops';
+        if (totalRoll3 >= targetHit) {
+            const damage3 = Math.floor(Math.random() * (1 - 1) + 1);
+            dmgAnimation3('./assets/damage-3.png')
+            totalDmg3 = damage3 + chosenCharacter.dexterity
+            console.log(`total damage 3: ${totalDmg3}`)
+            multiLog3 = `deals ${totalDmg3} damage`
+        } else {
+            totalDmg3 = 0
+            dmgAnimation3('./assets/miss-3.png')
+            multiLog3 = 'misses';
+        }
+
+        combatLog.textContent = `Your first strike ${multiLog1}, your second strike ${multiLog2}, and your third strike 
+         ${multiLog3}.
+        `
 
         return targetHp - (totalDmg1 + totalDmg2);
     };
@@ -236,9 +255,50 @@ class Unarmed extends Weapon {
 }
 
 const valeGreatsword = new Greatsword("Greatsword", 'Sword', 6, 'Sweep Attack', 'Lunge Attack', 'strength')
+
 const slickDoubleDaggers = new DoubleDaggers("Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
 
-const unarmed = new Unarmed ('Unarmed', 'N/A', 0, 'Double Strike', 'Double Kick', 'dexterity')
+const unarmed = new Unarmed ('Unarmed', 'N/A', 0, 'Flurry of Blows', 'Triple Combo', 'dexterity')
 
 export { valeGreatsword, slickDoubleDaggers, unarmed }
+
+
+
+
+
+
+// function controller() {
+//     return 'result';
+// }
+
+// function firstFunc() {
+//     return new Promise((resolve)=> {
+//         setTimeout(() => {
+//             const result = controller()
+//             resolve(result);
+//         }, 2000);
+//     })
+// }
+
+// function runAfter(){
+//     console.log('runAfter')
+// }
+
+// firstFunc()
+// .then((res) => {
+//     console.log(res);
+//     runAfter();
+// })
+// .catch((err) => {
+//     console.log(err);
+// })
+
+// async function main() {
+//     try{
+//         const res = await firstFunc();
+//         runAfter();
+//     }catch(err){
+
+//     }
+// }
 
