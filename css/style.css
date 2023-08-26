@@ -88,6 +88,7 @@ main {
 }
 
 .card{
+    position: relative;
     width: 40vw;
     height: fit-content;
     margin: 10px;
@@ -98,6 +99,12 @@ main {
     background-color: var(--grey);
     border-radius: 5px;
     box-shadow: 2px 2px 10px black;
+}
+
+#char-name{
+    font-size: 50px;
+    position: relative;
+    top: 15px;
 }
 
 p {
@@ -454,6 +461,19 @@ footer{
         height: 90px;
         width: 90px;
         border: 5px ridge var(--silver)
+    }
+
+    #char-name{
+        position: relative;
+        font-size: 45px;
+        top: 10px;
+    }
+
+    .card-header{
+        font-size: 25px;
+    }    
+    .card-item{
+        font-size: 18px;
     }
 
 

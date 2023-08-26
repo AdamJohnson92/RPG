@@ -124,7 +124,7 @@ class Monk extends Character {
 
 }
 
-const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 1, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2)
+const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 2, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2)
 
 const characterRoster = [valeChar, slickChar, orbynChar]
 

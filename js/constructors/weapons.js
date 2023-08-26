@@ -212,15 +212,15 @@ class Unarmed extends Weapon {
     };
 
     attackDam2(targetHit, targetHp) {
-        const naturalRoll1 = measuredRoll()
-        const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+        const naturalRoll1 = confidentRoll()
+        const totalRoll1 = naturalRoll1 + chosenCharacter.strength
 
         let totalDmg1
         let multiLog1;
         if (totalRoll1 >= targetHit) {
             const damage1 = Math.floor(Math.random() * (2 - 1) + 1);
             dmgAnimation('./assets/damage.png', 1)
-            totalDmg1 = damage1 + chosenCharacter.dexterity
+            totalDmg1 = damage1 + chosenCharacter.strength
             console.log(`total damage 1: ${totalDmg1}`)
             multiLog1 = `deals ${totalDmg1} damage`
         } else {
@@ -230,15 +230,15 @@ class Unarmed extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = measuredRoll()
-        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+        const naturalRoll2 = confidentRoll()
+        const totalRoll2 = naturalRoll2 + chosenCharacter.strength
 
         let totalDmg2;
         let multiLog2;
         if (totalRoll2 >= targetHit) {
-            const damage2 = Math.floor(Math.random() * (2 - 1) + 1);
+            const damage2 = Math.floor(Math.random() * (4 - 2) + 2);
             dmgAnimation2('./assets/damage-2.png', 2)
-            totalDmg2 = damage2 + chosenCharacter.dexterity
+            totalDmg2 = damage2 + chosenCharacter.strength
             console.log(`total damage 2: ${totalDmg2}`)
             multiLog2 = `deals ${totalDmg2} damage`
         } else {
@@ -248,7 +248,7 @@ class Unarmed extends Weapon {
             multiLog2 = 'misses';
         }
 
-        combatLog.textContent = `Your first kick ${multiLog1}, and you follow up with a second kick that ${multiLog2}.`
+        combatLog.textContent = `Your first punch ${multiLog1}, and you follow up with a second punch that ${multiLog2}.`
 
         return targetHp - (totalDmg1 + totalDmg2);
     }
@@ -258,7 +258,7 @@ const valeGreatsword = new Greatsword("Greatsword", 'Sword', 6, 'Sweep Attack', 
 
 const slickDoubleDaggers = new DoubleDaggers("Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
 
-const unarmed = new Unarmed ('Unarmed', 'N/A', 0, 'Flurry of Blows', 'Triple Combo', 'dexterity')
+const unarmed = new Unarmed ('Unarmed', 'N/A', 0, 'Flurry of Blows', 'One-Two Punch', 'dexterity')
 
 export { valeGreatsword, slickDoubleDaggers, unarmed }
 
