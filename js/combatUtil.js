@@ -62,7 +62,6 @@ function damageHeroHealthBar(maxHp, currentHp) {
     } else {
         heroHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
     }
-    
 }
 
 function damageMonsterHealthBar(maxHp, currentHp) {
