@@ -354,10 +354,9 @@ button:hover {
 }
 
 #combat-UI-div {
+    position: relative;
     width: 100%;
-    margin:5px;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     height:220px;
     padding: 0;
@@ -366,7 +365,9 @@ button:hover {
 }
 
 #combat-log-parent-div {
-    height:80px;
+    position: relative;
+    top: 0px;
+    height:60px;
     display: flex;
     flex-direction: row;
     justify-content: center;

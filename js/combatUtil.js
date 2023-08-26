@@ -1,27 +1,35 @@
 import { chosenCharacter, monster, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, attackBtn1, attackBtn2, specialBtn1, potionBtn } from "./index.js"
-import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, monsterDmgImg3, heroHealthJuice,monsterHealthJuice, potionJuice } from "./docElements.js"
+import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, monsterDmgImg3, heroHealthJuice, monsterHealthJuice, potionJuice } from "./docElements.js"
 
+
+function hideCombatBtns() {
+    attackBtn1.style.display = 'none'
+    attackBtn2.style.display = 'none'
+    specialBtn1.style.display = 'none'
+    potionBtn.style.display = 'none'
+}
+
+function showCombatBtns() {
+    attackBtn1.style.display = 'block'
+    attackBtn2.style.display = 'block'
+    specialBtn1.style.display = 'block'
+    potionBtn.style.display = 'block'
+}
 //------------------------
 //CONTROLLS WHOSE TURN IT IS
 //---------------------
 
 let isHeroTurn = true
-function turnBannerChange(truthiness) {
-    if (truthiness === true) {
+function turnBannerChange(playerTurn) {
+    if (playerTurn === true) {
         turnDisplay.style.backgroundColor = 'var(--green)'
         turnDisplay.textContent = 'Your Turn'
-        attackBtn1.style.visibility = 'visible'
-        attackBtn2.style.visibility = 'visible'
-        specialBtn1.style.visibility = 'visible'
-        potionBtn.style.visibility = 'visible'
+        showCombatBtns()
         chosenCharacter.undo1()
     } else {
         turnDisplay.style.backgroundColor = 'var(--red)'
         turnDisplay.textContent = "Enemy's Turn"
-        attackBtn1.style.visibility = 'hidden'
-        attackBtn2.style.visibility = 'hidden'
-        specialBtn1.style.visibility = 'hidden'
-        potionBtn.style.visibility = 'hidden'
+        hideCombatBtns()
     }
 }
 
@@ -68,14 +76,14 @@ function damageMonsterHealthBar(maxHp, currentHp) {
     if (currentHp < 0) {
         monsterHealthJuice.style.width = "0%"
     } else {
-         monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
+        monsterHealthJuice.style.width = `${(currentHp / maxHp) * 100}%`
     }
 }
 
 function changePotionMeter(maxPotion, currentPotion) {
     console.log(potionJuice.style.height)
-    potionJuice.style.height = `${(currentPotion/maxPotion) * 100}%`
-    if ((currentPotion/maxPotion) * 100 < 100) {
+    potionJuice.style.height = `${(currentPotion / maxPotion) * 100}%`
+    if ((currentPotion / maxPotion) * 100 < 100) {
         potionJuice.style.borderRadius = '0px 0px 100px 100px'
     } else {
         potionJuice.style.borderRadius = '100px'
@@ -176,7 +184,7 @@ function heroAttackDisappear() {
 
 //------------
 
-function monsterAttackAnimation(){
+function monsterAttackAnimation() {
     monsterAttackAppear()
     setTimeout(monsterAttackDisappear, 500)
 }
@@ -211,4 +219,4 @@ function monsterAttackDisappear() {
 // }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter, hideCombatBtns, showCombatBtns }

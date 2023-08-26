@@ -1,7 +1,7 @@
 import { characterRoster } from './constructors/character.js';
 import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
-import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation, damageMonsterHealthBar, changePotionMeter } from './combatUtil.js';
+import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation, damageMonsterHealthBar, changePotionMeter, hideCombatBtns, showCombatBtns } from './combatUtil.js';
 
 //--------------------------------------------------------------
 let chosenCharacter = {};
@@ -99,10 +99,7 @@ function renderCharSelectionDiv() {
     heroHealthJuice.style.width = '100%'
     monsterHealthJuice.style.width = '100%'
     playAgainBtn.style.display = 'none'
-    attackBtn1.style.display = 'block'
-    attackBtn2.style.display = 'block'
-    specialBtn1.style.display = 'block'
-    potionBtn.style.display = 'block'
+    showCombatBtns()
     charSelectionDiv.style.display = 'flex'
     potionsLeft = chosenCharacter.potionCount
     changePotionMeter(chosenCharacter.potionCount, potionsLeft)
@@ -115,10 +112,7 @@ playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 
 function winner() {
     combatLog.textContent = `You have slain the ${monster.name}!`
-    attackBtn1.style.display = 'none'
-    attackBtn2.style.display = 'none'
-    specialBtn1.style.display = 'none'
-    potionBtn.style.display = 'none'
+    hideCombatBtns()
     arenaMonsterAvatar.style.display = 'none'
 
     playAgainBtn.style.display = 'block'
@@ -129,10 +123,7 @@ function winner() {
 function loser() {
     console.log('you died!')
     combatLog.textContent = `You Died!`
-    attackBtn1.style.display = 'none'
-    attackBtn2.style.display = 'none'
-    specialBtn1.style.display = 'none'
-    potionBtn.style.display = 'none'
+    hideCombatBtns()
     arenaHeroAvatar.style.display = 'none'
     heroStaminaCounter.textContent = ' '
     playAgainBtn.style.display = 'block'
@@ -202,7 +193,7 @@ function drinkPotion() {
 
         changePotionMeter(chosenCharacter.potionCount, potionsLeft)
         if (heroStaminaCounter.textContent < 1) {
-            monsterStaminaCounter.textContent = 1
+            monsterStaminaCounter.textContent = monster.staminaPoints
             changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
             let isHeroTurn = false
             turnBannerChange(isHeroTurn)
