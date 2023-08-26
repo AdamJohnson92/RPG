@@ -124,7 +124,7 @@ class DoubleDaggers extends Weapon {
             multiLog1 = 'misses';
         }
 
-        const naturalRoll2 = risky()
+        const naturalRoll2 = riskyRoll()
         const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
 
         let totalDmg2;
