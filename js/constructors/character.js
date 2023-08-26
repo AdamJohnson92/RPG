@@ -7,7 +7,7 @@ import { buffDisplay, clearBuffDisplay, heroHealthJuice } from "../combatUtil.js
 
 //CHARACTER CLASS CONSTRUCTORS
 class Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
         this.name = name;
         this.charClass = charClass
         this.maxHp = maxHp;
@@ -22,12 +22,12 @@ class Character {
         this.img = img;
         this.attackImg = attackImg;
         this.staminaPoints = staminaPoints;
-        this.potionCount = potionCount
+        this.potionCount = potionCount;
+        this.gold = gold;
     }
     //MUST MAKE POTION COUNTER THAT DECREMENTS TO 0 SO PLAYER CAN ONLY USE ONCE
     takePotion() {
         const healAmount = Math.floor(Math.random() * (6 - 4) + 4);
-        console.log
         console.log('glug glug glug glug')
         if ((this.currentHp + healAmount) > this.maxHp) {
             this.currentHp = this.maxHp
@@ -43,8 +43,8 @@ class Character {
 }
 //-----
 class Knight extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold)
     }
 
     special1() {
@@ -64,13 +64,13 @@ class Knight extends Character {
     }
 }
 
-const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2, 1)
+const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2, 1, 0)
 
 //--------
 
 class Rogue extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold)
     }
 
     special1() {
@@ -91,11 +91,11 @@ class Rogue extends Character {
 }
 
 const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
-    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1)
+    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1, 0)
 
 class Monk extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold)
     }
 
     //Must change Special
@@ -124,7 +124,7 @@ class Monk extends Character {
 
 }
 
-const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 2, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2)
+const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 2, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2, 0)
 
 const characterRoster = [valeChar, slickChar, orbynChar]
 

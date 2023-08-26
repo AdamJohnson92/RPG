@@ -1,5 +1,5 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
+import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charGold, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
 import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation, damageMonsterHealthBar, changePotionMeter, hideCombatBtns, showCombatBtns } from './combatUtil.js';
 
@@ -42,6 +42,8 @@ const selectCharacter = function (event) {
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
     specialBtn1.textContent = chosenCharacter.special
     potionsLeft = chosenCharacter.potionCount
+    chosenCharacter.gold = JSON.parse(localStorage.getItem(`${chosenCharacter.name} Gold`)) + 0
+    charGold.textContent = chosenCharacter.gold
     return chosenCharacter;
 };
 
@@ -118,6 +120,9 @@ function winner() {
     playAgainBtn.style.display = 'block'
     turnDisplay.textContent = 'You Win!'
     turnDisplay.style.backgroundColor = 'var(--gold)'
+    chosenCharacter.gold = chosenCharacter.gold + 100
+    localStorage.setItem(`${chosenCharacter.name} Gold`, JSON.stringify(chosenCharacter.gold))
+    charGold.textContent = chosenCharacter.gold
 }
 
 function loser() {
