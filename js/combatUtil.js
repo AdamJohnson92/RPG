@@ -38,7 +38,7 @@ function cpuPause() {
 }
 
 function changeTurn1() {
-    if ((heroStaminaCounter.textContent < 1) && (monster.currentHp > 0)) {
+    (heroStaminaCounter.textContent < 1) && (monster.currentHp > 0) 
         if (monster.currentHp < 1) {
             return
         } else {
@@ -50,7 +50,6 @@ function changeTurn1() {
 
             return chosenCharacter.currentHp;
         }
-    } else { return }
 }
 
 function changeTurn2() {
