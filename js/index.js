@@ -42,7 +42,12 @@ const selectCharacter = function (event) {
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
     specialBtn1.textContent = chosenCharacter.special
     potionsLeft = chosenCharacter.potionCount
-    chosenCharacter.gold = JSON.parse(localStorage.getItem(`${chosenCharacter.name} Gold`)) + 0
+    const chosenCharacterSaveData = JSON.parse(localStorage.getItem(chosenCharacter.name))
+    console.log(chosenCharacterSaveData)
+
+    if (!chosenCharacterSaveData) {
+        chosenCharacter.gold = 0
+    } else {chosenCharacter.gold = chosenCharacterSaveData.gold}
     charGold.textContent = chosenCharacter.gold
     return chosenCharacter;
 };
@@ -121,7 +126,7 @@ function winner() {
     turnDisplay.textContent = 'You Win!'
     turnDisplay.style.backgroundColor = 'var(--gold)'
     chosenCharacter.gold = chosenCharacter.gold + 100
-    localStorage.setItem(`${chosenCharacter.name} Gold`, JSON.stringify(chosenCharacter.gold))
+    localStorage.setItem(chosenCharacter.name, JSON.stringify(chosenCharacter))
     charGold.textContent = chosenCharacter.gold
 }
 
