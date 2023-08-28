@@ -110,12 +110,24 @@ function clearBuffDisplay() {
     charSpecial.style.boxShadow = 'none'
 }
 
+
+function bing(){
+    console.log('bing')
+}
+
+function bang(){
+    console.log('bang')
+}
+
+function boom(){
+    console.log('boom')
+}
 //-------------------------------------------
 //DAMAGE ANIMATIONS
 //------------------------------
 function dmgAnimation(src) {
-    dmgSlashAppear(src);
-    setTimeout(dmgSlashDisappear, 500)
+    setTimeout( dmgSlashAppear, 0, src)
+    setTimeout(dmgSlashDisappear, 300)
 }
 function dmgSlashAppear(src) {
     monsterDmgImg.setAttribute('src', src)
@@ -127,8 +139,8 @@ function dmgSlashDisappear() {
 /////MUST MAKE THIS MORE DRY Second parameter that is only sent with the second attack
 
 function dmgAnimation2(src) {
-    setTimeout(dmgSlashAppear2(src), 350);
-    setTimeout(dmgSlashDisappear2, 850)
+    setTimeout(dmgSlashAppear2, 301, src);
+    setTimeout(dmgSlashDisappear2, 601)
 }
 function dmgSlashAppear2(src) {
     monsterDmgImg2.setAttribute('src', src)
@@ -139,8 +151,8 @@ function dmgSlashDisappear2() {
 }
 //-------------------------------------
 function dmgAnimation3(src) {
-    setTimeout(dmgSlashAppear3(src), 500);
-    setTimeout(dmgSlashDisappear3, 1000)
+    setTimeout(dmgSlashAppear3, 602, src);
+    setTimeout(dmgSlashDisappear3, 902)
 }
 function dmgSlashAppear3(src) {
     monsterDmgImg3.setAttribute('src', src)

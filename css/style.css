@@ -130,7 +130,9 @@ span {
 
 #character-img-div {
     height: 110px;
-    background-image: linear-gradient(lightblue 0%, lightblue 40%, rgb(148, 107, 70) 45%, rgb(110, 79, 52) 100%);
+    background-image:  url('../assets/bg-1.png');
+    background-position: 69px;
+    background-size: cover;
     width: 110px;
     position: relative;
     bottom: 10px;
