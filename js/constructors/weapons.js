@@ -141,7 +141,13 @@ class Unarmed extends Weapon {
     }
     attackDam1(targetHit, targetHp) {
         const naturalRoll1 = confidentRoll()
-        const totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+        let totalRoll1;
+        if (chosenCharacter.charClass = 'Monk') {
+            totalRoll1 = naturalRoll1 + chosenCharacter.dexterity + chosenCharacter.strength
+        } else {
+            totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+        }
+        
 
         let totalDmg1
         let multiLog1;
@@ -157,7 +163,12 @@ class Unarmed extends Weapon {
         }
 
         const naturalRoll2 = confidentRoll()
-        const totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+        let totalRoll2;
+        if (chosenCharacter.charClass = 'Monk') {
+            totalRoll2 = naturalRoll2 + chosenCharacter.dexterity + chosenCharacter.strength
+        } else {
+            totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+        }
 
         let totalDmg2;
         let multiLog2;
@@ -173,7 +184,12 @@ class Unarmed extends Weapon {
         }
 
         const naturalRoll3 = confidentRoll()
-        const totalRoll3 = naturalRoll3 + chosenCharacter.dexterity
+        let totalRoll3;
+        if (chosenCharacter.charClass = 'Monk') {
+            totalRoll3 = naturalRoll3 + chosenCharacter.dexterity + chosenCharacter.strength
+        } else {
+            totalRoll3 = naturalRoll3 + chosenCharacter.dexterity
+        }
 
         let totalDmg3;
         let multiLog3= 'poops';
@@ -197,7 +213,12 @@ class Unarmed extends Weapon {
 
     attackDam2(targetHit, targetHp) {
         const naturalRoll1 = confidentRoll()
-        const totalRoll1 = naturalRoll1 + chosenCharacter.strength
+        let totalRoll1;
+        if (chosenCharacter.charClass = 'Monk') {
+            totalRoll1 = naturalRoll1 + chosenCharacter.dexterity + chosenCharacter.strength
+        } else {
+            totalRoll1 = naturalRoll1 + chosenCharacter.dexterity
+        }
 
         let totalDmg1
         let multiLog1;
@@ -213,7 +234,12 @@ class Unarmed extends Weapon {
         }
 
         const naturalRoll2 = confidentRoll()
-        const totalRoll2 = naturalRoll2 + chosenCharacter.strength
+        let totalRoll2;
+        if (chosenCharacter.charClass = 'Monk') {
+            totalRoll2 = naturalRoll2 + chosenCharacter.dexterity + chosenCharacter.strength
+        } else {
+            totalRoll2 = naturalRoll2 + chosenCharacter.dexterity
+        }
 
         let totalDmg2;
         let multiLog2;
