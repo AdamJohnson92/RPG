@@ -13,7 +13,7 @@
     --red: rgb(180, 12, 12);
     height: 100vh;
     background-image: linear-gradient(var(--brown) 0%, black 100%);
-    background-size:cover;
+    background-size: cover;
 }
 
 
@@ -25,8 +25,8 @@ body {
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(var(--brown) 0%, black 100%);
-    background-size:cover;
-    
+    background-size: cover;
+
     font-family: 'Yatra One', cursive;
 
 }
@@ -71,7 +71,7 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    
+
 }
 
 .container {
@@ -81,15 +81,15 @@ main {
     display: flex;
     flex-direction: column;
     border: 10px ridge var(--gold);
-    
+
     background-color: var(--grey);
     border-radius: 5px;
     background-image: linear-gradient(var(--silver) 0%, var(--grey) 35%);
     box-shadow: 2px 2px 10px black;
-   
+
 }
 
-.card{
+.card {
     position: relative;
     width: 40vw;
     height: fit-content;
@@ -104,7 +104,7 @@ main {
 }
 
 
-#char-name{
+#char-name {
     font-size: 50px;
     position: relative;
     top: 15px;
@@ -130,7 +130,7 @@ span {
 
 #character-img-div {
     height: 110px;
-    background-image:  url('../assets/bg-1.png');
+    background-image: url('../assets/bg-1.png');
     background-position: 69px;
     background-size: cover;
     width: 110px;
@@ -162,15 +162,15 @@ span {
     background-size: cover;
 }
 
-#gold-line{
+#gold-line {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-left: 0px;
 }
 
-#gold-img{
-    width:50px;
+#gold-img {
+    width: 50px;
     height: 50px;
 }
 
@@ -206,7 +206,7 @@ span {
     display: none;
     align-items: center;
     padding-top: 0px;
-    height:700px;
+    height: 700px;
 }
 
 
@@ -278,7 +278,7 @@ button:hover {
     position: relative;
     left: 50px;
     top: 25px;
-    
+
 }
 
 #arena-monster-attack {
@@ -310,6 +310,7 @@ button:hover {
     border: 3px solid black;
     align-items: left;
 }
+
 .stam-bar {
     display: flex;
     flex-direction: column;
@@ -323,54 +324,54 @@ button:hover {
     align-items: left;
 }
 
-.health-juice{
+.health-juice {
     background-color: red;
     width: 100%;
-    height:15px;
+    height: 15px;
 }
 
-.stam-juice{
+.stam-juice {
     background-color: green;
     width: 100%;
     height: 15px;
 }
 
-#potion-div{
+#potion-div {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     width: 20px;
-    height:20px;
+    height: 20px;
     top: 20px;
     left: 15px;
 }
 
-#potion-lid{
+#potion-lid {
     position: relative;
-    top:5%;
+    top: 5%;
     width: 20%;
     height: 20%;
     border: 2px solid black;
     border-bottom: 0px;
 }
 
-#potion-bottle{
-    display:flex;
+#potion-bottle {
+    display: flex;
     flex-direction: row;
     width: 100%;
     height: 100%;
-    border:2px solid black;
+    border: 2px solid black;
     border-radius: 100px;
     align-items: end;
     justify-content: center;
 }
 
-#potion-juice{
-    position:relative;
+#potion-juice {
+    position: relative;
     background-color: rgb(241, 153, 168);
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     border-radius: 100px;
 }
 
@@ -379,16 +380,16 @@ button:hover {
     width: 100%;
     display: flex;
     flex-direction: column;
-    height:220px;
+    height: 220px;
     padding: 0;
     border-bottom: none;
-    box-shadow: none ;
+    box-shadow: none;
 }
 
 #combat-log-parent-div {
     position: relative;
     top: 0px;
-    height:60px;
+    height: 60px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -407,16 +408,16 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     height: auto;
-    
+
 }
 
-.combat-btn{
+.combat-btn {
     margin: 10px;
     width: 120px;
 }
 
 
-footer{
+footer {
     position: relative;
     bottom: 0px;
     display: flex;
@@ -428,6 +429,78 @@ footer{
 }
 
 @media screen and (max-width: 1500px) {
+
+    #char-container {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #character-card {
+        width: 90%;
+
+    }
+
+    #equipment-card {
+        width: 90%;
+    }
+
+    #combat-div {
+        height: auto;
+    }
+
+    #combat-UI-div {
+        height: 500px;
+    }
+
+    #combat-log-parent-div {
+        height: 100px;
+    }
+
+
+    .combat-btn {
+        width: 300px;
+        margin: 15px;
+    }
+
+}
+
+@media screen and (max-width: 1075px) {
+    #arena {
+        width: 275px;
+        height: 300px;
+    }
+
+    .health-bar {
+        height: 10px;
+        width: 90px;
+        top: 10px;
+    }
+
+    .stam-bar {
+        height: 10px;
+        width: 90px;
+        top: 30px;
+    }
+
+    #potion-div {
+        height: 15px;
+        width: 15px;
+        top: 10px;
+        left: 5px;
+    }
+
+    #potion-lid {
+        border: 1px solid black;
+        border-bottom: 0px;
+    }
+
+    #potion-bottle {
+        border: 1px solid black
+    }
+}
+
+@media screen and (max-width: 450px) {
     header {
         align-content: center;
 
@@ -441,19 +514,18 @@ footer{
     h2 {
         font-size: 30px;
     }
-    h3{
-        font-size: 30px; 
+
+    h3 {
+        font-size: 30px;
         margin: 0;
     }
 
     .container {
-        width: 85%;
+        width: 90%;
     }
+
     .card {
-        width: 85%;
         height: auto;
-        margin: 5px;
-        padding: 10px;
     }
 
     p {
@@ -468,10 +540,18 @@ footer{
     }
 
     #char-container {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+    }
 
+    #character-card{
+        width:80%;
+    }
+
+    #equipment-card{
+        width:80%;
     }
 
     #character-img-div {
@@ -480,16 +560,17 @@ footer{
         border: 5px ridge var(--silver)
     }
 
-    #char-name{
+    #char-name {
         position: relative;
         font-size: 45px;
-        top: 10px;
+        top: 0px;
     }
 
-    .card-header{
+    .card-header {
         font-size: 25px;
-    }    
-    .card-item{
+    }
+
+    .card-item {
         font-size: 18px;
     }
 
@@ -499,6 +580,7 @@ footer{
         align-content: center;
         justify-content: center;
         height: auto;
+        border-top: none;
     }
 
 
@@ -524,9 +606,9 @@ footer{
         position: relative;
         left: 50px;
         top: 25px;
-        
+
     }
-    
+
     #arena-monster-attack {
         display: none;
         position: relative;
@@ -535,12 +617,13 @@ footer{
     }
 
     #arena-banner {
+        background-image: none;
         flex-direction: row;
-        border: none;
-        border-bottom: 10px ridge var(--gold);
+        border: 10px ridge var(--gold);
         justify-content: space-around;
-        margin-top: 0px;
+
         width: 100%;
+        height: 100px;
     }
 
     #turn-display {
@@ -556,25 +639,25 @@ footer{
         top: 5px;
     }
 
-    .stam-bar{
+    .stam-bar {
         height: 5px;
         width: 70px;
         top: 13px;
     }
 
-    #potion-div{
+    #potion-div {
         height: 10px;
         width: 10px;
         top: 10px;
         left: 5px;
     }
 
-    #potion-lid{
+    #potion-lid {
         border: 1px solid black;
         border-bottom: 0px;
     }
 
-    #potion-bottle{
+    #potion-bottle {
         border: 1px solid black
     }
 
@@ -582,12 +665,16 @@ footer{
         font-size: 8px;
     }
 
-    #combat-btn-div {
-        
-        height: auto;
+    #combat-UI-div {
+        height: 250px;
     }
-    
-    .combat-btn{
+
+    #combat-btn-div {
+
+        height: 200px;
+    }
+
+    .combat-btn {
         margin: 2px;
         width: 120px;
     }
