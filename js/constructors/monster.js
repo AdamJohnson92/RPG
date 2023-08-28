@@ -53,7 +53,7 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead('Undead', 23, 23, 12, './assets/undead-static.png','./assets/undead-static.png', 1)
+const undead = new Undead('Undead', 23, 23, 12, './assets/undead-static.png','./assets/undead-attack.png', 1)
 
 //-----------------------------------------------
 
