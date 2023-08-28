@@ -224,7 +224,7 @@ button:hover {
 #arena {
     position: relative;
     background-image: url('../assets/bg-1.png');
-    background-size: 700px;
+    background-size: cover;
     margin: 10px;
     padding: 0;
     height: 350px;
