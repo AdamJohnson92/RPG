@@ -270,6 +270,7 @@ button:hover {
     width: 150px;
     height: 150px;
     position: absolute;
+    bottom: 35px;
 }
 
 #arena-hero-attack {
@@ -535,13 +536,13 @@ footer{
     .health-bar {
         height: 5px;
         width: 70px;
-        top: 10px;
+        top: 5px;
     }
 
     .stam-bar{
         height: 5px;
         width: 70px;
-        top: 25px;
+        top: 13px;
     }
 
     #potion-div{
