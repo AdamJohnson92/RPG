@@ -94,7 +94,7 @@ class Goblin extends Monster {
     }
 }
 
-const goblin = new Goblin('Goblin', 35, 35, 13, './assets/goblin-static.png', './assets/goblin-static.png', 1)
+const goblin = new Goblin('Goblin', 35, 35, 13, './assets/goblin-static.png', './assets/goblin-attack.png', 1)
 
 const monsterRoster = [goblin, undead]
 
