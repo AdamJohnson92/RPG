@@ -4,6 +4,8 @@ import { dmgAnimation, dmgAnimation2, dmgAnimation3 } from "../combatUtil.js";
 import {confidentRoll, measuredRoll, riskyRoll} from '../att-dmg-rolls.js'
 
 //WEAPON CLASS CONSTRUCTORS
+//-----------------------------------
+
 class Weapon {
     constructor(name, type, weight, attack1, attack2, modifyingStat) {
         this.name = name;
@@ -260,6 +262,10 @@ class Unarmed extends Weapon {
     }
 }
 
+
+//WEAPON LIST
+//-----------------------------------
+
 const valeGreatsword = new Greatsword("Greatsword", 'Sword', 6, 'Sweep Attack', 'Lunge Attack', 'strength')
 
 const slickDoubleDaggers = new DoubleDaggers("Double Daggers", "Daggers", 3, 'Double Slash', 'Double Stab', 'dexterity')
@@ -267,44 +273,3 @@ const slickDoubleDaggers = new DoubleDaggers("Double Daggers", "Daggers", 3, 'Do
 const unarmed = new Unarmed ('Unarmed', 'N/A', 0, 'Flurry of Blows', 'One-Two Punch', 'dexterity')
 
 export { valeGreatsword, slickDoubleDaggers, unarmed }
-
-
-
-
-
-
-// function controller() {
-//     return 'result';
-// }
-
-// function firstFunc() {
-//     return new Promise((resolve)=> {
-//         setTimeout(() => {
-//             const result = controller()
-//             resolve(result);
-//         }, 2000);
-//     })
-// }
-
-// function runAfter(){
-//     console.log('runAfter')
-// }
-
-// firstFunc()
-// .then((res) => {
-//     console.log(res);
-//     runAfter();
-// })
-// .catch((err) => {
-//     console.log(err);
-// })
-
-// async function main() {
-//     try{
-//         const res = await firstFunc();
-//         runAfter();
-//     }catch(err){
-
-//     }
-// }
-

@@ -3,6 +3,8 @@ import { charHpDiv, combatLog, heroHealthJuice} from "../docElements.js";
 import { chosenCharacter, loser,  } from "../index.js";
 
 //MONSTER CLASS CONSTRUCTORS
+//-----------------------------------
+
 class Monster {
     constructor(name, maxHp, currentHp, hitChanceRate, img, attackImg, staminaPoints) {
         this.name = name;
@@ -52,10 +54,6 @@ class Undead extends Monster {
     }
 }
 
-const undead = new Undead('Undead', 23, 23, 12, './assets/undead-static.png','./assets/undead-attack.png', 1)
-
-//-----------------------------------------------
-
 class Goblin extends Monster {
     constructor(name, maxHp, currentHp, hitChanceRate, img, attackImg, staminaPoints) {
         super(name, maxHp, currentHp, hitChanceRate, img, attackImg, staminaPoints)
@@ -91,6 +89,12 @@ class Goblin extends Monster {
 
     }
 }
+
+// MONSTER ROSTER
+//-----------------------------------
+
+
+const undead = new Undead('Undead', 23, 23, 12, './assets/undead-static.png','./assets/undead-attack.png', 1)
 
 const goblin = new Goblin('Goblin', 35, 35, 13, './assets/goblin-static.png', './assets/goblin-attack.png', 1)
 

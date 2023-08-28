@@ -6,6 +6,8 @@ import { buffDisplay, clearBuffDisplay, heroHealthJuice } from "../combatUtil.js
 
 
 //CHARACTER CLASS CONSTRUCTORS
+//-----------------------------------
+
 class Character {
     constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
         this.name = name;
@@ -25,7 +27,7 @@ class Character {
         this.potionCount = potionCount;
         this.gold = gold;
     }
-    //MUST MAKE POTION COUNTER THAT DECREMENTS TO 0 SO PLAYER CAN ONLY USE ONCE
+    
     takePotion() {
         const healAmount = Math.floor(Math.random() * (6 - 4) + 4);
         console.log('glug glug glug glug')
@@ -41,6 +43,7 @@ class Character {
 
     }
 }
+
 //-----
 class Knight extends Character {
     constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
@@ -63,8 +66,6 @@ class Knight extends Character {
         charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
     }
 }
-
-const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2, 1, 0)
 
 //--------
 
@@ -90,15 +91,13 @@ class Rogue extends Character {
 
 }
 
-const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
-    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1, 0)
+//-------
 
 class Monk extends Character {
     constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
         super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold)
     }
 
-    //Must change Special
     special1() {
         this.hitChanceRate = this.hitChanceRate + 1
         this.armor.armorRating = this.armor.armorRating + 1
@@ -123,6 +122,15 @@ class Monk extends Character {
     }
 
 }
+
+
+//CHARACTER ROSTER
+//-----------------------------------
+
+const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2, 1, 0)
+
+const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
+    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1, 0)
 
 const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 2, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2, 0)
 
