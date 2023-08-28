@@ -202,7 +202,7 @@ class Unarmed extends Weapon {
         let totalDmg1
         let multiLog1;
         if (totalRoll1 >= targetHit) {
-            const damage1 = Math.floor(Math.random() * (2 - 1) + 1);
+            const damage1 = Math.floor(Math.random() * (4 - 2) + 2);
             dmgAnimation('./assets/damage.png', 1)
             totalDmg1 = damage1 + chosenCharacter.strength
             multiLog1 = `deals ${totalDmg1} damage`

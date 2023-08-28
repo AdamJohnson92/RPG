@@ -126,7 +126,7 @@ function boom(){
 //DAMAGE ANIMATIONS
 //------------------------------
 function dmgAnimation(src) {
-    setTimeout( dmgSlashAppear, 0, src)
+    setTimeout( dmgSlashAppear, 10, src)
     setTimeout(dmgSlashDisappear, 300)
 }
 function dmgSlashAppear(src) {
@@ -165,7 +165,7 @@ function dmgSlashDisappear3() {
 //Damage animations for when monster attack
 function monDmgAnimation(src) {
     monDmgSlashAppear(src);
-    setTimeout(monDmgSlashDisappear, 500)
+    setTimeout(monDmgSlashDisappear, 300)
 }
 function monDmgSlashAppear(src) {
     heroDmgImg.setAttribute('src', src)
