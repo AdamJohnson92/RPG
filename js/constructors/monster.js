@@ -25,7 +25,6 @@ class Undead extends Monster {
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 10) + 10)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
-        changeTurn2()
 
         if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (7 - 2) + 2);
@@ -67,7 +66,6 @@ class Goblin extends Monster {
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 12) + 12)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
-        changeTurn2()
 
         if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (9 - 2) + 2);

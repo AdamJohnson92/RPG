@@ -641,7 +641,7 @@ footer {
     }
 
     #turn-display {
-        padding: 0px;
+        padding: 10px;
         border: 10px double black;
         border-radius: 20px;
         text-align: center;

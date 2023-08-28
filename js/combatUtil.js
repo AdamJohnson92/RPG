@@ -37,19 +37,23 @@ function cpuPause() {
     setTimeout(changeTurn1, 2000)
 }
 
+function cpuPause2() {
+    setTimeout(changeTurn2, 1000)
+}
+
 function changeTurn1() {
-    (heroStaminaCounter.textContent < 1) && (monster.currentHp > 0) 
-        if (monster.currentHp < 1) {
-            return
-        } else {
-            monsterStaminaCounter.textContent--
-            changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
-            chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
+    if (monster.currentHp < 1) {
+        return
+    } else {
+        monsterStaminaCounter.textContent--
+        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
+        chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
 
-            damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
+        damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
+        cpuPause2()
+        return chosenCharacter.currentHp;
+    }
 
-            return chosenCharacter.currentHp;
-        }
 }
 
 function changeTurn2() {
@@ -90,7 +94,6 @@ function changePotionMeter(maxPotion, currentPotion) {
     console.log(potionJuice.style.height)
 }
 
-
 ////-----------------
 //WHEN PLAYERS USE BUFFS
 //------------------
@@ -110,23 +113,11 @@ function clearBuffDisplay() {
     charSpecial.style.boxShadow = 'none'
 }
 
-
-function bing(){
-    console.log('bing')
-}
-
-function bang(){
-    console.log('bang')
-}
-
-function boom(){
-    console.log('boom')
-}
 //-------------------------------------------
 //DAMAGE ANIMATIONS
 //------------------------------
 function dmgAnimation(src) {
-    setTimeout( dmgSlashAppear, 10, src)
+    setTimeout(dmgSlashAppear, 10, src)
     setTimeout(dmgSlashDisappear, 300)
 }
 function dmgSlashAppear(src) {
@@ -207,27 +198,6 @@ function monsterAttackDisappear() {
     arenaMonsterAttack.style.display = 'none'
     arenaMonsterAvatar.style.display = 'block'
 }
-
-// TRYING TO DO THIS ASYNCRONOUSLY
-// function heroAttackAnimation(src, attackImg, staticImg) {
-//     console.log(attackImg)
-//      removeSRC(src)
-//      heroAttackAppear(src, attackImg)
-//     setTimeout(heroAttackDisappear (src, staticImg), 500)
-// }
-
-// function removeSRC(src) {
-//     arenaHeroAvatar.removeAttribute(src)
-// }
-
-// function heroAttackAppear( src, attackImg) {
-//     setTimeout(arenaHeroAvatar.setAttribute(src, attackImg), 1000)
-// }
-
-// function heroAttackDisappear(src, staticImg) {
-//     removeSRC(src)
-//     // arenaHeroAvatar.setAttribute(src, staticImg)
-// }
 
 
 export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter, hideCombatBtns, showCombatBtns }
