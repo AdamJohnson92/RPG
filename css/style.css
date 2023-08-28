@@ -277,6 +277,7 @@ button:hover {
     display: none;
     position: relative;
     left: 50px;
+    top: 25px;
     
 }
 
@@ -284,6 +285,7 @@ button:hover {
     display: none;
     position: relative;
     right: 50px;
+    top: 25px;
 }
 
 .dmg-img {
@@ -515,6 +517,21 @@ footer{
         height: 70px;
         position: absolute;
         top: 40px;
+    }
+
+    #arena-hero-attack {
+        display: none;
+        position: relative;
+        left: 50px;
+        top: 25px;
+        
+    }
+    
+    #arena-monster-attack {
+        display: none;
+        position: relative;
+        right: 50px;
+        top: 25px;
     }
 
     #arena-banner {
