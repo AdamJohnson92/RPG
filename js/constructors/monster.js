@@ -95,7 +95,7 @@ const undead = new Undead('Undead', 23, 23, 12, './assets/undead-static.png','./
 
 const goblin = new Goblin('Goblin', 35, 35, 13, './assets/goblin-static.png', './assets/goblin-attack.png', 1)
 
-const badFrog = new Goblin('Bad Frog', 40, 40, 12,'./assets/bad-frog-static.png','./assets/bad-frog-static.png', 1)
+const badFrog = new Goblin('Bad Frog', 40, 40, 10,'./assets/bad-frog-static.png','./assets/bad-frog-static.png', 1)
 
 const monsterRoster = [goblin, undead, badFrog]
 
