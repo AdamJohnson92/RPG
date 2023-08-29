@@ -21,6 +21,7 @@ function showCombatBtns() {
 
 let isHeroTurn = true
 function turnBannerChange(playerTurn) {
+    console.log(isHeroTurn)
     if (playerTurn === true) {
         turnDisplay.style.backgroundColor = 'var(--green)'
         turnDisplay.textContent = 'Your Turn'
@@ -47,6 +48,7 @@ function changeTurn1() {
     } else {
         monsterStaminaCounter.textContent--
         changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
+        monsterAttackAnimation()
         chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
 
         damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
@@ -200,4 +202,4 @@ function monsterAttackDisappear() {
 }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, heroAttackAnimation, monsterAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter, hideCombatBtns, showCombatBtns }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, heroAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter, hideCombatBtns, showCombatBtns }

@@ -149,10 +149,8 @@ function attackRoll(event) {
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
     if (event.target === attackBtn1) {
-        console.log('this is attack 1')
         monster.currentHp = chosenCharacter.weapon.attackDam1(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
     } else if (event.target === attackBtn2) {
-        console.log('this is attack 2')
         monster.currentHp = chosenCharacter.weapon.attackDam2(monster.hitChanceRate, monster.currentHp, chosenCharacter.weapon.modifyingStat)
     }
 

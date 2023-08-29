@@ -1,4 +1,4 @@
-import { changeTurn2, monDmgAnimation, monsterAttackAnimation } from "../combatUtil.js";
+import { changeTurn2, monDmgAnimation } from "../combatUtil.js";
 import { charHpDiv, combatLog, heroHealthJuice} from "../docElements.js";
 import { chosenCharacter, loser,  } from "../index.js";
 
@@ -23,7 +23,6 @@ class Undead extends Monster {
     }
 
     attack1(targetHit, targetHp, targetArmor) {
-        monsterAttackAnimation()
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 10) + 10)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
@@ -58,9 +57,7 @@ class Goblin extends Monster {
     constructor(name, maxHp, currentHp, hitChanceRate, img, attackImg, staminaPoints) {
         super(name, maxHp, currentHp, hitChanceRate, img, attackImg, staminaPoints)
     }
-
     attack1(targetHit, targetHp, targetArmor) {
-        monsterAttackAnimation()
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 12) + 12)
         console.log(`The ${this.name} rolls ${naturalRoll}`)
