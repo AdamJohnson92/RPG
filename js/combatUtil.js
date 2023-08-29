@@ -43,9 +43,6 @@ function cpuPause2() {
 }
 
 function changeTurn1() {
-    if (monster.currentHp < 1) {
-        return
-    } else {
         monsterStaminaCounter.textContent--
         changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
         monsterAttackAnimation()
@@ -54,7 +51,6 @@ function changeTurn1() {
         damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
         cpuPause2()
         return chosenCharacter.currentHp;
-    }
 
 }
 
