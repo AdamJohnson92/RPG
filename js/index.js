@@ -1,58 +1,12 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charGold, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
+import {  charHpDiv,  charGold, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
 import { isHeroTurn, turnBannerChange, clearBuffDisplay, attackAnimation, damageMonsterHealthBar, changePotionMeter, hideCombatBtns, showCombatBtns } from './combatUtil.js';
 
+import { chosenCharacter, selectCharacter } from './playerCharacter.js';
+
 //--------------------------------------------------------------
-let chosenCharacter = {};
-const selectCharacter = function (event) {
 
-    for (let i = 0; i < characterRoster.length; i++) {
-        if (event.target.matches(`#${characterRoster[i].name}`)) {
-            chosenCharacter = characterRoster[i]
-            console.log(chosenCharacter)
-        }
-    }
-    charNameDiv.textContent = `${chosenCharacter.name}`
-
-    charImgDiv.setAttribute("src", chosenCharacter.img)
-
-    charContainer.style.display = 'flex'
-    charClassDiv.textContent = `${chosenCharacter.charClass}`
-    charHpDiv.textContent = `${chosenCharacter.currentHp}`
-    charStrDiv.textContent = `${chosenCharacter.strength}`
-    charDexDiv.textContent = `${chosenCharacter.dexterity}`
-    charWisDiv.textContent = `${chosenCharacter.wisdom}`
-    charHitDiv.textContent = `${chosenCharacter.hitChanceRate}`
-    charSpecial.textContent = `${chosenCharacter.special}`
-
-    charWeaponName.textContent = `${chosenCharacter.weapon.name}`
-    charWeaponType.textContent = `${chosenCharacter.weapon.type}`
-    charWeaponWeight.textContent = `${chosenCharacter.weapon.weight}`
-    charWeaponAttack1.textContent = `${chosenCharacter.weapon.attack1}`
-    charWeaponAttack2.textContent = `${chosenCharacter.weapon.attack2}`
-    charArmorName.textContent = `${chosenCharacter.armor.name}`
-    charArmorClass.textContent = `${chosenCharacter.armor.armorClass}`
-    charArmorWeight.textContent = `${chosenCharacter.armor.weight}`
-    charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
-
-    playBtn.style.display = 'block'
-
-    attackBtn1.textContent = chosenCharacter.weapon.attack1;
-    attackBtn2.textContent = chosenCharacter.weapon.attack2;
-    specialBtn1.textContent = chosenCharacter.special
-    potionsLeft = chosenCharacter.potionCount
-    const chosenCharacterSaveData = JSON.parse(localStorage.getItem(chosenCharacter.name))
-    console.log(chosenCharacterSaveData)
-
-    if (!chosenCharacterSaveData) {
-        chosenCharacter.gold = 0
-    } else { chosenCharacter.gold = chosenCharacterSaveData.gold }
-    charGold.textContent = chosenCharacter.gold
-    return chosenCharacter;
-};
-
-// ------------------------------------
 
 function generateCharBtns() {
 
