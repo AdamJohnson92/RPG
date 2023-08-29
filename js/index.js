@@ -1,7 +1,7 @@
 import { characterRoster } from './constructors/character.js';
 import { charContainer, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, charGold, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, turnDisplay, monsterStaminaCounter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
-import { cpuPause, isHeroTurn, turnBannerChange, clearBuffDisplay, heroAttackAnimation, damageMonsterHealthBar, changePotionMeter, hideCombatBtns, showCombatBtns } from './combatUtil.js';
+import { isHeroTurn, turnBannerChange, clearBuffDisplay, attackAnimation, damageMonsterHealthBar, changePotionMeter, hideCombatBtns, showCombatBtns } from './combatUtil.js';
 
 //--------------------------------------------------------------
 let chosenCharacter = {};
@@ -47,7 +47,7 @@ const selectCharacter = function (event) {
 
     if (!chosenCharacterSaveData) {
         chosenCharacter.gold = 0
-    } else {chosenCharacter.gold = chosenCharacterSaveData.gold}
+    } else { chosenCharacter.gold = chosenCharacterSaveData.gold }
     charGold.textContent = chosenCharacter.gold
     return chosenCharacter;
 };
@@ -78,28 +78,29 @@ const generateMonster = function () {
 function playGame() {
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
-    combatLog.textContent = 'Begin!'
+
     monster = generateMonster()
     arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
     arenaHeroAttack.setAttribute('src', chosenCharacter.attackImg)
     arenaMonsterAvatar.setAttribute("src", monster.img)
     arenaMonsterAttack.setAttribute('src', monster.attackImg)
+
     monster.currentHp = monster.maxHp
     chosenCharacter.currentHp = chosenCharacter.maxHp
     charHpDiv.textContent = `${chosenCharacter.maxHp}`
-    console.log(monster)
+
     heroStaminaCounter.textContent = chosenCharacter.staminaPoints
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
     monsterStaminaCounter.textContent = monster.staminaPoints
     changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
-    turnDisplay.textContent = 'Your Turn'
+
     turnBannerChange(isHeroTurn)
+    combatLog.textContent = 'Begin!'
 }
 
 function renderCharSelectionDiv() {
     clearBuffDisplay()
-    //Sets everything within the 
     combatDiv.style.display = 'none'
     arenaMonsterAvatar.style.display = 'flex'
     arenaHeroAvatar.style.display = 'flex'
@@ -143,7 +144,7 @@ function loser() {
 
 function attackRoll(event) {
 
-    heroAttackAnimation()
+    attackAnimation(isHeroTurn)
 
     heroStaminaCounter.textContent--
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
@@ -163,9 +164,7 @@ function attackRoll(event) {
         monsterStaminaCounter.textContent = 1
         changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
 
-        let isHeroTurn = false
-        turnBannerChange(isHeroTurn)
-        cpuPause()
+        turnBannerChange()
     }
 }
 
@@ -181,7 +180,6 @@ function special1() {
         changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
         let isHeroTurn = false
         turnBannerChange(isHeroTurn)
-        cpuPause()
     }
 }
 
@@ -205,10 +203,7 @@ function drinkPotion() {
             changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
             let isHeroTurn = false
             turnBannerChange(isHeroTurn)
-            cpuPause()
         }
-
-
     }
 }
 

@@ -21,16 +21,18 @@ function showCombatBtns() {
 
 let isHeroTurn = true
 function turnBannerChange(playerTurn) {
-    console.log(isHeroTurn)
-    if (playerTurn === true) {
+    console.log(playerTurn)
+    if (playerTurn) {
         turnDisplay.style.backgroundColor = 'var(--green)'
         turnDisplay.textContent = 'Your Turn'
         showCombatBtns()
         chosenCharacter.undo1()
     } else {
+        console.log(playerTurn)
         turnDisplay.style.backgroundColor = 'var(--red)'
         turnDisplay.textContent = "Enemy's Turn"
         hideCombatBtns()
+        cpuPause()
     }
 }
 
@@ -39,24 +41,23 @@ function cpuPause() {
 }
 
 function cpuPause2() {
-    setTimeout(changeTurn2, 1000)
+    setTimeout(changeTurn2, 2000)
 }
 
 function changeTurn1() {
-        monsterStaminaCounter.textContent--
-        changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
-        monsterAttackAnimation()
-        chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
+    monsterStaminaCounter.textContent--
+    changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
+    attackAnimation()
+    chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
 
-        damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
-        cpuPause2()
-        return chosenCharacter.currentHp;
+    damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
+    cpuPause2()
+    return chosenCharacter.currentHp;
 
 }
 
 function changeTurn2() {
     if ((monsterStaminaCounter.textContent < 1) && (chosenCharacter.currentHp > 0)) {
-        isHeroTurn = true
         turnBannerChange(isHeroTurn)
         heroStaminaCounter.textContent = chosenCharacter.staminaPoints
         changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
@@ -169,9 +170,15 @@ function monDmgSlashDisappear() {
 //CHARACTER ATTACK ANIMATIONS
 //------------------
 
-function heroAttackAnimation() {
-    heroAttackAppear()
-    setTimeout(heroAttackDisappear, 500)
+function attackAnimation(playerTurn) {
+    if (playerTurn) {
+        heroAttackAppear()
+        setTimeout(heroAttackDisappear, 500)
+    } else {
+        monsterAttackAppear()
+        setTimeout(monsterAttackDisappear, 500)
+    }
+
 }
 function heroAttackAppear() {
     arenaHeroAvatar.style.display = 'none'
@@ -182,12 +189,6 @@ function heroAttackDisappear() {
     arenaHeroAvatar.style.display = 'block'
 }
 
-//------------
-
-function monsterAttackAnimation() {
-    monsterAttackAppear()
-    setTimeout(monsterAttackDisappear, 500)
-}
 function monsterAttackAppear() {
     arenaMonsterAvatar.style.display = 'none'
     arenaMonsterAttack.style.display = 'block'
@@ -198,4 +199,4 @@ function monsterAttackDisappear() {
 }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, heroAttackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter, hideCombatBtns, showCombatBtns }
+export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, attackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter, hideCombatBtns, showCombatBtns }
