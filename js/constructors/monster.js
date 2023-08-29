@@ -25,11 +25,9 @@ class Undead extends Monster {
     attack1(targetHit, targetHp, targetArmor) {
         console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 10) + 10)
-        console.log(`The ${this.name} rolls ${naturalRoll}`)
 
         if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (7 - 2) + 2);
-            console.log('monster raw damage: ' + damage)
             monDmgAnimation('./assets/damage.png')
             let dmgLessArmor = damage - targetArmor
             if ((dmgLessArmor) < 0) {
@@ -37,7 +35,6 @@ class Undead extends Monster {
             }
             combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
             charHpDiv.textContent = `${(targetHp - dmgLessArmor)}`
-            console.log(chosenCharacter)
             if ((targetHp - dmgLessArmor) < 1) {
                 heroHealthJuice.style.width = '0%'
                 loser()
@@ -45,7 +42,6 @@ class Undead extends Monster {
             return targetHp - dmgLessArmor;
         } else {
             monDmgAnimation('./assets/miss.png')
-            console.log(`The ${this.name} missed!`)
             combatLog.textContent = `The ${this.name} missed!`
             return targetHp;
         }
@@ -58,13 +54,10 @@ class Goblin extends Monster {
         super(name, maxHp, currentHp, hitChanceRate, img, attackImg, staminaPoints)
     }
     attack1(targetHit, targetHp, targetArmor) {
-        console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 12) + 12)
-        console.log(`The ${this.name} rolls ${naturalRoll}`)
 
         if (naturalRoll >= targetHit) {
             let damage = Math.floor(Math.random() * (9 - 2) + 2);
-            console.log('monster raw damage: ' + damage)
             monDmgAnimation('./assets/damage.png')
             let dmgLessArmor = damage - targetArmor
             if ((dmgLessArmor) < 0) {
@@ -72,14 +65,12 @@ class Goblin extends Monster {
             }
             combatLog.textContent = `The ${this.name} hits you for ${dmgLessArmor} damage`
             charHpDiv.textContent = `${(targetHp - dmgLessArmor)}`
-            console.log(chosenCharacter)
             if ((targetHp - dmgLessArmor) < 1) {
                 loser()
             }
             return targetHp - dmgLessArmor;
         } else {
             monDmgAnimation('./assets/miss.png')
-            console.log(`The ${this.name} missed!`)
             combatLog.textContent = `The ${this.name} missed!`
             return targetHp;
         }

@@ -40,7 +40,6 @@ class Character {
         charHpDiv.textContent = `${this.currentHp}`
         combatLog.textContent = `You heal for ${healAmount} hitpoints.`
 
-
     }
 }
 

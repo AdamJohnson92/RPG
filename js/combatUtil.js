@@ -21,14 +21,12 @@ function showCombatBtns() {
 
 let isHeroTurn = true
 function turnBannerChange(playerTurn) {
-    console.log(playerTurn)
     if (playerTurn) {
         turnDisplay.style.backgroundColor = 'var(--green)'
         turnDisplay.textContent = 'Your Turn'
         showCombatBtns()
         chosenCharacter.undo1()
     } else {
-        console.log(playerTurn)
         turnDisplay.style.backgroundColor = 'var(--red)'
         turnDisplay.textContent = "Enemy's Turn"
         hideCombatBtns()
@@ -83,14 +81,12 @@ function damageMonsterHealthBar(maxHp, currentHp) {
 }
 
 function changePotionMeter(maxPotion, currentPotion) {
-    console.log(potionJuice.style.height)
     potionJuice.style.height = `${(currentPotion / maxPotion) * 100}%`
     if ((currentPotion / maxPotion) * 100 < 100) {
         potionJuice.style.borderRadius = '0px 0px 100px 100px'
     } else {
         potionJuice.style.borderRadius = '100px'
     }
-    console.log(potionJuice.style.height)
 }
 
 ////-----------------

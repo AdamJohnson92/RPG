@@ -132,7 +132,6 @@ function winner() {
 }
 
 function loser() {
-    console.log('you died!')
     combatLog.textContent = `You Died!`
     hideCombatBtns()
     arenaHeroAvatar.style.display = 'none'
@@ -192,12 +191,9 @@ function drinkPotion() {
         changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
         chosenCharacter.takePotion()
-
-        console.log(potionsLeft)
         potionsLeft--
-        console.log(potionsLeft)
-
         changePotionMeter(chosenCharacter.potionCount, potionsLeft)
+        
         if (heroStaminaCounter.textContent < 1) {
             monsterStaminaCounter.textContent = monster.staminaPoints
             changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
