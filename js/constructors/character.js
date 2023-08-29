@@ -9,7 +9,7 @@ import { buffDisplay, clearBuffDisplay, heroHealthJuice } from "../combatUtil.js
 //-----------------------------------
 
 class Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionMax, potionCount, gold) {
         this.name = name;
         this.charClass = charClass
         this.maxHp = maxHp;
@@ -24,6 +24,7 @@ class Character {
         this.img = img;
         this.attackImg = attackImg;
         this.staminaPoints = staminaPoints;
+        this.potionMax = potionMax
         this.potionCount = potionCount;
         this.gold = gold;
     }
@@ -45,8 +46,8 @@ class Character {
 
 //-----
 class Knight extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionMax, potionCount, gold) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionMax, potionCount, gold)
     }
 
     special1() {
@@ -69,8 +70,8 @@ class Knight extends Character {
 //--------
 
 class Rogue extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionMax, potionCount, gold) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionMax, potionCount, gold)
     }
 
     special1() {
@@ -93,8 +94,8 @@ class Rogue extends Character {
 //-------
 
 class Monk extends Character {
-    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold) {
-        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionCount, gold)
+    constructor(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionMax, potionCount, gold) {
+        super(name, charClass, maxHp, currentHp, strength, dexterity, wisdom, hitChanceRate, weapon, armor, special, img, attackImg, staminaPoints, potionMax, potionCount, gold)
     }
 
     special1() {
@@ -126,12 +127,12 @@ class Monk extends Character {
 //CHARACTER ROSTER
 //-----------------------------------
 
-const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2, 1, 0)
+const valeChar = new Knight("Vale", "Knight", 20, 20, 3, 1, 0, 12, valeGreatsword, plateArmor, `Tank`, "./assets/vale-static.png", './assets/vale-attack.png', 2, 1, 1, 0)
 
 const slickChar = new Rogue("Slick", "Rogue", 15, 15, 1, 3, 0, 14, slickDoubleDaggers, leatherArmor, "Agile",
-    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1, 0)
+    "./assets/slick-static.png", "./assets/slick-attack.png", 3, 1, 1, 0)
 
-const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 2, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2, 0)
+const orbynChar = new Monk ('Orbyn', 'Monk', 15, 15, 2, 1, 1, 15, unarmed, tunic, "Mindful", "./assets/orbyn-static.png", './assets/orbyn-attack.png', 3, 2, 2, 0)
 
 const characterRoster = [valeChar, slickChar, orbynChar]
 

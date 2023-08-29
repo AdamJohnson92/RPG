@@ -1,6 +1,7 @@
 import { changeTurn2, monDmgAnimation } from "../combatUtil.js";
 import { charHpDiv, combatLog, heroHealthJuice} from "../docElements.js";
-import { chosenCharacter, loser,  } from "../index.js";
+
+
 
 //MONSTER CLASS CONSTRUCTORS
 //-----------------------------------
@@ -23,7 +24,6 @@ class Undead extends Monster {
     }
 
     attack1(targetHit, targetHp, targetArmor) {
-        console.log(chosenCharacter)
         const naturalRoll = Math.floor(Math.random() * (20 - 10) + 10)
 
         if (naturalRoll >= targetHit) {

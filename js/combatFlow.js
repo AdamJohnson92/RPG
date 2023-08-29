@@ -1,6 +1,7 @@
-import { arenaHeroAttack, arenaHeroAvatar, arenaMonsterAvatar, arenaMonsterAttack } from "./docElements"
-
-import { changeHeroStaminaBar, changeMonsterStaminaBar, changePotionMeter } from "./combatUtil"
+import { attackAnimation, isHeroTurn, changeHeroStaminaBar, changeMonsterStaminaBar, damageMonsterHealthBar, turnBannerChange, hideCombatBtns, changePotionMeter } from "./combatUtil.js"
+import { heroStaminaCounter, monsterStaminaCounter, combatLog, arenaMonsterAvatar, arenaHeroAvatar, playAgainBtn, turnDisplay, charGold, heroHealthJuice, monsterHealthJuice } from "./docElements.js"
+import { chosenCharacter } from "./playerCharacter.js"
+import { monster } from "./index.js"
 
 function winner() {
     combatLog.textContent = `You have slain the ${monster.name}!`
@@ -11,8 +12,10 @@ function winner() {
     turnDisplay.textContent = 'You Win!'
     turnDisplay.style.backgroundColor = 'var(--gold)'
     chosenCharacter.gold = chosenCharacter.gold + 100
+    chosenCharacter.potionCount = chosenCharacter.potionMax
     localStorage.setItem(chosenCharacter.name, JSON.stringify(chosenCharacter))
     charGold.textContent = chosenCharacter.gold
+
 }
 
 function loser() {
@@ -23,6 +26,8 @@ function loser() {
     playAgainBtn.style.display = 'block'
     turnDisplay.textContent = 'You Died'
     turnDisplay.style.backgroundColor = 'var(--red)'
+    chosenCharacter.potionCount = chosenCharacter.potionMax
+
 }
 
 function attackRoll(event) {
@@ -52,6 +57,7 @@ function attackRoll(event) {
 }
 
 function special1() {
+    console.log(chosenCharacter)
 
     heroStaminaCounter.textContent--
     changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
@@ -66,17 +72,20 @@ function special1() {
     }
 }
 
-let potionsLeft;
 function drinkPotion() {
-    if (potionsLeft < 1) {
+    console.log(chosenCharacter)
+    if (chosenCharacter.potionCount < 1) {
         combatLog.textContent = 'You are all out of potions!'
     } else {
         heroStaminaCounter.textContent--
         changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
 
+        console.log(chosenCharacter.potionCount)
+
         chosenCharacter.takePotion()
-        potionsLeft--
-        changePotionMeter(chosenCharacter.potionCount, potionsLeft)
+        chosenCharacter.potionCount--
+        console.log(chosenCharacter.potionCount)
+        changePotionMeter(chosenCharacter.potionMax, chosenCharacter.potionCount)
         
         if (heroStaminaCounter.textContent < 1) {
             monsterStaminaCounter.textContent = monster.staminaPoints
@@ -97,4 +106,4 @@ attackBtn2.addEventListener('click', attackRoll)
 specialBtn1.addEventListener('click', special1)
 potionBtn.addEventListener('click', drinkPotion)
 
-export { attackBtn1, attackBtn2, specialBtn1, loser,  arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, changeHeroStaminaBar, changeMonsterStaminaBar, potionBtn }
+export { attackBtn1, attackBtn2, specialBtn1, loser, potionBtn }
