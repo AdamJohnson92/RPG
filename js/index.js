@@ -1,5 +1,5 @@
 import { characterRoster } from './constructors/character.js';
-import {  charHpDiv,  playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, monsterStaminaCounter, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, heroHealthJuice, monsterHealthJuice } from './docElements.js';
+import {  charHpDiv,  playBtn, townBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, monsterStaminaCounter, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, heroHealthJuice, monsterHealthJuice } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
 import {  clearBuffDisplay, showCombatBtns, changePotionMeter } from './combatUtil.js';
 import {isHeroTurn, turnBannerChange,} from './combatFlow.js'
@@ -7,7 +7,7 @@ import {isHeroTurn, turnBannerChange,} from './combatFlow.js'
 
 import { chosenCharacter, selectCharacter } from './playerCharacter.js';
 
-//--------------------------------------------------------------
+//-----------------------------------------------------
 
 
 function generateCharBtns() {
@@ -75,8 +75,6 @@ playBtn.addEventListener('click', playGame)
 playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 
 //------------------------------
-
-
 
 generateCharBtns()
 

@@ -30,6 +30,7 @@ const charArmorWeight = document.getElementById('armor-weight')
 const charArmorRating = document.getElementById('armor-rating')
 
 const playBtn = document.getElementById('play-btn')
+const townBtn = document.getElementById('to-town-btn')
 
 const charSelectionDiv = document.getElementById('character-selection-div')
 
@@ -64,4 +65,4 @@ const monsterHealthJuice = document.getElementById('monster-health-juice')
 
 
 
-export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charGold, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, monsterDmgImg2, monsterDmgImg3, heroDmgImg, heroHealthJuice, heroStaminaCounter, heroStamJuice, potionJuice,  turnDisplay, monsterHealthJuice, monsterStaminaCounter, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack}
+export {charContainer, charCard, charAvatar, charNameDiv, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charGold, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating, charImgDiv, playBtn, townBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog,monsterDmgImg, monsterDmgImg2, monsterDmgImg3, heroDmgImg, heroHealthJuice, heroStaminaCounter, heroStamJuice, potionJuice,  turnDisplay, monsterHealthJuice, monsterStaminaCounter, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack}

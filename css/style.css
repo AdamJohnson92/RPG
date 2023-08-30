@@ -223,6 +223,11 @@ span {
     display: none;
 }
 
+#to-town-btn{
+    background-color: var(--green);
+    display: none;
+}
+
 #play-again {
     display: none;
 }

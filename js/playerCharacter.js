@@ -1,5 +1,5 @@
 import { characterRoster } from './constructors/character.js';
-import { charContainer,  playBtn,  charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charGold, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating } from './docElements.js';
+import { charContainer,  playBtn, townBtn, charClassDiv, charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charSpecial, equipCard, charGold, charWeaponName, charWeaponType, charWeaponWeight, charWeaponAttack1, charWeaponAttack2, charArmorName, charArmorClass, charArmorWeight, charArmorRating } from './docElements.js';
 import { attackBtn1, attackBtn2, specialBtn1 } from './combatFlow.js';
 
 //------------------------------------------
@@ -40,6 +40,8 @@ const selectCharacter = function (event) {
     charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
 
     playBtn.style.display = 'block'
+    townBtn.style.display = 'block'
+
 
     attackBtn1.textContent = chosenCharacter.weapon.attack1;
     attackBtn2.textContent = chosenCharacter.weapon.attack2;
