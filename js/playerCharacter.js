@@ -39,8 +39,8 @@ const selectCharacter = function (event) {
     charArmorWeight.textContent = `${chosenCharacter.armor.weight}`
     charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
 
-    playBtn.style.display = 'block'
-    townBtn.style.display = 'block'
+    playBtn.style.display = 'flex'
+    townBtn.style.display = 'flex'
 
 
     attackBtn1.textContent = chosenCharacter.weapon.attack1;
