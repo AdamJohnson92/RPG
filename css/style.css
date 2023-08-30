@@ -38,16 +38,29 @@ body {
     margin:10px;
 }
 
+#page-title{
+    border: 10px ridge var(--gold);
+
+    padding:20px;
+    margin:0px;
+}
+
 header {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 10px ridge var(--gold);
+    border-bottom: 10px ridge var(--gold);
     padding: 0px;
     border-radius: 1px;
-    width: 40vw;
+    width: 100vw;
     background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
     margin: 0px;
+}
+
+nav{
+    display: flex;
+    align-items: left;
+    
 }
 
 h1 {
@@ -78,13 +91,12 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-
 }
 
 .container {
     width: 40vw;
     height: fit-content;
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     border: 10px ridge var(--gold);
@@ -540,6 +552,10 @@ footer {
 
     .card {
         height: auto;
+    }
+
+    #char-select-header{
+        font-size: 40px;
     }
 
     p {
