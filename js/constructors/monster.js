@@ -1,4 +1,5 @@
-import { changeTurn2, monDmgAnimation } from "../combatUtil.js";
+import { monDmgAnimation } from "../combatUtil.js";
+import { changeTurn2 } from "../combatFlow.js";
 import { charHpDiv, combatLog, heroHealthJuice} from "../docElements.js";
 
 

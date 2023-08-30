@@ -22,49 +22,7 @@ function showCombatBtns() {
 //CONTROLLS WHOSE TURN IT IS
 //---------------------
 
-let isHeroTurn = true
-function turnBannerChange(playerTurn) {
-    if (playerTurn) {
-        turnDisplay.style.backgroundColor = 'var(--green)'
-        turnDisplay.textContent = 'Your Turn'
-        showCombatBtns()
-        chosenCharacter.undo1()
-    } else {
-        turnDisplay.style.backgroundColor = 'var(--red)'
-        turnDisplay.textContent = "Enemy's Turn"
-        hideCombatBtns()
-        cpuPause()
-    }
-}
 
-function cpuPause() {
-    setTimeout(changeTurn1, 2000)
-}
-
-function cpuPause2() {
-    setTimeout(changeTurn2, 2000)
-}
-
-function changeTurn1() {
-    monsterStaminaCounter.textContent--
-    changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
-    attackAnimation()
-    chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
-
-    damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
-    cpuPause2()
-    return chosenCharacter.currentHp;
-
-}
-
-function changeTurn2() {
-    if ((monsterStaminaCounter.textContent < 1) && (chosenCharacter.currentHp > 0)) {
-        turnBannerChange(isHeroTurn)
-        heroStaminaCounter.textContent = chosenCharacter.staminaPoints
-        changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
-
-    }
-}
 //------------------------------
 //-----------------------------
 function damageHeroHealthBar(maxHp, currentHp) {
@@ -198,4 +156,4 @@ function monsterAttackDisappear() {
 }
 
 
-export { changeTurn1, changeTurn2, cpuPause, dmgAnimation, dmgAnimation2, dmgAnimation3, attackAnimation, monDmgAnimation, isHeroTurn, turnBannerChange, buffDisplay, clearBuffDisplay, damageMonsterHealthBar, heroHealthJuice, changePotionMeter, hideCombatBtns, showCombatBtns, changeHeroStaminaBar, changeMonsterStaminaBar }
+export { dmgAnimation, dmgAnimation2, dmgAnimation3, attackAnimation, monDmgAnimation,  buffDisplay, showCombatBtns, hideCombatBtns, clearBuffDisplay, damageMonsterHealthBar, damageHeroHealthBar, heroHealthJuice, changePotionMeter, changeHeroStaminaBar, changeMonsterStaminaBar }

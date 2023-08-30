@@ -1,4 +1,4 @@
-import { attackAnimation, isHeroTurn, changeHeroStaminaBar, changeMonsterStaminaBar, damageMonsterHealthBar, turnBannerChange, hideCombatBtns, changePotionMeter } from "./combatUtil.js"
+import { attackAnimation, changeHeroStaminaBar, changeMonsterStaminaBar, damageHeroHealthBar, damageMonsterHealthBar, changePotionMeter, showCombatBtns, hideCombatBtns } from "./combatUtil.js"
 import { heroStaminaCounter, monsterStaminaCounter, combatLog, arenaMonsterAvatar, arenaHeroAvatar, playAgainBtn, turnDisplay, charGold, heroHealthJuice, monsterHealthJuice } from "./docElements.js"
 import { chosenCharacter } from "./playerCharacter.js"
 import { monster } from "./index.js"
@@ -106,4 +106,48 @@ attackBtn2.addEventListener('click', attackRoll)
 specialBtn1.addEventListener('click', special1)
 potionBtn.addEventListener('click', drinkPotion)
 
-export { attackBtn1, attackBtn2, specialBtn1, loser, potionBtn }
+let isHeroTurn = true
+function turnBannerChange(playerTurn) {
+    if (playerTurn) {
+        turnDisplay.style.backgroundColor = 'var(--green)'
+        turnDisplay.textContent = 'Your Turn'
+        showCombatBtns()
+        chosenCharacter.undo1()
+    } else {
+        turnDisplay.style.backgroundColor = 'var(--red)'
+        turnDisplay.textContent = "Enemy's Turn"
+        hideCombatBtns()
+        cpuPause()
+    }
+}
+
+function cpuPause() {
+    setTimeout(changeTurn1, 2000)
+}
+
+function cpuPause2() {
+    setTimeout(changeTurn2, 2000)
+}
+
+function changeTurn1() {
+    monsterStaminaCounter.textContent--
+    changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
+    attackAnimation()
+    chosenCharacter.currentHp = monster.attack1(chosenCharacter.hitChanceRate, chosenCharacter.currentHp, chosenCharacter.armor.armorRating)
+
+    damageHeroHealthBar(chosenCharacter.maxHp, chosenCharacter.currentHp)
+    cpuPause2()
+    return chosenCharacter.currentHp;
+
+}
+
+function changeTurn2() {
+    if ((monsterStaminaCounter.textContent < 1) && (chosenCharacter.currentHp > 0)) {
+        turnBannerChange(isHeroTurn)
+        heroStaminaCounter.textContent = chosenCharacter.staminaPoints
+        changeHeroStaminaBar(chosenCharacter.staminaPoints, heroStaminaCounter.textContent)
+
+    }
+}
+
+export { attackBtn1, attackBtn2, specialBtn1, loser, potionBtn, changeTurn2, isHeroTurn, turnBannerChange }

@@ -1,7 +1,9 @@
 import { characterRoster } from './constructors/character.js';
 import {  charHpDiv,  playBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, monsterStaminaCounter, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, heroHealthJuice, monsterHealthJuice } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
-import { isHeroTurn, turnBannerChange, clearBuffDisplay, showCombatBtns, changePotionMeter } from './combatUtil.js';
+import {  clearBuffDisplay, showCombatBtns, changePotionMeter } from './combatUtil.js';
+import {isHeroTurn, turnBannerChange,} from './combatFlow.js'
+
 
 import { chosenCharacter, selectCharacter } from './playerCharacter.js';
 
