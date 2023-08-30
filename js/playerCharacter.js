@@ -72,9 +72,6 @@ const selectCharacter = function (event) {
     const charArmorRating = document.getElementById('armor-rating')
     charArmorRating.textContent = `${chosenCharacter.armor.armorRating}`
 
-
-    const playBtn = document.getElementById('play-btn')
-    const townBtn = document.getElementById('to-town-btn')
     playBtn.style.display = 'flex'
     townBtn.style.display = 'flex'
 
@@ -85,7 +82,6 @@ const selectCharacter = function (event) {
 
     const chosenCharacterSaveData = JSON.parse(localStorage.getItem(chosenCharacter.name))
     console.log(chosenCharacterSaveData)
-
 
 
     if (!chosenCharacterSaveData) {

@@ -1,6 +1,6 @@
 import { valeGreatsword, slickDoubleDaggers, unarmed } from "./weapons.js";
 import { plateArmor, leatherArmor, tunic } from "./armor.js";
-import { buffDisplay, clearBuffDisplay, heroHealthJuice, combatLog, changeHeroStaminaBar } from "../combatUtil.js";
+import { buffDisplay, clearBuffDisplay, heroHealthJuice, combatLog } from "../combatUtil.js";
 import { chosenCharacter, charArmorRating, charHpDiv, charHitDiv } from "../playerCharacter.js";
 
 
