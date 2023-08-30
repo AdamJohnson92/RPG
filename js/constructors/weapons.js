@@ -1,6 +1,5 @@
-import { combatLog } from "../docElements.js";
-import { chosenCharacter } from "../index.js";
-import { dmgAnimation, dmgAnimation2, dmgAnimation3 } from "../combatUtil.js";
+import { chosenCharacter } from "../playerCharacter.js";
+import { dmgAnimation, dmgAnimation2, dmgAnimation3, combatLog } from "../combatUtil.js";
 import { confidentRoll, measuredRoll, riskyRoll } from '../att-dmg-rolls.js'
 
 //WEAPON CLASS CONSTRUCTORS

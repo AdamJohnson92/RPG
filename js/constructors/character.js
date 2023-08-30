@@ -1,8 +1,7 @@
 import { valeGreatsword, slickDoubleDaggers, unarmed } from "./weapons.js";
 import { plateArmor, leatherArmor, tunic } from "./armor.js";
-import { charHpDiv, charStrDiv, charDexDiv, charWisDiv, charHitDiv, charArmorRating, combatLog, charSpecial, heroStaminaCounter } from '../docElements.js'
-import { chosenCharacter, changeHeroStaminaBar } from "../index.js";
-import { buffDisplay, clearBuffDisplay, heroHealthJuice } from "../combatUtil.js";
+import { buffDisplay, clearBuffDisplay, heroHealthJuice, combatLog, changeHeroStaminaBar } from "../combatUtil.js";
+import { chosenCharacter, charArmorRating, charHpDiv, charHitDiv } from "../playerCharacter.js";
 
 
 //CHARACTER CLASS CONSTRUCTORS

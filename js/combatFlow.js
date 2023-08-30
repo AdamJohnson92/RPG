@@ -1,7 +1,14 @@
-import { attackAnimation, changeHeroStaminaBar, changeMonsterStaminaBar, damageHeroHealthBar, damageMonsterHealthBar, changePotionMeter, showCombatBtns, hideCombatBtns } from "./combatUtil.js"
-import { heroStaminaCounter, monsterStaminaCounter, combatLog, arenaMonsterAvatar, arenaHeroAvatar, playAgainBtn, turnDisplay, charGold, heroHealthJuice, monsterHealthJuice } from "./docElements.js"
-import { chosenCharacter } from "./playerCharacter.js"
+import { attackAnimation, changeHeroStaminaBar, changeMonsterStaminaBar, damageHeroHealthBar, damageMonsterHealthBar, changePotionMeter, showCombatBtns, hideCombatBtns, combatLog } from "./combatUtil.js"
+import { chosenCharacter, arenaHeroAvatar, arenaMonsterAvatar, charGold } from "./playerCharacter.js"
 import { monster } from "./index.js"
+
+
+let heroStaminaCounter = document.getElementById('hero-stam-counter')
+let monsterStaminaCounter = document.getElementById('monster-stam-counter')
+
+const turnDisplay = document.getElementById('turn-display')
+const playAgainBtn = document.getElementById('play-again')
+
 
 function winner() {
     combatLog.textContent = `You have slain the ${monster.name}!`
@@ -86,7 +93,7 @@ function drinkPotion() {
         chosenCharacter.potionCount--
         console.log(chosenCharacter.potionCount)
         changePotionMeter(chosenCharacter.potionMax, chosenCharacter.potionCount)
-        
+
         if (heroStaminaCounter.textContent < 1) {
             monsterStaminaCounter.textContent = monster.staminaPoints
             changeMonsterStaminaBar(monster.staminaPoints, monsterStaminaCounter.textContent)
@@ -108,6 +115,7 @@ potionBtn.addEventListener('click', drinkPotion)
 
 let isHeroTurn = true
 function turnBannerChange(playerTurn) {
+
     if (playerTurn) {
         turnDisplay.style.backgroundColor = 'var(--green)'
         turnDisplay.textContent = 'Your Turn'
@@ -150,4 +158,4 @@ function changeTurn2() {
     }
 }
 
-export { attackBtn1, attackBtn2, specialBtn1, loser, potionBtn, changeTurn2, isHeroTurn, turnBannerChange }
+export { attackBtn1, attackBtn2, specialBtn1, loser, potionBtn, changeTurn2, isHeroTurn, turnBannerChange, playAgainBtn, heroStaminaCounter, monsterStaminaCounter }

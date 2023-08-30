@@ -1,14 +1,12 @@
 import { characterRoster } from './constructors/character.js';
-import {  charHpDiv,  playBtn, townBtn, playAgainBtn, charSelectionDiv, combatDiv, combatLog, heroStaminaCounter, monsterStaminaCounter, heroStamJuice, monsterStamJuice, arenaHeroAvatar, arenaHeroAttack, arenaMonsterAvatar, arenaMonsterAttack, heroHealthJuice, monsterHealthJuice } from './docElements.js';
 import { monsterRoster } from './constructors/monster.js';
-import {  clearBuffDisplay, showCombatBtns, changePotionMeter } from './combatUtil.js';
-import {isHeroTurn, turnBannerChange,} from './combatFlow.js'
+import { clearBuffDisplay, showCombatBtns, changePotionMeter, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice } from './combatUtil.js';
+import { isHeroTurn, turnBannerChange, playAgainBtn, heroStaminaCounter, monsterStaminaCounter } from './combatFlow.js'
 
-
-import { chosenCharacter, selectCharacter } from './playerCharacter.js';
+import { chosenCharacter, selectCharacter, playBtn, charHpDiv, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar } from './playerCharacter.js';
 
 //-----------------------------------------------------
-
+const charSelectionDiv = document.getElementById('character-selection-div')
 
 function generateCharBtns() {
 
@@ -31,11 +29,16 @@ const generateMonster = function () {
     return randomMonster;
 }
 
+const combatDiv = document.getElementById('combat-div')
+const combatLog = document.getElementById('combat-log')
+
 function playGame() {
+
     charSelectionDiv.style.display = 'none'
     combatDiv.style.display = 'flex'
 
     monster = generateMonster()
+
     arenaHeroAvatar.setAttribute("src", chosenCharacter.img)
     arenaHeroAttack.setAttribute('src', chosenCharacter.attackImg)
     arenaMonsterAvatar.setAttribute("src", monster.img)
@@ -68,7 +71,7 @@ function renderCharSelectionDiv() {
     playAgainBtn.style.display = 'none'
     showCombatBtns()
     charSelectionDiv.style.display = 'flex'
-  
+
 }
 
 playBtn.addEventListener('click', playGame)
@@ -88,5 +91,5 @@ function changeMonsterStaminaBar(maxStam, currentStam) {
     monsterStamJuice.style.width = `${(currentStam / maxStam * 100)}%`
 }
 
-export { chosenCharacter, monster, changeHeroStaminaBar, changeMonsterStaminaBar }
+export {  monster, }
 

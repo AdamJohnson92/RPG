@@ -1,8 +1,6 @@
-import { monDmgAnimation } from "../combatUtil.js";
-import { changeTurn2 } from "../combatFlow.js";
-import { charHpDiv, combatLog, heroHealthJuice} from "../docElements.js";
+import { monDmgAnimation, combatLog } from "../combatUtil.js";
 
-
+import { charHpDiv } from "../playerCharacter.js";
 
 //MONSTER CLASS CONSTRUCTORS
 //-----------------------------------

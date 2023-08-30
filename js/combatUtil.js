@@ -1,9 +1,14 @@
-import { chosenCharacter, monster, changeHeroStaminaBar, changeMonsterStaminaBar} from "./index.js"
-import { monsterDmgImg, heroDmgImg, heroStaminaCounter, monsterStaminaCounter, turnDisplay, charArmorRating, charHitDiv, charSpecial, monsterDmgImg2, monsterDmgImg3, heroHealthJuice, monsterHealthJuice, potionJuice, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar } from "./docElements.js"
-
+import { charArmorRating, charHitDiv, charSpecial, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar } from "./playerCharacter.js"
 import { attackBtn1, attackBtn2, specialBtn1, potionBtn } from "./combatFlow.js"
 
+const combatLog = document.getElementById('combat-log')
 
+const heroStamJuice = document.getElementById('hero-stam-juice')
+
+const monsterStamJuice = document.getElementById('monster-stam-juice')
+
+const heroHealthJuice = document.getElementById('hero-health-juice')
+const monsterHealthJuice = document.getElementById('monster-health-juice')
 
 function hideCombatBtns() {
     attackBtn1.style.display = 'none'
@@ -41,6 +46,8 @@ function damageMonsterHealthBar(maxHp, currentHp) {
     }
 }
 
+
+const potionJuice = document.getElementById('potion-juice')
 function changePotionMeter(maxPotion, currentPotion) {
     potionJuice.style.height = `${(currentPotion / maxPotion) * 100}%`
     if ((currentPotion / maxPotion) * 100 < 100) {
@@ -48,6 +55,14 @@ function changePotionMeter(maxPotion, currentPotion) {
     } else {
         potionJuice.style.borderRadius = '100px'
     }
+}
+
+function changeHeroStaminaBar(maxStam, currentStam) {
+    heroStamJuice.style.width = `${(currentStam / maxStam * 100)}%`
+}
+
+function changeMonsterStaminaBar(maxStam, currentStam) {
+    monsterStamJuice.style.width = `${(currentStam / maxStam * 100)}%`
 }
 
 ////-----------------
@@ -72,6 +87,13 @@ function clearBuffDisplay() {
 //-------------------------------------------
 //DAMAGE ANIMATIONS
 //------------------------------
+
+const monsterDmgImg = document.getElementById('monster-dmg')
+const monsterDmgImg2 = document.getElementById('monster-dmg-2')
+const monsterDmgImg3 = document.getElementById('monster-dmg-3')
+
+
+
 function dmgAnimation(src) {
     setTimeout(dmgSlashAppear, 10, src)
     setTimeout(dmgSlashDisappear, 300)
@@ -110,6 +132,8 @@ function dmgSlashDisappear3() {
 }
 
 //Damage animations for when monster attack
+const heroDmgImg = document.getElementById('hero-dmg')
+
 function monDmgAnimation(src) {
     monDmgSlashAppear(src);
     setTimeout(monDmgSlashDisappear, 300)
@@ -156,4 +180,4 @@ function monsterAttackDisappear() {
 }
 
 
-export { dmgAnimation, dmgAnimation2, dmgAnimation3, attackAnimation, monDmgAnimation,  buffDisplay, showCombatBtns, hideCombatBtns, clearBuffDisplay, damageMonsterHealthBar, damageHeroHealthBar, heroHealthJuice, changePotionMeter, changeHeroStaminaBar, changeMonsterStaminaBar }
+export { dmgAnimation, dmgAnimation2, dmgAnimation3, attackAnimation, monDmgAnimation,  buffDisplay, showCombatBtns, hideCombatBtns, clearBuffDisplay, damageMonsterHealthBar, damageHeroHealthBar, changePotionMeter, changeHeroStaminaBar, changeMonsterStaminaBar, combatLog, heroHealthJuice, monsterHealthJuice, heroStamJuice, monsterStamJuice }
