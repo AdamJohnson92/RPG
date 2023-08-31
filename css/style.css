@@ -108,7 +108,7 @@ main {
 
 }
 
-.row {
+.menu-btn-div {
     display: flex;
     flex-direction: row;
 }
@@ -521,7 +521,12 @@ footer {
 
 }
 
-@media screen and (max-width: 1075px) {
+@media screen and (max-width: 1275px) {
+
+    .menu-btn-div {
+        display: flex;
+        flex-direction: column;
+    }
     #arena {
         width: 275px;
         height: 300px;
@@ -555,6 +560,27 @@ footer {
         border: 1px solid black
     }
 }
+
+@media screen and (max-width: 900px) {
+    #char-select-header{
+        font-size: 40px;
+    }
+
+    #character-img-div {
+        width:75px;
+        height: 75px;
+        margin-top: 5px;
+    }
+
+    .btn {
+        width: 150px;
+    }
+
+    .card{
+        padding: 0px;
+    }
+}
+
 
 @media screen and (max-width: 500px) {
     header {
@@ -628,6 +654,7 @@ footer {
 
     .card-header {
         font-size: 25px;
+        margin-left: 15px;
     }
 
     .card-item {
