@@ -65,7 +65,7 @@ nav{
 
 h1 {
     font-size: 80px;
-    background-color: transparent;
+    background-image: radial-gradient(var(--grey) 0%, var(--grey) 50%, var(--grey)60%, var(--silver) 100%);
     text-align: center;
 }
 
@@ -117,6 +117,7 @@ main {
     font-size: 60px;
     text-decoration: underline;
     text-underline-offset: 10px;
+    background-image: none;
 }
 
 .card {
