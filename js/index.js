@@ -30,7 +30,6 @@ const generateMonster = function () {
 }
 
 const combatDiv = document.getElementById('combat-div')
-const combatLog = document.getElementById('combat-log')
 
 function playGame() {
 

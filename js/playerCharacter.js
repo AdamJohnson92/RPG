@@ -27,6 +27,7 @@ const selectCharacter = function (event) {
         if (event.target.matches(`#${characterRoster[i].name}`)) {
             chosenCharacter = characterRoster[i]
             console.log(chosenCharacter)
+            localStorage.setItem('thisCharacter', JSON.stringify(chosenCharacter.name))
         }
     }
     const charNameDiv = document.getElementById("char-name")
@@ -96,5 +97,5 @@ const selectCharacter = function (event) {
 
 //-------------------------------------------
 
-
-export { chosenCharacter, selectCharacter, playBtn, townBtn, charHpDiv, charArmorRating, charHitDiv, charSpecial, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar, charGold }
+export default {chosenCharacter}
+export {  chosenCharacter, selectCharacter, playBtn, townBtn, charHpDiv, charArmorRating, charHitDiv, charSpecial, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar, charGold }
