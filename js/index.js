@@ -1,9 +1,9 @@
 import { characterRoster } from './constructors/character.js';
 import { monsterRoster } from './constructors/monster.js';
 import { clearBuffDisplay, showCombatBtns, changePotionMeter, heroHealthJuice, monsterHealthJuice, changeHeroStaminaBar, changeMonsterStaminaBar, combatLog } from './combatUtil.js';
-import { isHeroTurn, turnBannerChange, playAgainBtn, heroStaminaCounter, monsterStaminaCounter } from './combatFlow.js'
+import { isHeroTurn, turnBannerChange, heroStaminaCounter, monsterStaminaCounter } from './combatFlow.js'
 
-import { chosenCharacter, selectCharacter, playBtn, charHpDiv, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar } from './playerCharacter.js';
+import { chosenCharacter, selectCharacter, charHpDiv, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar } from './playerCharacter.js';
 
 //-----------------------------------------------------
 const charSelectionDiv = document.getElementById('character-selection-div')
@@ -72,8 +72,9 @@ function renderCharSelectionDiv() {
     charSelectionDiv.style.display = 'flex'
 
 }
-
+const playBtn =document.getElementById("play-btn")
 playBtn.addEventListener('click', playGame)
+const playAgainBtn = document.getElementById('play-again')
 playAgainBtn.addEventListener('click', renderCharSelectionDiv)
 
 //------------------------------

@@ -168,7 +168,7 @@ span {
 #character-img-div {
     height: 90px;
     background-image: url('../assets/bg-1.png');
-    background-position: 69px;
+
     background-size: cover;
     width: 90px;
     position: relative;
@@ -303,7 +303,7 @@ a:hover{
     background-size: cover;
     width:100%;
     height: 100%;
-    filter: blur(3px);
+    filter: blur(2px);
 }
 
 #arena-banner {

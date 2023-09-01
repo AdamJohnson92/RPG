@@ -97,5 +97,4 @@ const selectCharacter = function (event) {
 
 //-------------------------------------------
 
-export default {chosenCharacter}
 export {  chosenCharacter, selectCharacter, playBtn, townBtn, charHpDiv, charArmorRating, charHitDiv, charSpecial, arenaHeroAttack, arenaHeroAvatar, arenaMonsterAttack, arenaMonsterAvatar, charGold }
